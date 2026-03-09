@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<!--解决idea thymeleaf 表达式模板报红波浪线-->
+<!--suppress ALL -->
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+
+    <!-- 引入公用部分 -->
+    <script th:replace="common/head::static"></script>
+    <!-- Layui -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--
+    <link th:href="@{/common/layui/css/layui.css}" rel="stylesheet" type="text/css" />
+
+   <link href="@{/common/layui/layui.js}" rel="stylesheet">
+   -->
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Quick Start - Layui</title>
+    <!-- 引入layui css 文件 -->
+    <!--
+    <link href="https://cdn.staticfile.org/layui/2.8.1/css/layui.css" rel="stylesheet">
+    -->
+
+
+
+    <!--
+    <link th:href="@{/lib/layui-2.6.3/layui.js}" rel="stylesheet" type="text/css"  />
+    <link th:href="@{/lib/layui-2.6.3/css/layui.css}" rel="stylesheet" type="text/css"/>
+
+    -->
+
+    <link th:href="@{/lib/layui-v2.8.1/css/layui.css}" rel="stylesheet" type="text/css" />
+    <script src="../lib/layui-v2.8.1/layui.js" type="text/javascript" charset="UTF-8"></script>
+
+
+
+</head>
+
+
+<body>
+<form class="layui-form" action="">
+    <div class="layui-tab layui-tab-brief" lay-filter="test1">
+
+
+
+        <ul class="layui-tab-title">
+            <li class="layui-this" lay-id="1">数据集切割</li>
+        </ul>
+
+
+
+        <div class="layui-tab-content">
+
+
+
+            <!--  数据集上传开始   -->
+            <div class="layui-tab-item">
+
+                <form class="layui-form"  lay-filter="form-submit"  id="scheme_id">
+
+                    <!--
+                    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
+                        <legend>上传数据集设置</legend>
+                    </fieldset>
+                    -->
+
+
+                    <!--
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">账号:</label>
+                        <div class="layui-input-block">
+                            <input type="text" placeholder="请填写账号" class="layui-input" required=""  name="username_dataset"
+                                   id="username_dataset"  lay-verify="required">
+
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">密码:</label>
+                        <div class="layui-input-block">
+                            <input type="text" placeholder="请填写密码" class="layui-input" required=""  name="password_dataset"
+                                   id="password_dataset" lay-verify="required">
+                        </div>
+                    </div>
+
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">后端api:</label>
+                        <div class="layui-input-block">
+                            <input type="text" placeholder="请填写API" class="layui-input" required=""  name="api_dataset"
+                                   id="api_dataset" lay-verify="required">
+                        </div>
+                    </div>
+                    -->
+
+
+                    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
+                        <legend>数据集操作</legend>
+                    </fieldset>
+
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">数据集上传:</label>
+                        <div class="layui-input-block">
+                            <div class="layui-btn-container">
+                                <button type="button" class="layui-btn layui-btn-normal"
+                                        id="uploadDatasetFile">选择文件
+                                </button>
+                                <button type="button" class="layui-btn" id="uploadDataset">开始上传</button>
+                                <a class="layui-icon layui-icon-download-circle" href="/baseadmin/upload/downfile"></a>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">切割后数量:</label>
+                            <div class="layui-input-block">
+                                <input type="text" placeholder="请输入数据集切割后数量,默认为只保留最前面20条数据" class="layui-input"
+                                       required="" id="reDdatasetName">
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
+                        <legend>待上传数据集</legend>
+                    </fieldset>
+                    <div class="layui-form-item" pane="">
+                        <label class="layui-form-label">可见光</label>
+                        <div class="layui-input-block">
+                            <input type="checkbox" name="visible_img_img_classfication_dataset" value="visible_img.img_classfication" title="图像分类" lay-skin="tag"  id="visible_img_img_classfication_dataset"  lay-filter="visible_img_img_classfication_dataset" >
+                            <input type="checkbox" name="visible_img_target_detection_dataset" value="visible_img.target_detection" title="目标检测" lay-skin="tag"  id="visible_img_target_detection_dataset" lay-filter="visible_img_target_detection_dataset">
+                            <input type="checkbox" name="visible_img_target_trace_dataset" value="visible_img.target_trace" title="目标跟踪" lay-skin="tag"  id="visible_img_target_trace_dataset" lay-filter="visible_img_target_trace_dataset">
+                            <input type="checkbox" name="visible_img_img_reid_dataset" value="visible_img.img_reid" title="行人重识别" lay-skin="tag"  id="visible_img_img_reid_dataset" lay-filter="visible_img_img_reid_dataset">
+                            <input type="checkbox" name="visible_img_img_segmentation_dataset" value="visible_img.img_segmentation" title="语义分割 " lay-skin="tag"  id="visible_img_img_segmentation_dataset" lay-filter="visible_img_img_segmentation_dataset">
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item" pane="">
+                        <label class="layui-form-label">红外线</label>
+                        <div class="layui-input-block">
+                            <input type="checkbox" name="infrared_ray_img_classfication_dataset" value="infrared_ray.img_classfication" title="图像分类" lay-skin="tag"  id="infrared_ray_img_classfication_dataset"   lay-filter="infrared_ray_img_classfication_dataset" >
+                            <input type="checkbox" name="infrared_ray_target_detection_dataset" value="infrared_ray.target_detection" title="目标检测" lay-skin="tag"  id="infrared_ray_target_detection_dataset"  lay-filter="infrared_ray_target_detection_dataset">
+                            <input type="checkbox" name="infrared_ray_target_trace_dataset" value="infrared_ray.target_trace" title="目标跟踪" lay-skin="tag"  id="infrared_ray_target_trace_dataset"  lay-filter="infrared_ray_target_trace_dataset">
+                        </div>
+                    </div>
+
+
+                    <div class="layui-form-item" pane="">
+                        <label class="layui-form-label">视频</label>
+                        <div class="layui-input-block">
+                            <input type="checkbox" name="video_target_detection_dataset" value="video.target_detection" title="目标检测" lay-skin="tag"  id="video_target_detection_dataset"  lay-filter="video_target_detection_dataset">
+                            <input type="checkbox" name="video_target_trace_dataset" value="video.target_trace" title="目标跟踪" lay-skin="tag"  id="video_target_trace_dataset"  lay-filter="video_target_trace_dataset">
+                        </div>
+                    </div>
+
+
+
+                    <div id="replace-before">
+                        <div class="layui-form-item" pane=""   >
+                            <label class="layui-form-label">文本</label>
+                            <div class="layui-input-block">
+                                <input type="checkbox" name="text_sen_analysis_dataset" value="text.sen_analysis" title="情感分析"        lay-skin="tag"  id="text_sen_analysis_dataset"  lay-filter="text_sen_analysis_dataset" >
+                                <input type="checkbox" name="text_entity_recognition_dataset" value="text.entity_recognition" title="命名实体识别"  lay-skin="tag"  id="text_entity_recognition_dataset"  lay-filter="text_entity_recognition_dataset">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="replace-after">
+                        <div class="layui-form-item" pane=""   >
+                            <label class="layui-form-label">语音</label>
+                            <div class="layui-input-block">
+                                <input type="checkbox" name="asr_asr_recognition_dataset" value="asr.asr_recognition" title="语音识别" lay-skin="tag"  id="asr_asr_recognition_dataset"  lay-filter="asr_asr_recognition_dataset" >
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="replace-before">
+                        <div class="layui-form-item" pane=""   >
+                            <label class="layui-form-label">结构化数据</label>
+                            <div class="layui-input-block">
+                                <input type="checkbox" name="structured_data_classification_dataset" value="structured_data.classification" title="分类"        lay-skin="tag"  id="structured_data_classification_dataset"  lay-filter="structured_data_classification_dataset" >
+                                <input type="checkbox" name="structured_data_regression_dataset" value="structured_data.regression" title="回归"  lay-skin="tag"  id="structured_data_regression_dataset"  lay-filter="structured_data_regression_dataset">
+                                <input type="checkbox" name="structured_data_cluster_dataset" value="structured_data.cluster" title="聚类"  lay-skin="tag"  id="structured_data_cluster_dataset"  lay-filter="structured_data_cluster_dataset">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button class="layui-btn" lay-submit lay-filter="formSubmit">立即提交</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        </div>
+                    </div>
+                    -->
+
+                </form>
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+</form>
+
+
+<body>
+
+
+<!--
+<script src="https://cdn.staticfile.org/layui/2.8.1/layui.js"></script>
+-->
+
+
+<script>
+    layui.use(['form','jquery','element','upload'], function () {
+        var element = layui.element
+            ,layer = layui.layer
+            ,form = layer.form;
+        var $=layui.jquery;
+        var upload = layui.upload;
+
+
+         // 默认勾选第二个标签页
+          element.tabChange('test1', '1');
+
+
+
+        //获取hash来切换选项卡，假设当前地址的hash为lay-id对应的值
+
+     //   var layid = location.hash.replace(/^#test1=/, '');
+     //   element.tabChange('test1', layid); //假设当前地址为：http://a.com#test1=222，那么选项卡会自动切换到“发送消息”这一项
+
+        //监听Tab切换，以改变地址hash值
+      //  element.on('tab(test1)', function () {
+      //      location.hash = 'test1=' + this.getAttribute('lay-id');
+      //  });
+    });
+
+
+    layui.use(function () {
+        var form = layui.form;
+          var $ = layui.jquery;
+          var upload = layui.upload;
+
+
+      //数据集:
+      //数据集的checkbox
+         // checkbox 事件
+        var visible_img_img_classfication_dataset = '';
+        form.on('checkbox(visible_img_img_classfication_dataset)', function(data){
+            var elem = data.elem; // 获得 checkbox 原始 DOM 对象
+            var checked = elem.checked; // 获得 checkbox 选中状态
+            var value = elem.value; // 获得 checkbox 值
+            var othis = data.othis; // 获得 checkbox 元素被替换后的 jQuery 对象
+            console.log("checked-->",checked)
+            console.log("value-->",value)
+            console.log("othis-->",othis)
+         //   layer.msg('checked 状态: '+ elem.checked);
+            if(elem.checked==true){
+                visible_img_img_classfication_dataset = elem.value;
+            }else{
+                visible_img_img_classfication_dataset = '';
+            }
+        });
+
+        // checkbox 事件
+        var visible_img_target_detection_dataset = '';
+        form.on('checkbox(visible_img_target_detection_dataset)', function(data){
+            var elem = data.elem; // 获得 checkbox 原始 DOM 对象
+            var checked = elem.checked; // 获得 checkbox 选中状态
+            var value = elem.value; // 获得 checkbox 值
+            var othis = data.othis; // 获得 checkbox 元素被替换后的 jQuery 对象
+            console.log("checked-->",checked)
+            console.log("value-->",value)
+            console.log("othis-->",othis)
+         //   layer.msg('checked 状态: '+ elem.checked);
+            if(elem.checked==true){
+                visible_img_target_detection_dataset = elem.value;
+            }else{
+                visible_img_target_detection_dataset = '';
+            }
+        });
+
+
+        // checkbox 事件
+        var visible_img_target_trace_dataset = '';
+        form.on('checkbox(visible_img_target_trace_dataset)', function(data){
+            var elem = data.elem; // 获得 checkbox 原始 DOM 对象
+            var checked = elem.checked; // 获得 checkbox 选中状态
+            var value = elem.value; // 获得 checkbox 值
+            var othis = data.othis; // 获得 checkbox 元素被替换后的 jQuery 对象
+            console.log("checked-->",checked)
+            console.log("value-->",value)
+            console.log("othis-->",othis)
+         //   layer.msg('checked 状态: '+ elem.checked);
+            if(elem.checked==true){
+                visible_img_target_trace_dataset = elem.value;
+            }else{
+                visible_img_target_trace_dataset = '';
+            }
+        });
+
+        // checkbox 事件
+        var visible_img_img_reid_dataset = '';
+        form.on('checkbox(visible_img_img_reid_dataset)', function(data){
+            var elem = data.elem; // 获得 checkbox 原始 DOM 对象
+            var checked = elem.checked; // 获得 checkbox 选中状态
+            var value = elem.value; // 获得 checkbox 值
+            var othis = data.othis; // 获得 checkbox 元素被替换后的 jQuery 对象
+            console.log("checked-->",checked)
+            console.log("value-->",value)
+            console.log("othis-->",othis)
+         //   layer.msg('checked 状态: '+ elem.checked);
+            if(elem.checked==true){
+                visible_img_img_reid_dataset = elem.value;
+            }else{
+                visible_img_img_reid_dataset = '';
+            }
+        });
+
+
+        // checkbox 事件
+        var visible_img_img_segmentation_dataset = '';
+        form.on('checkbox(visible_img_img_segmentation_dataset)', function(data){
+            var elem = data.elem; // 获得 checkbox 原始 DOM 对象
+            var checked = elem.checked; // 获得 checkbox 选中状态
+            var value = elem.value; // 获得 checkbox 值
+            var othis = data.othis; // 获得 checkbox 元素被替换后的 jQuery 对象
+            console.log("checked-->",checked)
+            console.log("value-->",value)
+            console.log("othis-->",othis)
+         //   layer.msg('checked 状态: '+ elem.checked);
+            if(elem.checked==true){
+                visible_img_img_segmentation_dataset = elem.value;
+            }else{
+                visible_img_img_segmentation_dataset = '';
+            }
+        });
+
+        // 红外
+        // checkbox 事件
+        var infrared_ray_img_classfication_dataset = '';
+        form.on('checkbox(infrared_ray_img_classfication_dataset)', function(data){
+            var elem = data.elem; // 获得 checkbox 原始 DOM 对象
+            var checked = elem.checked; // 获得 checkbox 选中状态
+            var value = elem.value; // 获得 checkbox 值
+            var othis = data.othis; // 获得 checkbox 元素被替换后的 jQuery 对象
+            console.log("checked-->",checked)
+            console.log("value-->",value)
+            console.log("othis-->",othis)
+         //   layer.msg('checked 状态: '+ elem.checked);
+            if(elem.checked==true){
+                infrared_ray_img_classfication_dataset = elem.value;
+            }else{
+                infrared_ray_img_classfication_dataset = '';
+            }
+        });
+
+
+        // checkbox 事件
+        var infrared_ray_target_detection_dataset = '';
+        form.on('checkbox(infrared_ray_target_detection_dataset)', function(data){
+            var elem = data.elem; // 获得 checkbox 原始 DOM 对象
+            var checked = elem.checked; // 获得 checkbox 选中状态
+            var value = elem.value; // 获得 checkbox 值
+            var othis = data.othis; // 获得 checkbox 元素被替换后的 jQuery 对象
+            console.log("checked-->",checked)
+            console.log("value-->",value)
+            console.log("othis-->",othis)
+         //   layer.msg('checked 状态: '+ elem.checked);
+            if(elem.checked==true){
+                infrared_ray_target_detection_dataset = elem.value;
+            }else{
+                infrared_ray_target_detection_dataset = '';
+            }
+        });
+
+        // checkbox 事件
+        var infrared_ray_target_trace_dataset = '';
+        form.on('checkbox(infrared_ray_target_trace_dataset)', function(data){
+            var elem = data.elem; // 获得 checkbox 原始 DOM 对象
+            var checked = elem.checked; // 获得 checkbox 选中状态
+            var value = elem.value; // 获得 checkbox 值
+            var othis = data.othis; // 获得 checkbox 元素被替换后的 jQuery 对象
+            console.log("checked-->",checked)
+            console.log("value-->",value)
+            console.log("othis-->",othis)
+         //   layer.msg('checked 状态: '+ elem.checked);
+            if(elem.checked==true){
+                infrared_ray_target_trace_dataset = elem.value;
+            }else{
+                infrared_ray_target_trace_dataset = '';
+            }
+        });
+
+
+        // checkbox 事件
+        var video_target_detection_dataset = '';
+        form.on('checkbox(video_target_detection_dataset)', function(data){
+            var elem = data.elem; // 获得 checkbox 原始 DOM 对象
+            var checked = elem.checked; // 获得 checkbox 选中状态
+            var value = elem.value; // 获得 checkbox 值
+            var othis = data.othis; // 获得 checkbox 元素被替换后的 jQuery 对象
+            console.log("checked-->",checked)
+            console.log("value-->",value)
+            console.log("othis-->",othis)
+         //   layer.msg('checked 状态: '+ elem.checked);
+            if(elem.checked==true){
+                video_target_detection_dataset = elem.value;
+            }else{
+                video_target_detection_dataset = '';
+            }
+        });
+
+        // checkbox 事件
+        var video_target_trace_dataset = '';
+        form.on('checkbox(video_target_trace_dataset)', function(data){
+            var elem = data.elem; // 获得 checkbox 原始 DOM 对象
+            var checked = elem.checked; // 获得 checkbox 选中状态
+            var value = elem.value; // 获得 checkbox 值
+            var othis = data.othis; // 获得 checkbox 元素被替换后的 jQuery 对象
+            console.log("checked-->",checked)
+            console.log("value-->",value)
+            console.log("othis-->",othis)
+         //   layer.msg('checked 状态: '+ elem.checked);
+            if(elem.checked==true){
+                video_target_trace_dataset = elem.value;
+            }else{
+                video_target_trace_dataset = '';
+            }
+        });
+
+        // checkbox 事件
+        var text_sen_analysis_dataset = '';
+        form.on('checkbox(text_sen_analysis_dataset)', function(data){
+            var elem = data.elem; // 获得 checkbox 原始 DOM 对象
+            var checked = elem.checked; // 获得 checkbox 选中状态
+            var value = elem.value; // 获得 checkbox 值
+            var othis = data.othis; // 获得 checkbox 元素被替换后的 jQuery 对象
+            console.log("checked-->",checked)
+            console.log("value-->",value)
+            console.log("othis-->",othis)
+         //   layer.msg('checked 状态: '+ elem.checked);
+            if(elem.checked==true){
+                text_sen_analysis_dataset = elem.value;
+            }else{
+                text_sen_analysis_dataset = '';
+            }
+        });
+
+
+        // checkbox 事件
+        var text_entity_recognition_dataset = '';
+        form.on('checkbox(text_entity_recognition_dataset)', function(data){
+            var elem = data.elem; // 获得 checkbox 原始 DOM 对象
+            var checked = elem.checked; // 获得 checkbox 选中状态
+            var value = elem.value; // 获得 checkbox 值
+            var othis = data.othis; // 获得 checkbox 元素被替换后的 jQuery 对象
+            console.log("checked-->",checked)
+            console.log("value-->",value)
+            console.log("othis-->",othis)
+         //   layer.msg('checked 状态: '+ elem.checked);
+            if(elem.checked==true){
+                text_entity_recognition_dataset = elem.value;
+            }else{
+                text_entity_recognition_dataset = '';
+            }
+        });
+
+        // checkbox 事件
+        var asr_asr_recognition_dataset = '';
+        form.on('checkbox(asr_asr_recognition_dataset)', function(data){
+            var elem = data.elem; // 获得 checkbox 原始 DOM 对象
+            var checked = elem.checked; // 获得 checkbox 选中状态
+            var value = elem.value; // 获得 checkbox 值
+            var othis = data.othis; // 获得 checkbox 元素被替换后的 jQuery 对象
+            console.log("checked-->",checked)
+            console.log("value-->",value)
+            console.log("othis-->",othis)
+         //   layer.msg('checked 状态: '+ elem.checked);
+            if(elem.checked==true){
+                asr_asr_recognition_dataset = elem.value;
+            }else{
+                asr_asr_recognition_dataset = '';
+            }
+        });
+
+
+        // checkbox 事件
+        var structured_data_classification_dataset = '';
+        form.on('checkbox(structured_data_classification_dataset)', function(data){
+            var elem = data.elem; // 获得 checkbox 原始 DOM 对象
+            var checked = elem.checked; // 获得 checkbox 选中状态
+            var value = elem.value; // 获得 checkbox 值
+            var othis = data.othis; // 获得 checkbox 元素被替换后的 jQuery 对象
+            console.log("checked-->",checked)
+            console.log("value-->",value)
+            console.log("othis-->",othis)
+         //   layer.msg('checked 状态: '+ elem.checked);
+            if(elem.checked==true){
+                structured_data_classification_dataset = elem.value;
+            }else{
+                structured_data_classification_dataset = '';
+            }
+        });
+
+
+        // checkbox 事件
+        var structured_data_regression_dataset = '';
+        form.on('checkbox(structured_data_regression_dataset)', function(data){
+            var elem = data.elem; // 获得 checkbox 原始 DOM 对象
+            var checked = elem.checked; // 获得 checkbox 选中状态
+            var value = elem.value; // 获得 checkbox 值
+            var othis = data.othis; // 获得 checkbox 元素被替换后的 jQuery 对象
+            console.log("checked-->",checked)
+            console.log("value-->",value)
+            console.log("othis-->",othis)
+         //   layer.msg('checked 状态: '+ elem.checked);
+            if(elem.checked==true){
+                structured_data_regression_dataset = elem.value;
+            }else{
+                structured_data_regression_dataset = '';
+            }
+        });
+
+
+        // checkbox 事件
+        var structured_data_cluster_dataset = '';
+        form.on('checkbox(structured_data_cluster_dataset)', function(data){
+            var elem = data.elem; // 获得 checkbox 原始 DOM 对象
+            var checked = elem.checked; // 获得 checkbox 选中状态
+            var value = elem.value; // 获得 checkbox 值
+            var othis = data.othis; // 获得 checkbox 元素被替换后的 jQuery 对象
+            console.log("checked-->",checked)
+            console.log("value-->",value)
+            console.log("othis-->",othis)
+         //   layer.msg('checked 状态: '+ elem.checked);
+            if(elem.checked==true){
+                structured_data_cluster_dataset = elem.value;
+            }else{
+                structured_data_cluster_dataset = '';
+            }
+        });
+
+
+
+
+
+         var upload = layui.upload;
+        //数据集上传
+        upload.render({
+            elem: '#uploadDatasetFile',
+            url: '/baseadmin/upload/deleteFile', // 此处配置你自己的上传接口即可
+            auto: false,
+            accept: 'file',
+            multiple: true,
+            method: 'post',
+            exts: 'zip',
+           // data:JSON.stringify(data.field),  text_named_entity
+            data: {
+                visible_img_img_classfication_dataset: function () {
+                    return visible_img_img_classfication_dataset;
+                },
+                visible_img_target_detection_dataset: function () {
+                    return visible_img_target_detection_dataset;
+                },
+                visible_img_target_trace_dataset: function () {
+                    return visible_img_target_trace_dataset;
+                },
+                visible_img_img_reid_dataset: function () {
+                    return visible_img_img_reid_dataset;
+                },
+                visible_img_img_segmentation_dataset: function () {
+                    return visible_img_img_segmentation_dataset;
+                },
+                infrared_ray_img_classfication_dataset: function () {
+                    return infrared_ray_img_classfication_dataset;
+                },
+                infrared_ray_target_detection_dataset: function () {
+                    return infrared_ray_target_detection_dataset;
+                },
+                infrared_ray_target_trace_dataset: function () {
+                    return infrared_ray_target_trace_dataset;
+                },
+                video_target_detection_dataset: function () {
+                    return video_target_detection_dataset;
+                },
+
+
+                video_target_trace_dataset: function () {
+                    return video_target_trace_dataset;
+                },
+                text_sen_analysis_dataset: function () {
+                    return text_sen_analysis_dataset;
+                },
+                text_entity_recognition_dataset: function () {
+                    return text_entity_recognition_dataset;
+                },
+                asr_asr_recognition_dataset: function () {
+                    return asr_asr_recognition_dataset;
+                },
+                structured_data_classification_dataset: function () {
+                    return structured_data_classification_dataset;
+                },
+                structured_data_regression_dataset: function () {
+                    return structured_data_regression_dataset;
+                },
+                structured_data_cluster_dataset: function () {
+                    return structured_data_cluster_dataset;
+                },
+
+                username_dataset: function () {
+                    return $('#username_dataset').val();
+                },
+                password_dataset: function () {
+                    return $('#password_dataset').val();
+                },
+                api_dataset: function () {
+                    return $('#api_dataset').val();
+                },
+                reDdatasetName: function () {
+                    return $('#reDdatasetName').val();
+                }
+            },
+
+            bindAction: '#uploadDataset',
+            done: function (res) {
+                if(res.code ===0){
+                    layer.msg(res.msg)
+                }else{
+                    layer.msg(res.msg);
+                    console.log(res)
+                    }
+
+            }
+         });
+
+    });
+
+
+</script>
+
+
+<script>
+    function upload() {
+        var filename = document.getElementById("uploadmodelFile").value;
+        // 这时的 filename 不是 importFile 框中的值
+        alert(filename);
+    }
+</script>
+
+
+

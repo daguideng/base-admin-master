@@ -1,0 +1,53 @@
+{
+  "name": "白盒-test-目标跟踪-multiple-06182315",
+  "category": "666beeee280f56000a273893",
+  "tested_type": "algorithm",
+  "tested_modality": "video",
+  "tested_task": "target_trace",
+  "test_items": [
+    {
+      "id": "71a3-e2bc-dac6-3228-b093",
+      "name": "基础性能测试",
+      "tool_name": "基础性能测试",
+      "test_type": "video_trace_base",
+      "tool": "video_trace_base",
+      "params": {
+
+      }
+    },
+    {
+      "id": "7ad5-84b3-c458-e804-c9dc",
+      "name": "鲁棒性测试",
+      "tool_name": "鲁棒性测试",
+      "test_type": "video_robustness_trace",
+      "tool": "video_robustness_trace",
+      "params": {
+        "random": {
+          "width": 10,
+          "map_confidence": 0.1
+        }
+      }
+    },
+    {
+      "id": "28a4-132d-1cd0-e989-5fd8",
+      "name": "覆盖率测试",
+      "tool_name": "覆盖率测试",
+      "test_type": "video_coverage_trace",
+      "tool": "video_coverage_trace",
+      "params": {
+        "coverage": {
+          "NC-threshold": 0,
+          "KMNC-k": 3,
+          "TKNC-k": 3,
+          "TKNP-k": 3
+        }
+      }
+    }
+  ],
+  "algorithm_model": "white",
+  "algorithm": "6671a4a1d82a2a000ab78298",
+  "datasets": [
+    "66713396d82a2a000bfc68e7"
+  ],
+  "description": "白盒-test-目标跟踪-multiple-0618231533"
+}

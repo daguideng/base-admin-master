@@ -1,0 +1,45 @@
+{
+  "name": "红外线-目标跟踪-single-0702164708",
+  "category": "665da4a56475ed000a4be99c",
+  "tested_type": "dataset",
+  "tested_modality": "infrared_ray",
+  "tested_task": "target_trace",
+  "test_items": [
+    {
+      "id": "57e3-5f21-090b-2e58-0215",
+      "name": "数据集质量评估",
+      "tool_name": "数据集质量评估",
+      "test_type": "data_quality_eval",
+      "tool": "data_quality_eval",
+      "params": {
+        "quality_eval": {
+          "expected_data_num": 50,
+          "expected_data_categories_num": 5
+        }
+      }
+    },
+    {
+      "id": "46fb-7339-172f-e416-0f04",
+      "name": "数据集充分性测试",
+      "tool_name": "数据集充分性测试",
+      "test_type": "img_coverage_trace",
+      "tool": "img_coverage_trace",
+      "params": {
+        "sufficiency": {
+          "NC-threshold": 0,
+          "KMNC-k": 3,
+          "TKNC-k": 3,
+          "TKNP-k": 3
+        }
+      },
+      "algorithm": "6684d5014a389c00daf5c957",
+      "algorithm_name": "白盒-红外线-目标跟踪-multiple-0703123458"
+    }
+  ],
+  "algorithm_model": "",
+  "algorithm": "",
+  "datasets": [
+    "6683be964a389c00daf5c81c"
+  ],
+  "description": "红外线-目标跟踪-single-0702164708"
+}

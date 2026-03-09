@@ -1,0 +1,1310 @@
+<!DOCTYPE html>
+<!--解决idea thymeleaf 表达式模板报红波浪线-->
+<!--suppress ALL -->
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+
+    <!-- 引入公用部分 -->
+    <script th:replace="common/head::static"></script>
+    <!-- Layui -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--
+    <link th:href="@{/common/layui/css/layui.css}" rel="stylesheet" type="text/css" />
+
+   <link href="@{/common/layui/layui.js}" rel="stylesheet">
+   -->
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Quick Start - Layui</title>
+    <!-- 引入layui css 文件 -->
+    <!--
+    <link href="https://cdn.staticfile.org/layui/2.8.1/css/layui.css" rel="stylesheet">
+    -->
+
+
+
+    <!--
+    <link th:href="@{/lib/layui-2.6.3/layui.js}" rel="stylesheet" type="text/css"  />
+    <link th:href="@{/lib/layui-2.6.3/css/layui.css}" rel="stylesheet" type="text/css"/>
+
+    -->
+
+    <link th:href="@{/lib/layui-v2.8.1/css/layui.css}" rel="stylesheet" type="text/css" />
+    <script src="../lib/layui-v2.8.1/layui.js" type="text/javascript" charset="UTF-8"></script>
+
+
+
+</head>
+
+
+<body>
+<form class="layui-form" action="">
+    <div class="layui-tab layui-tab-brief" lay-filter="test1">
+
+        <ul class="layui-tab-title">
+            <li class="layui-this" lay-id="111">算法上传</li>
+            <li lay-id="222">数据集上传</li>
+        </ul>
+
+
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+
+
+                <!--弹出进度条-->
+                <!--
+                <div id="uploadLoadingDiv" style="display: none;">
+                    <div class="layui-progress" lay-showpercent="true" lay-filter="lock_progress"
+                         style="margin: 20px 10px;">
+                        <div class="layui-progress-bar layui-bg-blue" lay-percent="0%"></div>
+                    </div>
+                </div>
+                 -->
+
+
+
+                <div class="layui-card">
+                    <div class="layui-card-body" style="padding-top: 40px;">
+                        <div carousel-item="">
+                            <div class="layui-this">
+                                <form class="layui-form" style="margin: 0 auto;max-width: 460px;padding-top: 40px;">
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label"><span class="star">*</span>账号:</label>
+                                        <div class="layui-input-block">
+                                            <input type="text" placeholder="请填写账号" name="username" class="layui-input" required=""
+                                                   id="username"  lay-verify="required">
+
+                                        </div>
+                                    </div>
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label"><span class="star">*</span>密码:</label>
+                                        <div class="layui-input-block">
+                                            <input type="text" placeholder="请填写密码" name="password" class="layui-input" required=""
+                                                   id="password" lay-verify="required">
+                                        </div>
+                                    </div>
+
+
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label"><span class="star">*</span>后端api:</label>
+                                        <div class="layui-input-block">
+                                            <input type="text" placeholder="请填写API" class="layui-input" required=""  name="api"
+                                                   id="api" lay-verify="required">
+                                        </div>
+                                    </div>
+
+
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label">图像分类(可见光/红外线):</label>
+                                        <div class="layui-input-block">
+                                            <div class="layui-btn-container">
+                                                <button type="button" class="layui-btn layui-btn-normal"
+                                                        id="uploadDemoChoose">选择文件
+                                                </button>
+                                                <button type="button" class="layui-btn" id="uploadvideo">开始上传</button>
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label">重命名图像:</label>
+                                            <div class="layui-input-block">
+                                                <input type="text" placeholder="请重命名图像分类前缀" class="layui-input"
+                                                       required="" id="reImgClassficationName"  name="reName" >
+                                                <input type="hidden" id="img_classfication" name="type" value="img_classfication" class="layui-input" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label">目标检测(可见光/红外线/视频):</label>
+                                        <div class="layui-input-block">
+                                            <div class="layui-btn-container">
+                                                <button type="button" class="layui-btn layui-btn-normal"
+                                                        id="choose-detection">选择文件
+                                                </button>
+                                                <button type="button" class="layui-btn" id="upload-detection">开始上传
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label">重命名检测:</label>
+                                            <div class="layui-input-block">
+                                                <input type="text" placeholder="请重命名目标检测前缀" class="layui-input"
+                                                       required="" id="reDetectionName" name="reName">
+                                                <input type="hidden" id="target_detection" name="type" value="target_detection" class="layui-input" />
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="layui-form-item" >
+                                        <label class="layui-form-label">文本-情感:</label>
+                                        <div class="layui-input-block">
+                                            <div class="layui-btn-container">
+                                                <button type="button" class="layui-btn layui-btn-normal"
+                                                        id="choose-chineseattack">选择文件
+                                                </button>
+                                                <button type="button" class="layui-btn" id="upload-chineseattack">
+                                                    开始上传
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label">重命名文本-情感:</label>
+                                            <div class="layui-input-block">
+                                                <input type="text" placeholder="请重命名文本前缀" class="layui-input"
+                                                       required="" id="reChinese_attackName"  name="reName">
+                                                <input type="hidden" id="text_sen_analysis" name="type" value="text.sen_analysis" class="layui-input" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="layui-form-item" >
+                                        <label class="layui-form-label">文本-识别:</label>
+                                        <div class="layui-input-block">
+                                            <div class="layui-btn-container">
+                                                <button type="button" class="layui-btn layui-btn-normal"
+                                                        id="choose-seqattack">选择文件
+                                                </button>
+                                                <button type="button" class="layui-btn" id="upload-seqattack">
+                                                    开始上传
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label">重命名文本-识别:</label>
+                                            <div class="layui-input-block">
+                                                <input type="text" placeholder="请重命名文本前缀" class="layui-input"
+                                                       required="" id="reSeq_AttackName"  name="reName">
+                                                <input type="hidden" id="text_entity_recognition" name="type" value="text.entity_recognition" class="layui-input" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label">语音:</label>
+                                        <div class="layui-input-block">
+                                            <div class="layui-btn-container">
+                                                <button type="button" class="layui-btn layui-btn-normal"
+                                                        id="choose-voice">选择文件
+                                                </button>
+                                                <button type="button" class="layui-btn" id="upload-voice">
+                                                    开始上传
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label">重命名语音:</label>
+                                            <div class="layui-input-block">
+                                                <input type="text" placeholder="请重命名语音前缀" class="layui-input"
+                                                       required="" id="reVoiceName"  name="reName">
+                                                <input type="hidden" id="asr_asr_recognition" name="type" value="asr.asr_recognition" class="layui-input" />
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label">目标跟踪(可见光/红外线/视频):</label>
+                                        <div class="layui-input-block">
+                                            <div class="layui-btn-container">
+                                                <button type="button" class="layui-btn layui-btn-normal"
+                                                        id="choose-trackdown">选择文件
+                                                </button>
+                                                <button type="button" class="layui-btn" id="upload-trackdown">
+                                                    开始上传
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label">重命名跟踪:</label>
+                                            <div class="layui-input-block">
+                                                <input type="text" placeholder="请重命名目标跟踪" class="layui-input"
+                                                       required="" id="reTrackdownName"  name="reName">
+                                                <input type="hidden" id="target_trace" name="type" value="target_trace" class="layui-input" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label">图像-行人重识别:</label>
+                                        <div class="layui-input-block">
+                                            <div class="layui-btn-container">
+                                                <button type="button" class="layui-btn layui-btn-normal"
+                                                        id="choose-reid">选择文件
+                                                </button>
+                                                <button type="button" class="layui-btn" id="upload-reid">
+                                                    开始上传
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label">重命名行人重识别:</label>
+                                            <div class="layui-input-block">
+                                                <input type="text" placeholder="请重命名目标跟踪" class="layui-input"
+                                                       required="" id="rereidName"  name="reName">
+                                                <input type="hidden" id="img_reid" name="type" value="img_reid" class="layui-input" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label">图像-语义分割:</label>
+                                        <div class="layui-input-block">
+                                            <div class="layui-btn-container">
+                                                <button type="button" class="layui-btn layui-btn-normal"
+                                                        id="choose-segmentation">选择文件
+                                                </button>
+                                                <button type="button" class="layui-btn" id="upload-segmentation">
+                                                    开始上传
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label">重命名语义分割:</label>
+                                            <div class="layui-input-block">
+                                                <input type="text" placeholder="请重命名目标跟踪" class="layui-input"
+                                                       required="" id="resegmentationName"  name="reName">
+                                                <input type="hidden" id="visible_img_img_segmentation" name="type" value="visible_img.img_segmentation" class="layui-input" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label">结构化数据-分类:</label>
+                                        <div class="layui-input-block">
+                                            <div class="layui-btn-container">
+                                                <button type="button" class="layui-btn layui-btn-normal"
+                                                        id="choose-structured_data_classification">选择文件
+                                                </button>
+                                                <button type="button" class="layui-btn" id="upload-structured_data_classification">
+                                                    开始上传
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label">重命名结构化数据-分类:</label>
+                                            <div class="layui-input-block">
+                                                <input type="text" placeholder="请重命名目标跟踪" class="layui-input"
+                                                       required="" id="restructured_data_classificationName"  name="reName">
+                                                <input type="hidden" id="structured_data_classification" name="type" value="structured_data.classification" class="layui-input" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label">结构化数据-回归:</label>
+                                        <div class="layui-input-block">
+                                            <div class="layui-btn-container">
+                                                <button type="button" class="layui-btn layui-btn-normal"
+                                                        id="choose-structured_data_regression">选择文件
+                                                </button>
+                                                <button type="button" class="layui-btn" id="upload-structured_data_regression">
+                                                    开始上传
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item">
+                                            <label class="layui-form-label">重命名结构化数据-回归:</label>
+                                            <div class="layui-input-block">
+                                                <input type="text" placeholder="请重命名目标跟踪" class="layui-input"
+                                                       required="" id="restructured_data_regressionName"  name="reName">
+                                                <input type="hidden" id="structured_data_regression" name="type" value="structured_data.regression" class="layui-input" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+
+
+
+            <!--  数据集上传   -->
+
+
+            <!--  以上是数据集上传   -->
+
+
+                </div>
+            </div>
+
+
+
+
+
+
+            <!--  数据集上传开始   -->
+            <div class="layui-tab-item">
+
+                <form class="layui-form"  lay-filter="form-submit"  id="scheme_id">
+
+                    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
+                        <legend>上传数据集设置</legend>
+                    </fieldset>
+
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">账号:</label>
+                        <div class="layui-input-block">
+                            <input type="text" placeholder="请填写账号" class="layui-input" required=""  name="username_dataset"
+                                   id="username_dataset"  lay-verify="required">
+
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">密码:</label>
+                        <div class="layui-input-block">
+                            <input type="text" placeholder="请填写密码" class="layui-input" required=""  name="password_dataset"
+                                   id="password_dataset" lay-verify="required">
+                        </div>
+                    </div>
+
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">后端api:</label>
+                        <div class="layui-input-block">
+                            <input type="text" placeholder="请填写API" class="layui-input" required=""  name="api_dataset"
+                                   id="api_dataset" lay-verify="required">
+                        </div>
+                    </div>
+
+
+                    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
+                        <legend>数据集操作</legend>
+                    </fieldset>
+
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">数据集上传:</label>
+                            <div class="layui-input-block">
+                                <div class="layui-btn-container">
+                                    <button type="button" class="layui-btn layui-btn-normal"
+                                            id="uploadDatasetFile">选择文件
+                                    </button>
+                                    <button type="button" class="layui-btn" id="uploadDataset">开始上传</button>
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">数据重命名:</label>
+                                <div class="layui-input-block">
+                                    <input type="text" placeholder="请重命名图像分类前缀" class="layui-input"
+                                           required="" id="reDdatasetName">
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
+                        <legend>待上传数据集</legend>
+                    </fieldset>
+                    <div class="layui-form-item" pane="">
+                        <label class="layui-form-label">可见光</label>
+                        <div class="layui-input-block">
+                            <input type="checkbox" name="isible_light_img" value="visible_img.img_classfication" title="图像分类" lay-skin="tag"  id="isible_light_img"  lay-filter="isible_light_img" >
+                            <input type="checkbox" name="isible_light_detection" value="visible_img.target_detection" title="目标检测" lay-skin="tag"  id="isible_light_detection" lay-filter="isible_light_detection">
+                            <input type="checkbox" name="isible_light_tracking" value="visible_img.target_trace" title="目标跟踪" lay-skin="tag"  id="isible_light_tracking" lay-filter="isible_light_tracking">
+                            <input type="checkbox" name="visible_img_img_reid" value="visible_img.img_reid" title="行人重识别" lay-skin="tag"  id="visible_img_img_reid" lay-filter="visible_img_img_reid">
+                            <input type="checkbox" name="visible_img_img_segmentation" value="visible_img.img_segmentation" title="语义分割 " lay-skin="tag"  id="visible_img_img_segmentation" lay-filter="visible_img_img_segmentation">
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item" pane="">
+                        <label class="layui-form-label">红外线</label>
+                        <div class="layui-input-block">
+                            <input type="checkbox" name="red_outer_img" value="infrared_ray.img_classfication" title="图像分类" lay-skin="tag"  id="red_outer_img"   lay-filter="red_outer_img" >
+                            <input type="checkbox" name="red_outer_detection" value="infrared_ray.target_detection" title="目标检测" lay-skin="tag"  id="red_outer_detection"  lay-filter="red_outer_detection">
+                            <input type="checkbox" name="red_outer_tracking" value="infrared_ray.target_trace" title="目标跟踪" lay-skin="tag"  id="red_outer_tracking"  lay-filter="red_outer_tracking">
+                        </div>
+                    </div>
+
+
+                    <div class="layui-form-item" pane="">
+                        <label class="layui-form-label">视频</label>
+                        <div class="layui-input-block">
+                            <input type="checkbox" name="video_target_detection" value="video.target_detection" title="目标检测" lay-skin="tag"  id="video_target_detection"  lay-filter="video_target_detection">
+                            <input type="checkbox" name="video_target_trace" value="video.target_trace" title="目标跟踪" lay-skin="tag"  id="video_target_trace"  lay-filter="video_target_trace">
+                        </div>
+                    </div>
+
+
+
+                    <div id="replace-before">
+                        <div class="layui-form-item" pane=""   >
+                            <label class="layui-form-label">文本</label>
+                            <div class="layui-input-block">
+                                <input type="checkbox" name="text_analysis" value="text.sen_analysis" title="情感分析"        lay-skin="tag"  id="text_analysis"  lay-filter="text_analysis" >
+                                <input type="checkbox" name="text_named_entity" value="text.entity_recognition" title="命名实体识别"  lay-skin="tag"  id="text_named_entity"  lay-filter="text_named_entity">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="replace-after">
+                        <div class="layui-form-item" pane=""   >
+                            <label class="layui-form-label">语音</label>
+                            <div class="layui-input-block">
+                                <input type="checkbox" name="voicle_recognition" value="asr.asr_recognition" title="语音识别" lay-skin="tag"  id="voicle_recognition"  lay-filter="voicle_recognition" >
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="replace-before">
+                        <div class="layui-form-item" pane=""   >
+                            <label class="layui-form-label">结构化数据</label>
+                            <div class="layui-input-block">
+                                <input type="checkbox" name="structured_data_classification" value="structured_data.classification" title="数据分类"        lay-skin="tag"  id="structured_data_classification"  lay-filter="structured_data_classification" >
+                                <input type="checkbox" name="structured_data_regression" value="structured_data.regression" title="数据回归"  lay-skin="tag"  id="structured_data_regression"  lay-filter="structured_data_regression">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button class="layui-btn" lay-submit lay-filter="formSubmit">立即提交</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        </div>
+                    </div>
+                    -->
+
+                </form>
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+</form>
+
+
+<body>
+
+
+<!--
+<script src="https://cdn.staticfile.org/layui/2.8.1/layui.js"></script>
+-->
+
+<script>
+
+
+    layui.use(['form','jquery','element'], function () {
+        var element = layui.element
+            ,layer = layui.layer
+            ,form = layer.form;
+        var $=layui.jquery;
+
+
+
+        //获取hash来切换选项卡，假设当前地址的hash为lay-id对应的值
+        var layid = location.hash.replace(/^#test1=/, '');
+        element.tabChange('test1', layid); //假设当前地址为：http://a.com#test1=222，那么选项卡会自动切换到“发送消息”这一项
+
+        //监听Tab切换，以改变地址hash值
+        element.on('tab(test1)', function () {
+            location.hash = 'test1=' + this.getAttribute('lay-id');
+        });
+    });
+
+
+
+
+
+
+
+
+
+
+
+    layui.use(function () {
+
+        var form = layui.form;
+
+        //监听提交
+      //  form.on('submit(uploadDataset)', function(data){
+
+        // checkbox 事件
+        var voicle_recognition = '';
+        form.on('checkbox(voicle_recognition)', function(data){
+            var elem = data.elem; // 获得 checkbox 原始 DOM 对象
+            var checked = elem.checked; // 获得 checkbox 选中状态
+            var value = elem.value; // 获得 checkbox 值
+            var othis = data.othis; // 获得 checkbox 元素被替换后的 jQuery 对象
+            console.log("checked-->",checked)
+            console.log("value-->",value)
+            console.log("othis-->",othis)
+         //   layer.msg('checked 状态: '+ elem.checked);
+            if(elem.checked==true){
+                voicle_recognition = elem.value;
+            }else{
+                voicle_recognition = '';
+            }
+        });
+
+
+        // checkbox 事件
+        var text_named_entity = '';
+        form.on('checkbox(text_named_entity)', function(data){
+            var elem = data.elem; // 获得 checkbox 原始 DOM 对象
+            var checked = elem.checked; // 获得 checkbox 选中状态
+            var value = elem.value; // 获得 checkbox 值
+            var othis = data.othis; // 获得 checkbox 元素被替换后的 jQuery 对象
+            console.log("checked-->",checked)
+            console.log("value-->",value)
+            console.log("othis-->",othis)
+       //     layer.msg('checked 状态: '+ elem.checked);
+
+            if(elem.checked==true){
+                text_named_entity = elem.value;
+                console.log("true")
+            }else {
+                 text_named_entity = '';
+                console.log("falue")
+            }
+        });
+
+
+
+        // checkbox 事件
+        var text_analysis = '';
+        form.on('checkbox(text_analysis)', function(data){
+            var elem = data.elem; // 获得 checkbox 原始 DOM 对象
+            var checked = elem.checked; // 获得 checkbox 选中状态
+            var value = elem.value; // 获得 checkbox 值
+            var othis = data.othis; // 获得 checkbox 元素被替换后的 jQuery 对象
+            console.log("checked-->",checked)
+            console.log("value-->",value)
+            console.log("othis-->",othis)
+      //      layer.msg('checked 状态: '+ elem.checked);
+            if(elem.checked==true){
+                text_analysis = elem.value;
+                console.log("true")
+            }else{
+                text_analysis = '';
+                console.log("false")
+            }
+
+        });
+
+        // checkbox 事件
+        var red_outer_tracking = '';
+        form.on('checkbox(red_outer_tracking)', function(data){
+            var elem = data.elem; // 获得 checkbox 原始 DOM 对象
+            var checked = elem.checked; // 获得 checkbox 选中状态
+            var value = elem.value; // 获得 checkbox 值
+            var othis = data.othis; // 获得 checkbox 元素被替换后的 jQuery 对象
+            console.log("checked-->",checked)
+            console.log("value-->",value)
+            console.log("othis-->",othis)
+        //    layer.msg('checked 状态: '+ elem.checked);
+            if(elem.checked==true){
+                red_outer_tracking = elem.value;
+            }else{
+                red_outer_tracking = '';
+            }
+
+        });
+
+        // checkbox 事件
+        var red_outer_detection = '';
+        form.on('checkbox(red_outer_detection)', function(data){
+            var elem = data.elem; // 获得 checkbox 原始 DOM 对象
+            var checked = elem.checked; // 获得 checkbox 选中状态
+            var value = elem.value; // 获得 checkbox 值
+            var othis = data.othis; // 获得 checkbox 元素被替换后的 jQuery 对象
+            console.log("checked-->",checked)
+            console.log("value-->",value)
+            console.log("othis-->",othis)
+       //     layer.msg('checked 状态: '+ elem.checked);
+            if(elem.checked==true){
+                red_outer_detection = elem.value;
+            }else{
+                red_outer_detection = '';
+            }
+
+        });
+
+
+        // checkbox 事件
+        var red_outer_img = '';
+        form.on('checkbox(red_outer_img)', function(data){
+            var elem = data.elem; // 获得 checkbox 原始 DOM 对象
+            var checked = elem.checked; // 获得 checkbox 选中状态
+            var value = elem.value; // 获得 checkbox 值
+            var othis = data.othis; // 获得 checkbox 元素被替换后的 jQuery 对象
+            console.log("checked-->",checked)
+            console.log("value-->",value)
+            console.log("othis-->",othis)
+      //      layer.msg('checked 状态: '+ elem.checked);
+            if(elem.checked==true){
+                red_outer_img = elem.value;
+            }else{
+                red_outer_img = '';
+            }
+        });
+
+
+        // checkbox 事件
+        var isible_light_tracking = '';
+        form.on('checkbox(isible_light_tracking)', function(data){
+            var elem = data.elem; // 获得 checkbox 原始 DOM 对象
+            var checked = elem.checked; // 获得 checkbox 选中状态
+            var value = elem.value; // 获得 checkbox 值
+            var othis = data.othis; // 获得 checkbox 元素被替换后的 jQuery 对象
+            console.log("checked-->",checked)
+            console.log("value-->",value)
+            console.log("othis-->",othis)
+    //        layer.msg('checked 状态: '+ elem.checked);
+            if(elem.checked==true){
+                isible_light_tracking = elem.value;
+            }else{
+                isible_light_tracking = '';
+            }
+        });
+
+
+        // checkbox 事件   行人重识别
+        var visible_img_img_reid = '';
+        form.on('checkbox(visible_img_img_reid)', function(data){
+            var elem = data.elem; // 获得 checkbox 原始 DOM 对象
+            var checked = elem.checked; // 获得 checkbox 选中状态
+            var value = elem.value; // 获得 checkbox 值
+            var othis = data.othis; // 获得 checkbox 元素被替换后的 jQuery 对象
+            console.log("checked-->",checked)
+            console.log("value-->",value)
+            console.log("othis-->",othis)
+            if(elem.checked==true){
+                visible_img_img_reid = elem.value;
+            }else{
+                visible_img_img_reid = '';
+            }
+        });
+
+        // checkbox 事件   语义分割
+        var visible_img_img_segmentation = '';
+        form.on('checkbox(visible_img_img_segmentation)', function(data){
+            var elem = data.elem; // 获得 checkbox 原始 DOM 对象
+            var checked = elem.checked; // 获得 checkbox 选中状态
+            var value = elem.value; // 获得 checkbox 值
+            var othis = data.othis; // 获得 checkbox 元素被替换后的 jQuery 对象
+            console.log("checked-->",checked)
+            console.log("value-->",value)
+            console.log("othis-->",othis)
+            if(elem.checked==true){
+                visible_img_img_segmentation = elem.value;
+            }else{
+                visible_img_img_segmentation = '';
+            }
+        });
+
+        // checkbox 事件   视频-目标检测
+        var video_target_detection = '';
+        form.on('checkbox(video_target_detection)', function(data){
+            var elem = data.elem; // 获得 checkbox 原始 DOM 对象
+            var checked = elem.checked; // 获得 checkbox 选中状态
+            var value = elem.value; // 获得 checkbox 值
+            var othis = data.othis; // 获得 checkbox 元素被替换后的 jQuery 对象
+            console.log("checked-->",checked)
+            console.log("value-->",value)
+            console.log("othis-->",othis)
+            if(elem.checked==true){
+                video_target_detection = elem.value;
+            }else{
+                video_target_detection = '';
+            }
+        });
+
+        // checkbox 事件   视频-目标跟踪
+        var video_target_trace = '';
+        form.on('checkbox(video_target_trace)', function(data){
+            var elem = data.elem; // 获得 checkbox 原始 DOM 对象
+            var checked = elem.checked; // 获得 checkbox 选中状态
+            var value = elem.value; // 获得 checkbox 值
+            var othis = data.othis; // 获得 checkbox 元素被替换后的 jQuery 对象
+            console.log("checked-->",checked)
+            console.log("value-->",value)
+            console.log("othis-->",othis)
+            if(elem.checked==true){
+                video_target_trace = elem.value;
+            }else{
+                video_target_trace = '';
+            }
+        });
+
+        // checkbox 事件   结构化数据分类
+        var structured_data_classification = '';
+        form.on('checkbox(structured_data_classification)', function(data){
+            var elem = data.elem; // 获得 checkbox 原始 DOM 对象
+            var checked = elem.checked; // 获得 checkbox 选中状态
+            var value = elem.value; // 获得 checkbox 值
+            var othis = data.othis; // 获得 checkbox 元素被替换后的 jQuery 对象
+            console.log("checked-->",checked)
+            console.log("value-->",value)
+            console.log("othis-->",othis)
+            if(elem.checked==true){
+                structured_data_classification = elem.value;
+            }else{
+                structured_data_classification = '';
+            }
+        });
+
+        // checkbox 事件   结构化数据回归
+        var structured_data_regression = '';
+        form.on('checkbox(structured_data_regression)', function(data){
+            var elem = data.elem; // 获得 checkbox 原始 DOM 对象
+            var checked = elem.checked; // 获得 checkbox 选中状态
+            var value = elem.value; // 获得 checkbox 值
+            var othis = data.othis; // 获得 checkbox 元素被替换后的 jQuery 对象
+            console.log("checked-->",checked)
+            console.log("value-->",value)
+            console.log("othis-->",othis)
+            if(elem.checked==true){
+                structured_data_regression = elem.value;
+            }else{
+                structured_data_regression = '';
+            }
+        });
+
+
+
+        var isible_light_detection = '';
+        form.on('checkbox(isible_light_detection)', function(data){
+            var elem = data.elem; // 获得 checkbox 原始 DOM 对象
+            var checked = elem.checked; // 获得 checkbox 选中状态
+            var value = elem.value; // 获得 checkbox 值
+            var othis = data.othis; // 获得 checkbox 元素被替换后的 jQuery 对象
+            console.log("checked-->",checked)
+            console.log("value-->",value)
+            console.log("othis-->",othis)
+     //       layer.msg('checked 状态: '+ elem.checked);
+            if(elem.checked==true){
+                isible_light_detection = elem.value;
+            }else{
+                isible_light_detection = '';
+            }
+        });
+
+        // checkbox 事件
+        var isible_light_img = '';
+        form.on('checkbox(isible_light_img)', function(data){
+            var elem = data.elem; // 获得 checkbox 原始 DOM 对象
+            var checked = elem.checked; // 获得 checkbox 选中状态
+            var value = elem.value; // 获得 checkbox 值
+            var othis = data.othis; // 获得 checkbox 元素被替换后的 jQuery 对象
+            console.log("checked-->",checked)
+            console.log("value-->",value)
+            console.log("othis-->",othis)
+       //     layer.msg('checked 状态: '+ elem.checked);
+            if(elem.checked==true){
+                isible_light_img = elem.value;
+            }else{
+                isible_light_img = '';
+            }
+        });
+
+
+
+
+        var upload = layui.upload;
+        // 渲染  1.图像分类：
+        upload.render({
+            elem: '#uploadDemoChoose',
+            url: '/baseadmin/upload/uploadunify', // 此处配置你自己的上传接口即可
+            auto: false,
+            accept: 'file',
+            multiple: true,
+            exts: 'zip',
+            data: {
+                username: function () {
+                    return $('#username').val();
+                },
+                password: function () {
+                    return $('#password').val();
+                },
+                api: function () {
+                    return $('#api').val();
+                },
+                type: function () {
+                    return $('#img_classfication').val();
+                },
+                reName: function () {
+                    return $('#reImgClassficationName').val();
+                }
+            },
+            bindAction: '#uploadvideo',
+            done: function (res) {
+                if(res.code ===0){
+              //      layer.msg(res.message)
+                }
+            }
+        });
+
+        //目标检测
+        upload.render({
+            elem: '#choose-detection',
+            url: '/baseadmin/upload/uploadunify', // 此处配置你自己的上传接口即可
+            auto: false,
+            accept: 'file',
+            multiple: true,
+            exts: 'zip',
+            data: {
+                username: function () {
+                    return $('#username').val();
+                },
+                password: function () {
+                    return $('#password').val();
+                },
+                api: function () {
+                    return $('#api').val();
+                },
+
+                type: function () {
+                    return $('#target_detection').val();
+                },
+                reName: function () {
+                    return $('#reDetectionName').val();
+                }
+
+            },
+            bindAction: '#upload-detection',
+            done: function (res) {
+                if(res.code ===0){
+             //       layer.msg(res.message)
+                }
+            }
+        });
+
+
+
+
+        //文本-情感
+        upload.render({
+            elem: '#choose-chineseattack',
+            url: '/baseadmin/upload/uploadunify', // 此处配置你自己的上传接口即可
+            auto: false,
+            accept: 'file',
+            multiple: true,
+            exts: 'zip',
+            method: "post",
+            data: {
+                username: function () {
+                    return $('#username').val();
+                },
+                password: function () {
+                    return $('#password').val();
+                },
+                api: function () {
+                    return $('#api').val();
+                },
+                type: function () {
+                    return $('#text_sen_analysis').val();
+                },
+                reName: function () {
+                    return $('#reChinese_attackName').val();
+                }
+            },
+            bindAction: '#upload-chineseattack',
+
+            /*
+            choose: function(obj){
+                //将每次选择的文件追加到文件队列
+                var files = obj.pushFile();
+                console.log("files--->"+files)
+                //预读本地文件，如果是多文件，则会遍历。
+                obj.preview(function(index, file, result){
+                    console.log("111--index->",index); //得到文件索引
+                    console.log("2222--file->",file); //得到文件对象
+                });
+            },
+            */
+            done: function (res) {
+                if(res.code ===0){
+               //     layer.msg(res.message)
+                }
+            }
+        });
+
+
+        //文本-识别
+        upload.render({
+            elem: '#choose-seqattack',
+            url: '/baseadmin/upload/uploadunify', // 此处配置你自己的上传接口即可
+            auto: false,
+            accept: 'file',
+            multiple: true,
+            exts: 'zip',
+            data: {
+                username: function () {
+                    return $('#username').val();
+                },
+                password: function () {
+                    return $('#password').val();
+                },
+                api: function () {
+                    return $('#api').val();
+                },
+                type: function () {
+                    return $('#text_entity_recognition').val();
+                },
+                reName: function () {
+                    return $('#reSeq_AttackName').val();
+                }
+            },
+            bindAction: '#upload-seqattack',
+            done: function (res) {
+                if(res.code ===0){
+              //      layer.msg(res.message)
+                }
+            }
+        });
+
+        //语音
+        upload.render({
+            elem: '#choose-voice',
+            url: '/baseadmin/upload/uploadunify', // 此处配置你自己的上传接口即可
+            auto: false,
+            accept: 'file',
+            multiple: true,
+            exts: 'zip',
+            data: {
+                username: function () {
+                    return $('#username').val();
+                },
+                password: function () {
+                    return $('#password').val();
+                },
+                api: function () {
+                    return $('#api').val();
+                },
+                type: function () {
+                    return $('#asr_asr_recognition').val();
+                },
+                reName: function () {
+                    return $('#reVoiceName').val();
+                }
+            },
+            bindAction: '#upload-voice',
+            done: function (res) {
+                if(res.code ===0){
+                //    layer.msg(res.message)
+                }
+            }
+        });
+
+        //目标跟踪
+        upload.render({
+            elem: '#choose-trackdown',
+            url: '/baseadmin/upload/uploadunify', // 此处配置你自己的上传接口即可
+            auto: false,
+            accept: 'file',
+            multiple: true,
+            exts: 'zip',
+            data: {
+                username: function () {
+                    return $('#username').val();
+                },
+                password: function () {
+                    return $('#password').val();
+                },
+                api: function () {
+                    return $('#api').val();
+                },
+                type: function () {
+                    return $('#target_trace').val();
+                },
+                reName: function () {
+                    return $('#reTrackdownName').val();
+                }
+            },
+            bindAction: '#upload-trackdown',
+            done: function (res) {
+                if(res.code ===0){
+                  //  layer.msg(res.message)
+                }
+               // layer.msg('上传成功');
+               // console.log(res)
+            }
+        });
+
+
+        //行人重识别
+        upload.render({
+            elem: '#choose-reid',
+            url: '/baseadmin/upload/uploadunify', // 此处配置你自己的上传接口即可
+            auto: false,
+            accept: 'file',
+            multiple: true,
+            exts: 'zip',
+            data: {
+                username: function () {
+                    return $('#username').val();
+                },
+                password: function () {
+                    return $('#password').val();
+                },
+                api: function () {
+                    return $('#api').val();
+                },
+                type: function () {
+                    return $('#img_reid').val();
+                },
+                reName: function () {
+                    return $('#rereidName').val();
+                }
+            },
+            bindAction: '#upload-reid',
+            done: function (res) {
+                if(res.code ===0){
+                  //  layer.msg(res.message)
+                }
+               // layer.msg('上传成功');
+               // console.log(res)
+            }
+        });
+
+
+        //语义分割
+        upload.render({
+            elem: '#choose-segmentation',
+            url: '/baseadmin/upload/uploadunify', // 此处配置你自己的上传接口即可
+            auto: false,
+            accept: 'file',
+            multiple: true,
+            exts: 'zip',
+            data: {
+                username: function () {
+                    return $('#username').val();
+                },
+                password: function () {
+                    return $('#password').val();
+                },
+                api: function () {
+                    return $('#api').val();
+                },
+                type: function () {
+                    return $('#visible_img_img_segmentation').val();
+                },
+                reName: function () {
+                    return $('#resegmentationName').val();
+                }
+            },
+            bindAction: '#upload-segmentation',
+            done: function (res) {
+                if(res.code ===0){
+                  //  layer.msg(res.message)
+                }
+               // layer.msg('上传成功');
+               // console.log(res)
+            }
+        });
+
+        //结构化数据-分类  structured_data_classification
+        upload.render({
+            elem: '#choose-structured_data_classification',
+            url: '/baseadmin/upload/uploadunify', // 此处配置你自己的上传接口即可
+            auto: false,
+            accept: 'file',
+            multiple: true,
+            exts: 'zip',
+            data: {
+                username: function () {
+                    return $('#username').val();
+                },
+                password: function () {
+                    return $('#password').val();
+                },
+                api: function () {
+                    return $('#api').val();
+                },
+                type: function () {
+                    return $('#structured_data_classification').val();
+                },
+                reName: function () {
+                    return $('#restructured_data_classificationName').val();
+                }
+            },
+            bindAction: '#upload-structured_data_classification',
+            done: function (res) {
+                if(res.code ===0){
+                  //  layer.msg(res.message)
+                }
+               // layer.msg('上传成功');
+               // console.log(res)
+            }
+        });
+
+
+
+        //结构化数据-回归  structured_data_regression
+        upload.render({
+            elem: '#choose-structured_data_regression',
+            url: '/baseadmin/upload/uploadunify', // 此处配置你自己的上传接口即可
+            auto: false,
+            accept: 'file',
+            multiple: true,
+            exts: 'zip',
+            data: {
+                username: function () {
+                    return $('#username').val();
+                },
+                password: function () {
+                    return $('#password').val();
+                },
+                api: function () {
+                    return $('#api').val();
+                },
+                type: function () {
+                    return $('#structured_data_regression').val();
+                },
+                reName: function () {
+                    return $('#restructured_data_regressionName').val();
+                }
+            },
+            bindAction: '#upload-structured_data_regression',
+            done: function (res) {
+                if(res.code ===0){
+                  //  layer.msg(res.message)
+                }
+               // layer.msg('上传成功');
+               // console.log(res)
+            }
+        });
+
+
+
+
+
+
+        //数据集上传
+        upload.render({
+            elem: '#uploadDatasetFile',
+            url: '/baseadmin/upload/uploaddataset', // 此处配置你自己的上传接口即可
+            auto: false,
+            accept: 'file',
+            multiple: true,
+            exts: 'zip',
+           // data:JSON.stringify(data.field),  text_named_entity
+            data: {
+                voicle_recognition: function () {
+                    return voicle_recognition;
+                },
+                text_named_entity: function () {
+                    return text_named_entity;
+                },
+                text_analysis: function () {
+                    return text_analysis;
+                },
+                red_outer_tracking: function () {
+                    return red_outer_tracking;
+                },
+                red_outer_detection: function () {
+                    return red_outer_detection;
+                },
+                red_outer_img: function () {
+                    return red_outer_img;
+                },
+                isible_light_tracking: function () {
+                    return isible_light_tracking;
+                },
+                isible_light_detection: function () {
+                    return isible_light_detection;
+                },
+                isible_light_img: function () {
+                    return isible_light_img;
+                },
+
+
+                visible_img_img_reid: function () {
+                    return visible_img_img_reid;
+                },
+                visible_img_img_segmentation: function () {
+                    return visible_img_img_segmentation;
+                },
+                video_target_detection: function () {
+                    return video_target_detection;
+                },
+                video_target_trace: function () {
+                    return video_target_trace;
+                },
+                structured_data_classification: function () {
+                    return structured_data_classification;
+                },
+                structured_data_regression: function () {
+                    return structured_data_regression;
+                },
+
+                username_dataset: function () {
+                    return $('#username_dataset').val();
+                },
+                password_dataset: function () {
+                    return $('#password_dataset').val();
+                },
+                api_dataset: function () {
+                    return $('#api_dataset').val();
+                },
+                reDdatasetName: function () {
+                    return $('#reDdatasetName').val();
+                }
+            },
+
+            bindAction: '#uploadDataset',
+            done: function (res) {
+                if(res.code ===0){
+                 //   layer.msg(res.message)
+                }
+                // layer.msg('上传成功');
+                // console.log(res)
+            }
+         });
+
+    });
+
+
+</script>
+
+
+
+<script>
+    function upload() {
+        var filename = document.getElementById("choose-chineseattack").value;
+        // 这时的 filename 不是 importFile 框中的值
+        alert(filename);
+    }
+</script>
+
+
+
+
+
+
+
+

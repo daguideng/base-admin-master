@@ -1,0 +1,23 @@
+{
+  "name":"增广-可见光-目标检测-黑盒对抗",
+
+  "extension_method":"extension_black_attack",
+  "alg_id":"65238fd38086530009c053fd",
+  "test_items":[
+    {
+      "params":{
+        "BoundaryAttack":{
+          "delta":0.1,
+          "epsilon":0.01,
+          "step_adapt":0.667,
+          "max_iter":50,
+          "num_trial":25,
+          "sample_size":20,
+          "init_size":20,
+          "confidence":0.1
+        }
+      }
+    }
+  ],
+  "descript":"增广-可见光-目标检测-黑盒对抗"
+}

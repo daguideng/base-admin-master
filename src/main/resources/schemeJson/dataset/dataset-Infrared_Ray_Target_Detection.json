@@ -1,0 +1,57 @@
+{
+  "name": "数据集-红外线-目标检测-multiple-06301100",
+  "category": "665da4a56475ed000a4be99c",
+  "tested_type": "dataset",
+  "tested_modality": "infrared_ray",
+  "tested_task": "target_detection",
+  "test_items": [
+    {
+      "id": "c09e-6b1e-0608-0d00-c403",
+      "name": "数据集质量评估",
+      "tool_name": "数据集质量评估",
+      "test_type": "data_quality_eval",
+      "tool": "data_quality_eval",
+      "params": {
+        "quality_eval": {
+          "expected_data_num": 50,
+          "expected_data_categories_num": 5
+        }
+      }
+    },
+    {
+      "id": "98d1-1544-ad29-2c22-6c9e",
+      "name": "数据集充分性测试",
+      "tool_name": "数据集充分性测试",
+      "test_type": "img_coverage_detection",
+      "tool": "img_coverage_detection",
+      "params": {
+        "sufficiency": {
+          "NC-threshold": 0,
+          "KMNC-k": 3,
+          "TKNC-k": 3,
+          "TKNP-k": 3
+        }
+      },
+      "algorithm": "6680bfc3d62149000a5c896a",
+      "algorithm_name": "白盒-红外线-目标检测-multiple-0630101525"
+    },
+    {
+      "id": "3bd3-7bbd-72a4-6750-6d94",
+      "name": "数据集安全性测试",
+      "tool_name": "数据集安全性测试",
+      "test_type": "data_security_test",
+      "tool": "data_security_test",
+      "params": {
+        "data_security": {
+
+        }
+      }
+    }
+  ],
+  "algorithm_model": "",
+  "algorithm": "",
+  "datasets": [
+    "6680ca68d62149000bea5e5e"
+  ],
+  "description": "数据集-红外线-目标检测-multiple-06301100"
+}

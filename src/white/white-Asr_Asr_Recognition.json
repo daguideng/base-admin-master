@@ -1,0 +1,41 @@
+{
+  "name":"白盒-语音识别",
+  "category":"6511252ae5941e000100b37b",
+  "tested_type":"algorithm",
+  "tested_modality":"asr",
+  "tested_task":"asr_recognition",
+  "test_items":[
+    {
+      "id":"b7c6-2afd-4f52-1456-01c1",
+      "name":"对抗样本测试",
+      "tool_name":"智能算法对抗样本测试",
+      "test_type":"asr_attack_adv_test",
+      "tool":"asr_attack_adv_test",
+      "algorithm":"",
+      "dataset":"6524cb35700728000ac1076b",
+      "algorithm_name":"",
+      "dataset_name":"语音增广1234567",
+      "params":{
+
+      }
+    },
+    {
+      "id":"2d3b-8d06-32d9-a127-bbf1",
+      "name":"准确性测试",
+      "tool_name":"智能算法准确性测试",
+      "test_type":"asr_attack_accuracy",
+      "tool":"asr_attack_accuracy",
+      "algorithm":"",
+      "dataset":"6524cb35700728000ac1076b",
+      "algorithm_name":"",
+      "dataset_name":"语音增广1234567",
+      "params":{
+
+      }
+    }
+  ],
+  "algorithm_model":"white",
+  "algorithm":"652399fb808653000abaa78d",
+  "dataset":"",
+  "description":"白盒-语音识别"
+}

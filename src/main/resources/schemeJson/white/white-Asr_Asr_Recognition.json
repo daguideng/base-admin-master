@@ -1,0 +1,35 @@
+{
+  "name": "白盒-语音-语音识别-0618225228",
+  "category": "666beed5280f56000a273892",
+  "tested_type": "algorithm",
+  "tested_modality": "asr",
+  "tested_task": "asr_recognition",
+  "test_items": [
+    {
+      "id": "eff4-cffd-b4aa-671c-4b36",
+      "name": "基础性能测试",
+      "tool_name": "基础性能测试",
+      "test_type": "asr_attack_accuracy",
+      "tool": "asr_attack_accuracy",
+      "params": {
+
+      }
+    },
+    {
+      "id": "5627-8dde-ed20-d515-854c",
+      "name": "安全性测试",
+      "tool_name": "安全性测试",
+      "test_type": "asr_attack_adv_test",
+      "tool": "asr_attack_adv_test",
+      "params": {
+
+      }
+    }
+  ],
+  "algorithm_model": "white",
+  "algorithm": "66719f71d82a2a000bfc6922",
+  "datasets": [
+    "66713402d82a2a000ab7822d"
+  ],
+  "description": "白盒-语音-语音识别-0618225228"
+}

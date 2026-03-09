@@ -1,0 +1,62 @@
+{
+  "name": "黑盒对抗-视频-目标跟踪",
+  "extension_method": "extension_no_attack",
+  "test_items": [
+    {
+      "params": {
+        "random": {
+          "width": 10,
+          "map_confidence": 0.1
+        },
+        "tone": {
+          "width": 2,
+          "gap": 25,
+          "map_confidence": 0.1
+        },
+        "elect": {
+          "width": 2,
+          "gap": 30,
+          "map_confidence": 0.1
+        },
+        "ground": {
+          "width": 2,
+          "gap": 30,
+          "map_confidence": 0.1
+        },
+        "power": {
+          "width": 2,
+          "gap": 25,
+          "hotpiexl": 40,
+          "map_confidence": 0.1
+        },
+        "gauss": {
+          "mean": 0,
+          "var": 0,
+          "map_confidence": 0.1
+        },
+        "poisson": {
+          "map_confidence": 0.1
+        },
+        "hue": {
+          "intensity": 10,
+          "map_confidence": 0.1
+        },
+        "luminance": {
+          "intensity": 10,
+          "map_confidence": 0.1
+        },
+        "saturation": {
+          "intensity": 10,
+          "map_confidence": 0.1
+        },
+        "sp": {
+          "amount": 0.01,
+          "prob": 0.01,
+          "map_confidence": 0.1
+        }
+      }
+    }
+  ],
+  "descript":"黑盒对抗-视频-目标跟踪"
+}
+

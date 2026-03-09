@@ -1,0 +1,31 @@
+{
+  "name": "二分类-雷达-信号分类",
+  "category": "669a297d4a01fd000b4577cf",
+  "tested_type": "dataset",
+  "tested_modality": "radar",
+  "tested_task": "signal_classification",
+  "test_items": [
+    {
+      "id": "da72-71bf-9fb2-73e0-0d21",
+      "name": "数据集质量评估",
+      "tool_name": "数据集质量评估",
+      "test_type": "data_quality_eval",
+      "tool": "data_quality_eval",
+      "params": {
+        "quality_eval": {
+          "expected_data_num": 50,
+          "expected_data_categories_num": 5
+        }
+      },
+      "algorithm": "",
+      "algorithm_name": ""
+    }
+  ],
+  "algorithm_model": "",
+  "algorithm": "",
+  "datasets": [
+    "669a23174a01fd000b4577b7"
+  ],
+  "description": "二分类-雷达-信号分类",
+  "id": "669a41e4c87e10000ba199dc"
+}

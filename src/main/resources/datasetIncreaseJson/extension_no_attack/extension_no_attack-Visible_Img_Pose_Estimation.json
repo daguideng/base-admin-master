@@ -1,0 +1,51 @@
+{
+  "name": "非对抗-可见光-姿态估计",
+  "descript": "非对抗-可见光-姿态估计",
+  "extension_method": "extension_no_attack",
+  "test_items": [
+    {
+      "params": {
+        "random": {
+          "width": 10
+        },
+        "tone": {
+          "width": 2,
+          "gap": 25
+        },
+        "elect": {
+          "width": 2,
+          "gap": 30
+        },
+        "ground": {
+          "width": 2,
+          "gap": 30
+        },
+        "power": {
+          "width": 2,
+          "gap": 25,
+          "hotpiexl": 40
+        },
+        "gauss": {
+          "mean": 0,
+          "var": 0
+        },
+        "poisson": {
+
+        },
+        "hue": {
+          "intensity": 10
+        },
+        "luminance": {
+          "intensity": 10
+        },
+        "saturation": {
+          "intensity": 10
+        },
+        "sp": {
+          "amount": 0.01,
+          "prob": 0.01
+        }
+      }
+    }
+  ]
+}

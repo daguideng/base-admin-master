@@ -1,0 +1,58 @@
+{
+  "name": "黑盒-test-目标跟踪-multiple-06182314",
+  "category": "666beeee280f56000a273893",
+  "tested_type": "algorithm",
+  "tested_modality": "video",
+  "tested_task": "target_trace",
+  "test_items": [
+    {
+      "id": "a9f8-b65b-6bcd-810d-30d4",
+      "name": "基础性能测试",
+      "tool_name": "基础性能测试",
+      "test_type": "video_trace_base",
+      "tool": "video_trace_base",
+      "params": {
+
+      }
+    },
+    {
+      "id": "b28f-11ea-967c-394c-9251",
+      "name": "安全性测试",
+      "tool_name": "安全性测试",
+      "test_type": "video_trace",
+      "tool": "video_trace",
+      "params": {
+        "BoundaryAttack": {
+          "delta": 0.1,
+          "epsilon": 0.01,
+          "step_adapt": 0.667,
+          "max_iter": 10,
+          "num_trial": 10,
+          "sample_size": 10,
+          "init_size": 20,
+          "confidence": 0.1,
+          "map_confidence": 0.1
+        }
+      }
+    },
+    {
+      "id": "8f27-28bb-5f4b-2aee-68ee",
+      "name": "鲁棒性测试",
+      "tool_name": "鲁棒性测试",
+      "test_type": "video_robustness_trace",
+      "tool": "video_robustness_trace",
+      "params": {
+        "random": {
+          "width": 10,
+          "map_confidence": 0.1
+        }
+      }
+    }
+  ],
+  "algorithm_model": "black",
+  "algorithm": "6671a46ed82a2a000bfc6947",
+  "datasets": [
+    "66713396d82a2a000bfc68e7"
+  ],
+  "description": "黑盒-test-目标跟踪-multiple-0618231422"
+}

@@ -1,0 +1,13 @@
+{
+  "name":"白盒-语音-语音识别",
+  "extension_method":"extension_white_attack",
+  "alg_id":"6511b061e5941e0001113b0d",
+  "test_items":[
+    {
+      "params":{
+
+      }
+    }
+  ],
+  "descript":"白盒-语音-语音识别"
+}

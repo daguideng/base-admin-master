@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.huanzi.qch.baseadmin.dao.Model_tableMapper">
+  <resultMap id="BaseResultMap" type="cn.huanzi.qch.baseadmin.entity.Model_table">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="model_type" jdbcType="VARCHAR" property="model_type" />
+    <result column="model_name" jdbcType="VARCHAR" property="model_name" />
+    <result column="sort" jdbcType="VARCHAR" property="sort" />
+    <result column="version" jdbcType="VARCHAR" property="version" />
+    <result column="model_path" jdbcType="VARCHAR" property="model_path" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="update_time" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, model_type, model_name, sort, version, model_path, update_time, `type`
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from model_table
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from model_table
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.huanzi.qch.baseadmin.entity.Model_table">
+    insert into model_table (id, model_type, model_name, 
+      sort, version, model_path, 
+      update_time, `type`)
+    values (#{id,jdbcType=INTEGER}, #{model_type,jdbcType=VARCHAR}, #{model_name,jdbcType=VARCHAR}, 
+      #{sort,jdbcType=VARCHAR}, #{version,jdbcType=VARCHAR}, #{model_path,jdbcType=VARCHAR}, 
+      #{update_time,jdbcType=TIMESTAMP}, #{type,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.huanzi.qch.baseadmin.entity.Model_table">
+    insert into model_table
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="model_type != null">
+        model_type,
+      </if>
+      <if test="model_name != null">
+        model_name,
+      </if>
+      <if test="sort != null">
+        sort,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+      <if test="model_path != null">
+        model_path,
+      </if>
+      <if test="update_time != null">
+        update_time,
+      </if>
+      <if test="type != null">
+        `type`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="model_type != null">
+        #{model_type,jdbcType=VARCHAR},
+      </if>
+      <if test="model_name != null">
+        #{model_name,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null">
+        #{sort,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="model_path != null">
+        #{model_path,jdbcType=VARCHAR},
+      </if>
+      <if test="update_time != null">
+        #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.huanzi.qch.baseadmin.entity.Model_table">
+    update model_table
+    <set>
+      <if test="model_type != null">
+        model_type = #{model_type,jdbcType=VARCHAR},
+      </if>
+      <if test="model_name != null">
+        model_name = #{model_name,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null">
+        sort = #{sort,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null">
+        version = #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="model_path != null">
+        model_path = #{model_path,jdbcType=VARCHAR},
+      </if>
+      <if test="update_time != null">
+        update_time = #{update_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="type != null">
+        `type` = #{type,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.huanzi.qch.baseadmin.entity.Model_table">
+    update model_table
+    set model_type = #{model_type,jdbcType=VARCHAR},
+      model_name = #{model_name,jdbcType=VARCHAR},
+      sort = #{sort,jdbcType=VARCHAR},
+      version = #{version,jdbcType=VARCHAR},
+      model_path = #{model_path,jdbcType=VARCHAR},
+      update_time = #{update_time,jdbcType=TIMESTAMP},
+      `type` = #{type,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

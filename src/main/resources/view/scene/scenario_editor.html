@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Demo</title>
+    <!-- 请勿在项目正式环境中引用该 layui.css 地址 -->
+    <!--
+    <link href="//unpkg.com/layui@2.8.17/dist/css/layui.css" rel="stylesheet">
+    -->
+    <!-- 引入layui css 文件 -->
+
+
+    <!--
+    <link href="https://cdn.staticfile.org/layui/2.8.1/css/layui.css" rel="stylesheet">
+    -->
+
+
+    <!--
+    <link th:href="@{/lib/layui-2.6.3/css/layui.css}" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/lib/layui-2.6.3/layui.js}" rel="stylesheet" type="text/css"  />
+    -->
+
+
+
+
+    <link th:href="@{/lib/layui-v2.8.1/css/layui.css}" rel="stylesheet" type="text/css" />
+    <script src="../lib/layui-v2.8.1/layui.js" type="text/javascript" charset="UTF-8"></script>
+
+    <!--
+    <link th:href="@{/lib/layui-v2.8.1/layui.js}" rel="stylesheet" type="text/css"  />
+    -->
+
+
+
+</head>
+<body>
+<!-- 给容器追加 class="layui-form-pane"，即可显示为方框风格 -->
+
+<!--
+<form class="layui-form"  lay-filter="form-submit"  id="scheme_id">
+-->
+
+<form class="layui-form layui-form-pane" action="">
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
+    <legend>场景还原</legend>
+</fieldset>
+
+
+    <!--
+<div class="layui-form-item">
+    <label class="layui-form-label">账号:</label>
+    <div class="layui-input-block">
+        <input type="text" placeholder="请填写账号" class="layui-input" required=""  name="username"
+               id="username"  lay-verify="required">
+
+    </div>
+</div>
+
+-->
+
+
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            <label class="layui-form-label">测试用例</label>
+            <div class="layui-input-inline"  style="width: 450px;">
+                <input type="text" name="select_case" lay-verify="required" placeholder="C2C_AEB_CCRm_30_100_20_E-NCAP"   lay-affix="clear" autocomplete="off" class="layui-input"  id="select_case" >
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            <label class="layui-form-label">法规选择</label>
+            <div class="layui-input-inline"  style="width: 450px;">
+
+                <select name="choice_laws"  id="choice_laws"  lay-verify="required" >
+                </select>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            <label class="layui-form-label">场景id</label>
+            <div class="layui-input-inline"  style="width: 450px;">
+                <input type="text" name="scenario_editor_id" lay-verify="required" placeholder="0033de53697c4f79892a76fd852f69cf"   lay-affix="clear" autocomplete="off" class="layui-input"  id="scenario_editor_id" >
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit lay-filter="generationScenario">立即提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </div>
+
+</form>
+
+
+
+
+
+<!--
+<script src="https://cdn.staticfile.org/layui/2.8.1/layui.js"></script>
+-->
+
+<!--
+<script th:href="@{/lib/layui-v2.8.1/layui.js}" type="text/javascript" charset="UTF-8"></script>
+-->
+
+
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
+    <legend>自定义场景运行</legend>
+</fieldset>
+
+<form class="layui-form layui-form-pane" action="">
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">批量导入</label>
+        <div class="layui-input-block">
+            <button type="button" class="layui-btn layui-btn-normal" id="choose_file">选择文件</button>
+            <button type="button" class="layui-btn" id="upload_file" style="VISIBILITY: hidden">开始上传</button>
+            <a class="layui-icon layui-icon-download-circle" href="/baseadmin/scene/downexcel"></a>
+        </div>
+    </div>
+</form>
+
+
+
+<script>
+    layui.use(['form','jquery'], function() {
+        var form = layui.form;
+        var $ = layui.jquery;
+
+        $.get({
+            url: "/baseadmin/scene/querymovescen",
+            type: "get",
+            dataType: "json",
+            success: function (data) {
+
+                //choice_laws:
+                choice_laws = data.choice_laws
+                for (var dict = 0; dict < choice_laws.length; dict++) {
+                    console.log(choice_laws[dict].id)
+                    console.log(choice_laws[dict].name)
+                    var optionNode = document.createElement("option");
+                    optionNode.setAttribute("value", choice_laws[dict].id);
+                    optionNode.innerHTML = choice_laws[dict].name;
+                    $("#choice_laws").append(optionNode);
+                }
+                layui.form.render("select");
+            }
+        })
+
+
+
+        //监听提交
+        form.on('submit(generationScenario)', function(data){
+            // layer.msg(JSON.stringify(data.field));
+
+            layui.$.ajax({
+                url:"/baseadmin/scene/editor",
+                data:JSON.stringify(data.field),
+                method:"post",
+                dataType:"JSON",
+                contentType: 'application/json',
+                success:function(res){
+                    if(res.code=="0"){
+                        layer.msg(res.msg);
+                    }else{
+                        layer.msg(res.msg);
+                    }
+
+                }
+
+            })
+
+
+            return false;
+        });
+
+
+    })
+
+
+
+</script>
+
+<script>
+    layui.use(['form', 'jquery', 'upload'], function () {
+        var element = layui.element
+            , layer = layui.layer
+            , form = layer.form;
+        var $ = layui.jquery;
+        var upload = layui.upload;
+        //img_classfication
+
+        /*
+        layer.confirm('导入会覆盖之前所有数据?','',{
+            confirmButtomText:'确定',
+            cancelButtomText:'取消',
+            type:'warning'
+        })
+         */
+
+        upload.render({
+            elem: '#choose_file',
+            url: '/baseadmin/scene/customizebatupload', // 此处配置你自己的上传接口即可
+            auto: false,
+            accept: 'file',
+            multiple: true,
+            exts: 'xlsx',
+            data: {},
+            bindAction: '#upload_file',
+            choose: function(obj){
+            //确认框
+            layer.confirm('确定导入文件吗？导入将会把批量执行场景!', {icon: 3, title:'提示'}, function(index){
+                //读取本地文件
+                obj.preview(function(index, file, result){
+                    //单个重传
+                    obj.upload(index, file);
+                });
+                layer.close(index);
+            });
+        },
+            done: function (res) {
+                console.log("res--->",res)
+                if(res.code === 0){
+                    layer.alert(res.msg)
+                }else{
+                    layer.open({
+                          type: 1                   //0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
+                        , title: '导入失败用例,30秒后弹框消失!请手动单场景导入!'          //标题。①false表示无标题 ②['text','css']带样式的标题
+                        , content: res.msg            //内容。①可为$('selector')或者html
+                        , time: 30000                //自动关闭。5s后关闭
+                        , id: '01'                  //设置id后，只能同时弹出一个，默认为''
+                })}
+
+            }
+        });
+
+    })
+
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,110 @@
+{
+  "name": "黑盒-可见光-目标检测",
+  "category": "6672b59cd82a2a000bfc697f",
+  "tested_type": "algorithm",
+  "tested_modality": "visible_img",
+  "tested_task": "target_detection",
+  "test_items": [
+    {
+      "id": "077e-cca9-7d6e-ca8e-95f9",
+      "name": "基础性能测试",
+      "tool_name": "基础性能测试",
+      "test_type": "img_detection_base",
+      "tool": "img_detection_base",
+      "params": {
+        "base": {
+          "map_confidence": 0.1
+        }
+      }
+    },
+    {
+      "id": "22e5-b051-572f-9369-6fcb",
+      "name": "安全性测试",
+      "tool_name": "安全性测试",
+      "test_type": "img_detection",
+      "tool": "img_detection",
+      "params": {
+        "BoundaryAttack": {
+          "delta": 0.1,
+          "epsilon": 0.01,
+          "step_adapt": 0.667,
+          "max_iter": 10,
+          "num_trial": 10,
+          "sample_size": 10,
+          "init_size": 20,
+          "confidence": 0.1,
+          "map_confidence": 0.1
+        }
+      }
+    },
+    {
+      "id": "3b44-d53d-47e0-3126-f055",
+      "name": "干扰鲁棒性测试",
+      "tool_name": "干扰鲁棒性测试",
+      "test_type": "img_robustness_detection",
+      "tool": "img_robustness_detection",
+      "params": {
+        "random": {
+          "width": 10,
+          "map_confidence": 0.1
+        }
+      }
+    },
+    {
+      "id": "3ee7-52e3-a031-67fe-b490",
+      "name": "数据分布鲁棒性测试",
+      "tool_name": "数据分布鲁棒性测试",
+      "test_type": "img_dist_robustness_detection",
+      "tool": "img_dist_robustness_detection",
+      "params": {
+        "dist_robustness": {
+          "map_confidence": 0.1,
+          "distribution_groups": 3
+        }
+      }
+    },
+    {
+      "id": "322b-717f-dd94-5aa9-1416",
+      "name": "离群数据鲁棒性测试",
+      "tool_name": "离群数据鲁棒性测试",
+      "test_type": "img_outlier_robustness_detection",
+      "tool": "img_outlier_robustness_detection",
+      "params": {
+        "outlier_robustness": {
+          "map_confidence": 0.1,
+          "outlier_ratio": 0.1
+        }
+      }
+    },
+    {
+      "id": "b7bf-a83d-5dcc-3611-1b5a",
+      "name": "可解释性测试",
+      "tool_name": "可解释性测试",
+      "test_type": "interpret_detection",
+      "tool": "interpret_detection",
+      "params": {
+        "LIME": {
+          "num_features": 100,
+          "num_samples": 150
+        }
+      }
+    },
+    {
+      "id": "09b7-dee3-616e-79d3-180e",
+      "name": "算法效率测试",
+      "tool_name": "算法效率测试",
+      "test_type": "img_detection_efficiency",
+      "tool": "img_detection_efficiency",
+      "params": {
+        "efficiency": {
+
+        }
+      }
+    }
+  ],
+  "algorithm_model": "black",
+  "algorithm": "6671a1e7d82a2a000ab78274",
+  "datasets": [
+    "66727638d82a2a000bfc695b"
+  ]
+}

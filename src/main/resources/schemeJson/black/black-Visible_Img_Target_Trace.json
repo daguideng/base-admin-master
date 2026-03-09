@@ -1,0 +1,58 @@
+{
+  "name": "黑盒-可见光-目标跟踪-binary-0701114638",
+  "category": "665da4966475ed0009280e14",
+  "tested_type": "algorithm",
+  "tested_modality": "visible_img",
+  "tested_task": "target_trace",
+  "test_items": [
+    {
+      "id": "8d8b-f0bf-ffa4-31b5-44e7",
+      "name": "基础性能测试",
+      "tool_name": "基础性能测试",
+      "test_type": "img_trace_base",
+      "tool": "img_trace_base",
+      "params": {
+
+      }
+    },
+    {
+      "id": "5441-357c-2ba4-cbae-b39f",
+      "name": "安全性测试",
+      "tool_name": "安全性测试",
+      "test_type": "img_trace",
+      "tool": "img_trace",
+      "params": {
+        "BoundaryAttack": {
+          "delta": 0.1,
+          "epsilon": 0.01,
+          "step_adapt": 0.667,
+          "max_iter": 10,
+          "num_trial": 10,
+          "sample_size": 10,
+          "init_size": 20,
+          "confidence": 0.1,
+          "map_confidence": 0.1
+        }
+      }
+    },
+    {
+      "id": "6218-cfd4-12ef-5346-6df4",
+      "name": "鲁棒性测试",
+      "tool_name": "鲁棒性测试",
+      "test_type": "img_robustness_trace",
+      "tool": "img_robustness_trace",
+      "params": {
+        "random": {
+          "width": 10,
+          "map_confidence": 0.1
+        }
+      }
+    }
+  ],
+  "algorithm_model": "black",
+  "algorithm": "668226b2d62149041a4125c8",
+  "datasets": [
+    "6680c955d62149000a5c8b23"
+  ],
+  "id": "6680df47d62149000bebcb04"
+}

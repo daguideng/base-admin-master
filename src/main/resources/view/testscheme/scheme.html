@@ -1,0 +1,344 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Demo</title>
+    <!-- 请勿在项目正式环境中引用该 layui.css 地址 -->
+
+    <link href="//unpkg.com/layui@2.8.1/dist/css/layui.css" rel="stylesheet">
+
+    <!-- 引入layui css 文件 -->
+    <!--
+    <link href="https://cdn.staticfile.org/layui/2.8.1/css/layui.css" rel="stylesheet">
+    -->
+    <link th:href="@{/lib/layui-v2.8.1/css/layui.css}" rel="stylesheet" type="text/css" />
+    <script src="../lib/layui-v2.8.1/layui.js" type="text/javascript" charset="UTF-8"></script>
+<body>
+
+
+<form class="layui-form"  lay-filter="form-submit"  id="scheme_id">
+
+    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
+        <legend>生成方案设置</legend>
+    </fieldset>
+
+    <!--
+    <form class="layui-form" style="margin: 0 auto;max-width: 460px;padding-top: 40px;">
+    -->
+        <div class="layui-form-item">
+            <label class="layui-form-label"><span class="star">*</span>账号:</label>
+            <div class="layui-input-block">
+                <input type="text" placeholder="请填写账号" class="layui-input" required=""  name="username"
+                       id="username"  lay-verify="required">
+
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label"><span class="star">*</span>密码:</label>
+            <div class="layui-input-block">
+                <input type="text" placeholder="请填写密码" class="layui-input" required=""  name="password"
+                       id="password" lay-verify="required">
+            </div>
+        </div>
+
+
+    <div class="layui-form-item">
+        <label class="layui-form-label"><span class="star">*</span>后端api:</label>
+        <div class="layui-input-block">
+            <input type="text" placeholder="请填写API" class="layui-input" required=""  name="api"
+                   id="api" lay-verify="required">
+        </div>
+    </div>
+
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">category:</label>
+            <div class="layui-input-block">
+                <input type="text" placeholder="请填写category,默认为：生成测试方案的自定义文件夹" class="layui-input" required=""
+                       name="category" id="category" >
+            </div>
+        </div>
+
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">任务开关:</label>
+            <div class="layui-input-block">
+                <input type="checkbox" name="isTask" title="开启|关闭" lay-skin="switch"  id="CCC">
+            </div>
+        </div>
+
+        <!--
+    </form>
+    -->
+
+
+
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
+    <legend>被测对象类型</legend>
+</fieldset>
+<!--
+<form class="layui-form layui-form-pane" action="">
+-->
+<!--
+<form class="layui-form" lay-filter="type-radio">
+    -->
+
+    <div class="layui-form-item" pane="">
+        <label class="layui-form-label">对象类型</label>
+        <div class="layui-input-block">
+            <input type="radio" name="radio_type" value="black" title="黑盒" lay-filter="levelM"  id="type-black" >
+            <input type="radio" name="radio_type" value="white" title="白盒" lay-filter="levelM" id="type-white">
+            <input type="radio" name="radio_type" value="dataset" title="数据集" lay-filter="levelM" id="type-data" >
+        </div>
+    </div>
+
+
+
+
+    <!--
+</form>
+    -->
+
+
+    <!--
+<form class="layui-form"  lay-filter="modal-radio">
+    -->
+
+    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
+        <legend>被测对象模态</legend>
+    </fieldset>
+    <div class="layui-form-item" pane="">
+        <label class="layui-form-label">可见光</label>
+        <div class="layui-input-block">
+            <input type="checkbox" name="isible_light_img" value="可见光-图像分类" title="图像分类" lay-skin="tag"   lay-filter="isible-light-img" >
+            <input type="checkbox" name="isible_light_detection" value="可见光-目标检测" title="目标检测" lay-skin="tag"   lay-filter="isible-light-detection">
+            <input type="checkbox" name="isible_light_tracking" value="可见光-目标跟踪" title="目标跟踪" lay-skin="tag"   lay-filter="isible-light-tracking">
+            <input type="checkbox" name="visible_img_pose_estimation" value="可见光-姿态估计" title="姿态估计" lay-skin="tag"   lay-filter="visible_img_pose_estimation">
+            <input type="checkbox" name="visible_img_img_reid" value="可见光-行人重识别" title="行人重识别" lay-skin="tag"   lay-filter="visible_img_img_reid">
+            <input type="checkbox" name="visible_img_img_segmentation" value="可见光-语义分割" title="语义分割" lay-skin="tag"   lay-filter="visible_img_img_segmentation">
+        </div>
+    </div>
+
+    <div class="layui-form-item" pane="">
+        <label class="layui-form-label">红外线</label>
+        <div class="layui-input-block">
+            <input type="checkbox" name="red_outer_img" value="红外线-图像分类" title="图像分类" lay-skin="tag"    lay-filter="red-outer-img" >
+            <input type="checkbox" name="red_outer_detection" value="红外线-目标检测" title="目标检测" lay-skin="tag"    lay-filter="red-outer-detection">
+            <input type="checkbox" name="red_outer_tracking" value="红外线-目标跟踪" title="目标跟踪" lay-skin="tag"    lay-filter="red-outer-tracking">
+
+        </div>
+    </div>
+
+
+        <div class="layui-form-item" pane=""   >
+            <label class="layui-form-label">视频</label>
+            <div class="layui-input-block">
+                <input type="checkbox" name="video_target_detection" value="视频-目标检测" title="目标检测"        lay-skin="tag"    lay-filter="video_target_detection" >
+                <input type="checkbox" name="video_target_trace" value="视频-目标跟踪" title="目标跟踪"  lay-skin="tag"    lay-filter="video_target_trace">
+            </div>
+        </div>
+
+
+    <div class="layui-form-item" pane=""   >
+        <label class="layui-form-label">雷达</label>
+        <div class="layui-input-block">
+            <input type="checkbox" name="radar_signal_classification" value="雷达-信号分类" title="信号分类"        lay-skin="tag"    lay-filter="radar_signal_classification" >
+        </div>
+    </div>
+
+
+    <div id="replace-before">
+        <div class="layui-form-item" pane=""   >
+            <label class="layui-form-label">文本</label>
+            <div class="layui-input-block">
+                <input type="checkbox" name="text_analysis" value="文本-情感分析" title="情感分析"        lay-skin="tag"    lay-filter="text-analysis" >
+                <input type="checkbox" name="text_named_entity" value="文本-命名实体识别" title="命名实体识别"  lay-skin="tag"    lay-filter="text-named-entity">
+            </div>
+        </div>
+    </div>
+
+    <div id="replace-after">
+        <div class="layui-form-item" pane=""   >
+            <label class="layui-form-label">语音</label>
+            <div class="layui-input-block">
+                <input type="checkbox" name="voicle_recognition" value="语音-语音识别" title="语音识别" lay-skin="tag"    lay-filter="voicle-recognition" >
+            </div>
+        </div>
+    </div>
+
+
+    <div class="layui-form-item" pane=""   >
+        <label class="layui-form-label">结构化数据</label>
+        <div class="layui-input-block">
+            <input type="checkbox" name="structured_data_classification" value="结构化数据-分类" title="分类" lay-skin="tag"    lay-filter="structured_data_classification" >
+            <input type="checkbox" name="structured_data_regression" value="结构化数据-回归" title="回归" lay-skin="tag"    lay-filter="structured_data_regression" >
+            <input type="checkbox" name="structured_data_cluster" value="结构化数据-聚类" title="聚类" lay-skin="tag"    lay-filter="structured_data_cluster" >
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit lay-filter="formSubmit">立即提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </div>
+
+
+
+
+
+
+</form>
+
+
+
+
+</body>
+
+
+<script>
+    layui.use(['form','jquery'], function () {
+        var form = layui.form
+            ,layer = layui.layer;
+        var $=layui.jquery;
+
+         form.render();
+
+        //自定义验证规则
+        /**
+         form.verify({
+        title: function(value){
+        if(value.length < 5){
+        return '标题至少得5个字符啊';
+       }
+         ***/
+
+        var levelM_value = ''
+        var levelM2_value = ''
+
+        var myElement = ''
+
+
+        //表单赋值
+        form.on('radio(levelM)', function (data) {
+            console.log(data.elem); //得到radio原始DOM对象
+            console.log(data.value); //被点击的radio的value值
+            levelM_value = data.value
+
+
+
+            /**
+             if('黑盒'=== data.value){
+                myElement.html("#replace-before")
+
+            }else{
+                myElement.html("#replace-after")
+            }
+             **/
+
+        });
+
+        form.on('radio(levelM2)', function (data) {
+            console.log(data.elem); //得到radio原始DOM对象
+            console.log(data.value); //被点击的radio的value值
+            levelM2_value= data.value
+        });
+
+
+
+
+
+        //formSubmit
+        //监听提交
+        form.on('submit(formSubmit)', function(data){
+            console.log("levelM_value",levelM_value)
+            console.log("levelM2_value",levelM2_value)
+
+            if('' === levelM_value){
+                layer.msg("对象类型不能为空")
+            }
+            if('' === levelM_value){
+                layer.msg("被测对象模态不能为空")
+            }
+
+
+
+            var field = data.field; // 获取表单字段值
+            // 显示填写结果，仅作演示用
+            console.log("field-->",field)
+
+            console.log("提交表单数据--->",JSON.stringify(data.field))
+
+            /*
+            layer.alert(JSON.stringify(field), {
+                title: '当前填写的字段值'
+            });
+            */
+
+
+
+            // checkbox 事件
+            /*
+            form.on('checkbox(isible-light-img)', function(data){
+                var elem = data.elem; // 获得 checkbox 原始 DOM 对象
+                var checked = elem.checked; // 获得 checkbox 选中状态
+                var value = elem.value; // 获得 checkbox 值
+                var othis = data.othis; // 获得 checkbox 元素被替换后的 jQuery 对象
+
+                console.log("checked-->",checked)
+                console.log("value-->",value)
+                console.log("othis-->",othis)
+
+                layer.msg('checked 状态: '+ elem.checked);
+            });
+
+            */
+
+
+
+            layui.$.ajax({
+                url:"/baseadmin/testscheme/schemfromsubmit",
+                //  data:JSON.stringify({'levelM_value':levelM_value,'levelM2_value':levelM2_value}),
+                //data:$('#scheme_id').serialize(),
+                data:JSON.stringify(data.field),
+                type:"post",
+                cache: true,
+                dataType:"JSON",
+                contentType: 'application/json',
+                success:function(res){
+                   // console.log("提交表单数据--->",$('#scheme_id').serialize())
+
+                    layer.msg("提交请求成功!");
+
+                    console.log("提交表单数据--->",JSON.stringify(data.field))
+
+                    if(res.code==="0"){
+                        layer.msg(res.msg);
+                    }else{
+                        console.log("levelM_value--->",levelM_value)
+                        layer.msg(res.msg);
+                    }
+
+                }
+
+            })
+
+            return false;
+
+        });
+
+
+    });
+
+</script>
+
+
+
+</html>

@@ -1,0 +1,45 @@
+{
+  "name": "视频-目标跟踪-binary-0630110524",
+  "category": "665da4a56475ed000a4be99c",
+  "tested_type": "dataset",
+  "tested_modality": "video",
+  "tested_task": "target_trace",
+  "test_items": [
+    {
+      "id": "6382-a720-7311-7ae3-4fd3",
+      "name": "数据集质量评估",
+      "tool_name": "数据集质量评估",
+      "test_type": "data_quality_eval",
+      "tool": "data_quality_eval",
+      "params": {
+        "quality_eval": {
+          "expected_data_num": 50,
+          "expected_data_categories_num": 5
+        }
+      }
+    },
+    {
+      "id": "7018-7be6-f8cf-9920-0949",
+      "name": "数据集充分性测试",
+      "tool_name": "数据集充分性测试",
+      "test_type": "video_coverage_trace",
+      "tool": "video_coverage_trace",
+      "params": {
+        "sufficiency": {
+          "NC-threshold": 0,
+          "KMNC-k": 3,
+          "TKNC-k": 3,
+          "TKNP-k": 3
+        }
+      },
+      "algorithm": "6680c1e2d62149000a5c8978",
+      "algorithm_name": "白盒-视频-目标跟踪-binary-0630102416"
+    }
+  ],
+  "algorithm_model": "",
+  "algorithm": "",
+  "datasets": [
+    "6680cb78d62149000bea6024"
+  ],
+  "description": "视频-目标跟踪-binary-0630110524"
+}

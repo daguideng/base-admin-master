@@ -1,0 +1,136 @@
+{
+  "name": "白盒-雷达信号-分类",
+  "category": "665da4a56475ed000a4be99c",
+  "tested_type": "algorithm",
+  "tested_modality": "radar",
+  "tested_task": "signal_classification",
+  "test_items": [
+    {
+      "id": "c69c-1b46-9799-bcb6-3699",
+      "name": "基础性能测试",
+      "tool_name": "基础性能测试",
+      "test_type": "radar_signal_classification_base",
+      "tool": "radar_signal_classification_base",
+      "params": {
+
+      }
+    },
+    {
+      "id": "2040-9caa-e78e-93da-3853",
+      "name": "安全性测试",
+      "tool_name": "安全性测试",
+      "test_type": "radar_signal_classification",
+      "tool": "radar_signal_classification",
+      "params": {
+        "FGSM": {
+          "eps": 16,
+          "norm": "np.inf",
+          "targeted": "False",
+          "y": 0
+        },
+        "BIM": {
+          "eps": 16,
+          "eps_step": 2,
+          "max_iter": 10,
+          "norm": "np.inf",
+          "targeted": "False",
+          "y": 0
+        },
+        "AutoPGD": {
+          "eps": 16,
+          "eps_step": 2,
+          "max_iter": 10,
+          "norm": "np.inf",
+          "nb_random_init": 5,
+          "loss_type": "cross_entropy",
+          "targeted": "False",
+          "y": 0
+        },
+        "MI-FGSM": {
+          "eps": 16,
+          "eps_step": 2,
+          "max_iter": 10,
+          "norm": "np.inf",
+          "decay": 0.5,
+          "targeted": "False",
+          "y": 0
+        }
+      }
+    },
+    {
+      "id": "dbe7-28ee-52d8-26be-98d9",
+      "name": "干扰鲁棒性测试",
+      "tool_name": "干扰鲁棒性测试",
+      "test_type": "radar_signal_robustness_classification",
+      "tool": "radar_signal_robustness_classification",
+      "params": {
+        "random": {
+          "width": 10
+        },
+        "gauss": {
+          "mean": 0,
+          "var": 0
+        },
+        "poisson": {
+
+        }
+      }
+    },
+    {
+      "id": "95e8-56cc-c06e-04bd-7f50",
+      "name": "数据分布鲁棒性测试",
+      "tool_name": "数据分布鲁棒性测试",
+      "test_type": "radar_signal_dist_robustness_classification",
+      "tool": "radar_signal_dist_robustness_classification",
+      "params": {
+        "dist_robustness": {
+          "distribution_groups": 3
+        }
+      }
+    },
+    {
+      "id": "125d-9dd1-53d3-1488-2225",
+      "name": "离群数据鲁棒性测试",
+      "tool_name": "离群数据鲁棒性测试",
+      "test_type": "radar_signal_outlier_robustness_classification",
+      "tool": "radar_signal_outlier_robustness_classification",
+      "params": {
+        "outlier_robustness": {
+          "outlier_ratio": 0.1
+        }
+      }
+    },
+    {
+      "id": "94f0-9ee8-ea4c-6591-d288",
+      "name": "覆盖率测试",
+      "tool_name": "覆盖率测试",
+      "test_type": "radar_signal_coverage_classification",
+      "tool": "radar_signal_coverage_classification",
+      "params": {
+        "coverage": {
+          "NC-threshold": 0,
+          "KMNC-k": 3,
+          "TKNC-k": 3,
+          "TKNP-k": 3
+        }
+      }
+    },
+    {
+      "id": "6df0-4f42-3d4a-9812-ec19",
+      "name": "算法效率测试",
+      "tool_name": "算法效率测试",
+      "test_type": "radar_signal_classification_efficiency",
+      "tool": "radar_signal_classification_efficiency",
+      "params": {
+        "efficiency": {
+
+        }
+      }
+    }
+  ],
+  "algorithm_model": "white",
+  "algorithm": "66a1f0cbd75e6f000b01b428",
+  "datasets": [
+    "66aa55958eb7ed000ab5a32c"
+  ]
+}

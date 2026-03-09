@@ -1,0 +1,12 @@
+{
+  "source":"C-NCAP 2021 SAS",
+  "preset_id":"64db3f1a53529ca687eae97f",
+  "user_id":"31f3-5092-a4b5-53a9-a9e2",
+  "scene_ids":[
+    "SAS001",
+    "SAS002",
+    "SAS003",
+    "SAS004"
+  ]
+
+}

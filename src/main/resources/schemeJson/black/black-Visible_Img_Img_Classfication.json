@@ -1,0 +1,109 @@
+{
+  "name": "黑盒-可见光-图像分类-multiple-061822490",
+  "category": "6672b4a7d82a2a000ab782d6",
+  "tested_type": "algorithm",
+  "tested_modality": "visible_img",
+  "tested_task": "img_classfication",
+  "test_items": [
+    {
+      "id": "7bf6-f7ef-4df4-543d-11c7",
+      "name": "基础性能测试",
+      "tool_name": "基础性能测试",
+      "test_type": "img_classification_base",
+      "tool": "img_classification_base",
+      "params": {
+
+      }
+    },
+    {
+      "id": "52a3-902b-b5f8-0a8a-654d",
+      "name": "安全性测试",
+      "tool_name": "安全性测试",
+      "test_type": "img_classification",
+      "tool": "img_classification",
+      "params": {
+        "BoundaryAttack": {
+          "delta": 0.1,
+          "epsilon": 0.01,
+          "step_adapt": 0.667,
+          "max_iter": 10,
+          "num_trial": 10,
+          "sample_size": 10,
+          "init_size": 20,
+          "confidence": 0.1,
+          "map_confidence": 0.1
+        },
+        "SquareAttack": {
+          "eps": 16,
+          "max_iter": 10,
+          "nb_restarts": 1,
+          "p_init": 0.8,
+          "norm": "np.inf"
+        }
+      }
+    },
+    {
+      "id": "cd17-c9f4-7475-b5c1-7e61",
+      "name": "鲁棒性测试",
+      "tool_name": "鲁棒性测试",
+      "test_type": "img_robustness_classification",
+      "tool": "img_robustness_classification",
+      "params": {
+        "random": {
+          "width": 10,
+          "map_confidence": 0.1
+        },
+        "tone": {
+          "width": 2,
+          "gap": 25,
+          "map_confidence": 0.1
+        },
+        "elect": {
+          "width": 2,
+          "gap": 30,
+          "map_confidence": 0.1
+        },
+        "ground": {
+          "width": 2,
+          "gap": 30,
+          "map_confidence": 0.1
+        },
+        "power": {
+          "width": 2,
+          "gap": 25,
+          "hotpiexl": 40,
+          "map_confidence": 0.1
+        },
+        "gauss": {
+          "mean": 0,
+          "var": 0,
+          "map_confidence": 0.1
+        },
+        "poisson": {
+          "map_confidence": 0.1
+        },
+        "hue": {
+          "intensity": 10,
+          "map_confidence": 0.1
+        },
+        "luminance": {
+          "intensity": 10,
+          "map_confidence": 0.1
+        },
+        "saturation": {
+          "intensity": 10,
+          "map_confidence": 0.1
+        },
+        "sp": {
+          "amount": 0.01,
+          "prob": 0.01,
+          "map_confidence": 0.1
+        }
+      }
+    }
+  ],
+  "algorithm_model": "black",
+  "algorithm": "66719e86d82a2a000bfc6912",
+  "datasets": ["66727384d82a2a000ab782a4"],
+  "description": "黑盒-可见光-图像分类-multiple-0618224906"
+}

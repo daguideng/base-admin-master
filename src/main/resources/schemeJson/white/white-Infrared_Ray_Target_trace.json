@@ -1,0 +1,54 @@
+{
+  "name": "白盒-红外-目标跟踪_20240630122948",
+  "category": "665da4966475ed0009280e14",
+  "tested_type": "algorithm",
+  "tested_modality": "infrared_ray",
+  "tested_task": "target_trace",
+  "test_items": [
+    {
+      "id": "ae01-7456-8993-d4ed-ae6c",
+      "name": "基础性能测试",
+      "tool_name": "基础性能测试",
+      "test_type": "img_trace_base",
+      "tool": "img_trace_base",
+      "params": {
+
+      }
+    },
+    {
+      "id": "6e6e-9de5-79ae-1e2f-d4ee",
+      "name": "鲁棒性测试",
+      "tool_name": "鲁棒性测试",
+      "test_type": "img_robustness_trace",
+      "tool": "img_robustness_trace",
+      "params": {
+        "random": {
+          "width": 10,
+          "map_confidence": 0.1
+        }
+      }
+    },
+    {
+      "id": "9af7-56ae-0a2d-b4a2-1e7f",
+      "name": "覆盖率测试",
+      "tool_name": "覆盖率测试",
+      "test_type": "img_coverage_trace",
+      "tool": "img_coverage_trace",
+      "params": {
+        "coverage": {
+          "NC-threshold": 0,
+          "KMNC-k": 3,
+          "TKNC-k": 3,
+          "TKNP-k": 3
+        }
+      }
+    }
+  ],
+  "algorithm_model": "white",
+  "algorithm": "6680cab0d62149000bea601a",
+  "datasets": [
+    "6680cc13d62149000a5ce7ba"
+  ],
+  "description": "白盒-红外-目标跟踪_20240630122948",
+  "id": "6680df3cd62149000bebcafa"
+}

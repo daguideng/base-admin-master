@@ -1,0 +1,60 @@
+{
+  "name": "黑盒-视频-目标检测-0618231807",
+  "category": "666beeee280f56000a273893",
+  "tested_type": "algorithm",
+  "tested_modality": "video",
+  "tested_task": "target_detection",
+  "test_items": [
+    {
+      "id": "a637-5816-9616-62c6-4980",
+      "name": "基础性能测试",
+      "tool_name": "基础性能测试",
+      "test_type": "video_detection_base",
+      "tool": "video_detection_base",
+      "params": {
+        "base": {
+          "map_confidence": 0.1
+        }
+      }
+    },
+    {
+      "id": "b623-80de-3dc1-afee-e524",
+      "name": "安全性测试",
+      "tool_name": "安全性测试",
+      "test_type": "video_detection",
+      "tool": "video_detection",
+      "params": {
+        "BoundaryAttack": {
+          "delta": 0.1,
+          "epsilon": 0.01,
+          "step_adapt": 0.667,
+          "max_iter": 10,
+          "num_trial": 10,
+          "sample_size": 10,
+          "init_size": 20,
+          "confidence": 0.1,
+          "map_confidence": 0.1
+        }
+      }
+    },
+    {
+      "id": "a653-d87c-94d0-a90e-f825",
+      "name": "鲁棒性测试",
+      "tool_name": "鲁棒性测试",
+      "test_type": "video_robustness_detection",
+      "tool": "video_robustness_detection",
+      "params": {
+        "random": {
+          "width": 10,
+          "map_confidence": 0.1
+        }
+      }
+    }
+  ],
+  "algorithm_model": "black",
+  "algorithm": "6671a535d82a2a000bfc6954",
+  "datasets": [
+    "66727d3fd82a2a000bfc696b"
+  ],
+  "description": "黑盒-视频-目标检测-0618231807"
+}

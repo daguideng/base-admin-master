@@ -1,0 +1,25 @@
+{
+  "name": "黑盒-test-行人重识别",
+  "category": "6672b59cd82a2a000bfc697f",
+  "tested_type": "algorithm",
+  "tested_modality": "visible_img",
+  "tested_task": "img_reid",
+  "test_items": [
+    {
+      "id": "bd54-c233-045c-6205-f695",
+      "name": "基础性能测试",
+      "tool_name": "基础性能测试",
+      "test_type": "img_reid_base",
+      "tool": "img_reid_base",
+      "params": {
+
+      }
+    }
+  ],
+  "algorithm_model": "black",
+  "algorithm": "6671a4d1d82a2a000bfc6951",
+  "datasets": [
+    "66713018d82a2a000ab781b2"
+  ],
+  "description": "黑盒-test-行人重识别"
+}

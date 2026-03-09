@@ -1,0 +1,111 @@
+{
+  "name": "黑盒-红外线-目标检测-multiple-061823031",
+  "category": "666beeee280f56000a273893",
+  "tested_type": "algorithm",
+  "tested_modality": "infrared_ray",
+  "tested_task": "target_detection",
+  "test_items": [
+    {
+      "id": "ec32-b8da-df06-306f-4f58",
+      "name": "基础性能测试",
+      "tool_name": "基础性能测试",
+      "test_type": "img_detection_base",
+      "tool": "img_detection_base",
+      "params": {
+        "base": {
+          "map_confidence": 0.1
+        }
+      }
+    },
+    {
+      "id": "30a4-de08-c67f-bd7e-4935",
+      "name": "安全性测试",
+      "tool_name": "安全性测试",
+      "test_type": "img_detection",
+      "tool": "img_detection",
+      "params": {
+        "BoundaryAttack": {
+          "delta": 0.1,
+          "epsilon": 0.01,
+          "step_adapt": 0.667,
+          "max_iter": 10,
+          "num_trial": 10,
+          "sample_size": 10,
+          "init_size": 20,
+          "confidence": 0.1,
+          "map_confidence": 0.1
+        }
+      }
+    },
+    {
+      "id": "8494-c63c-a42b-2941-50d7",
+      "name": "干扰鲁棒性测试",
+      "tool_name": "干扰鲁棒性测试",
+      "test_type": "img_robustness_detection",
+      "tool": "img_robustness_detection",
+      "params": {
+        "random": {
+          "width": 10,
+          "map_confidence": 0.1
+        }
+      }
+    },
+    {
+      "id": "b5f7-9313-d42b-41ed-ef05",
+      "name": "数据分布鲁棒性测试",
+      "tool_name": "数据分布鲁棒性测试",
+      "test_type": "img_dist_robustness_detection",
+      "tool": "img_dist_robustness_detection",
+      "params": {
+        "dist_robustness": {
+          "map_confidence": 0.1,
+          "distribution_groups": 3
+        }
+      }
+    },
+    {
+      "id": "286b-8663-b379-d079-72d5",
+      "name": "离群数据鲁棒性测试",
+      "tool_name": "离群数据鲁棒性测试",
+      "test_type": "img_outlier_robustness_detection",
+      "tool": "img_outlier_robustness_detection",
+      "params": {
+        "outlier_robustness": {
+          "map_confidence": 0.1,
+          "outlier_ratio": 0.1
+        }
+      }
+    },
+    {
+      "id": "f4d3-8273-f873-83f7-33ab",
+      "name": "可解释性测试",
+      "tool_name": "可解释性测试",
+      "test_type": "interpret_detection",
+      "tool": "interpret_detection",
+      "params": {
+        "LIME": {
+          "num_features": 100,
+          "num_samples": 150
+        }
+      }
+    },
+    {
+      "id": "5d84-f099-4a68-ed87-1ba2",
+      "name": "算法效率测试",
+      "tool_name": "算法效率测试",
+      "test_type": "img_detection_efficiency",
+      "tool": "img_detection_efficiency",
+      "params": {
+        "efficiency": {
+
+        }
+      }
+    }
+  ],
+  "algorithm_model": "black",
+  "algorithm": "6671a1e7d82a2a000bfc692d",
+  "datasets": [
+    "6672776ad82a2a000ab782b0"
+  ],
+  "description": "黑盒-红外线-目标检测-multiple-0618230311"
+}

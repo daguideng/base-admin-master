@@ -1,0 +1,571 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.huanzi.qch.baseadmin.dao.One_clickMapper">
+  <resultMap id="BaseResultMap" type="cn.huanzi.qch.baseadmin.entity.One_click">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="api" jdbcType="VARCHAR" property="api" />
+    <result column="category" jdbcType="VARCHAR" property="category" />
+    <result column="istask" jdbcType="VARCHAR" property="istask" />
+    <result column="img_classfication" jdbcType="VARCHAR" property="img_classfication" />
+    <result column="target_detection" jdbcType="VARCHAR" property="target_detection" />
+    <result column="target_trace" jdbcType="VARCHAR" property="target_trace" />
+    <result column="text_sen_analysis" jdbcType="VARCHAR" property="text_sen_analysis" />
+    <result column="text_entity_recognition" jdbcType="VARCHAR" property="text_entity_recognition" />
+    <result column="asr_asr_recognition" jdbcType="VARCHAR" property="asr_asr_recognition" />
+    <result column="img_classfication_dataset" jdbcType="VARCHAR" property="img_classfication_dataset" />
+    <result column="target_detection_dataset" jdbcType="VARCHAR" property="target_detection_dataset" />
+    <result column="target_trace_dataset" jdbcType="VARCHAR" property="target_trace_dataset" />
+    <result column="text_sen_analysis_dataset" jdbcType="VARCHAR" property="text_sen_analysis_dataset" />
+    <result column="text_entity_recognition_dataset" jdbcType="VARCHAR" property="text_entity_recognition_dataset" />
+    <result column="asr_asr_recognition_increase" jdbcType="VARCHAR" property="asr_asr_recognition_increase" />
+    <result column="visible_light_img_increase" jdbcType="VARCHAR" property="visible_light_img_increase" />
+    <result column="visible_light_detection_increase" jdbcType="VARCHAR" property="visible_light_detection_increase" />
+    <result column="visible_light_tracking_increase" jdbcType="VARCHAR" property="visible_light_tracking_increase" />
+    <result column="infrared_ray_img_classfication_increase" jdbcType="VARCHAR" property="infrared_ray_img_classfication_increase" />
+    <result column="infrared_ray_target_detection_increase" jdbcType="VARCHAR" property="infrared_ray_target_detection_increase" />
+    <result column="infrared_ray_target_trace_increase" jdbcType="VARCHAR" property="infrared_ray_target_trace_increase" />
+    <result column="text_analysis_increase" jdbcType="VARCHAR" property="text_analysis_increase" />
+    <result column="text_named_entity_increase" jdbcType="VARCHAR" property="text_named_entity_increase" />
+    <result column="visible_img_img_classfication_scheme" jdbcType="VARCHAR" property="visible_img_img_classfication_scheme" />
+    <result column="visible_img_target_detection_scheme" jdbcType="VARCHAR" property="visible_img_target_detection_scheme" />
+    <result column="visible_img_target_trace_scheme" jdbcType="VARCHAR" property="visible_img_target_trace_scheme" />
+    <result column="infrared_ray_img_classfication_scheme" jdbcType="VARCHAR" property="infrared_ray_img_classfication_scheme" />
+    <result column="infrared_ray_target_detection_scheme" jdbcType="VARCHAR" property="infrared_ray_target_detection_scheme" />
+    <result column="infrared_ray_target_trace_scheme" jdbcType="VARCHAR" property="infrared_ray_target_trace_scheme" />
+    <result column="text_sen_analysis_scheme" jdbcType="VARCHAR" property="text_sen_analysis_scheme" />
+    <result column="text_entity_recognition_scheme" jdbcType="VARCHAR" property="text_entity_recognition_scheme" />
+    <result column="asr_recognition_scheme" jdbcType="VARCHAR" property="asr_recognition_scheme" />
+    <result column="asr_asr_recognition_dataset" jdbcType="VARCHAR" property="asr_asr_recognition_dataset" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="update_time" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, username, `password`, api, category, istask, img_classfication, target_detection, 
+    target_trace, text_sen_analysis, text_entity_recognition, asr_asr_recognition, img_classfication_dataset, 
+    target_detection_dataset, target_trace_dataset, text_sen_analysis_dataset, text_entity_recognition_dataset, 
+    asr_asr_recognition_increase, visible_light_img_increase, visible_light_detection_increase, 
+    visible_light_tracking_increase, infrared_ray_img_classfication_increase, infrared_ray_target_detection_increase, 
+    infrared_ray_target_trace_increase, text_analysis_increase, text_named_entity_increase, 
+    visible_img_img_classfication_scheme, visible_img_target_detection_scheme, visible_img_target_trace_scheme, 
+    infrared_ray_img_classfication_scheme, infrared_ray_target_detection_scheme, infrared_ray_target_trace_scheme, 
+    text_sen_analysis_scheme, text_entity_recognition_scheme, asr_recognition_scheme, 
+    asr_asr_recognition_dataset, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from one_click
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from one_click
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.huanzi.qch.baseadmin.entity.One_click">
+    insert into one_click (username, `password`,
+      api, category, istask, 
+      img_classfication, target_detection, target_trace, 
+      text_sen_analysis, text_entity_recognition, 
+      asr_asr_recognition, img_classfication_dataset, 
+      target_detection_dataset, target_trace_dataset, 
+      text_sen_analysis_dataset, text_entity_recognition_dataset, 
+      asr_asr_recognition_increase, visible_light_img_increase, 
+      visible_light_detection_increase, visible_light_tracking_increase, 
+      infrared_ray_img_classfication_increase, infrared_ray_target_detection_increase, 
+      infrared_ray_target_trace_increase, text_analysis_increase, 
+      text_named_entity_increase, visible_img_img_classfication_scheme, 
+      visible_img_target_detection_scheme, visible_img_target_trace_scheme, 
+      infrared_ray_img_classfication_scheme, infrared_ray_target_detection_scheme, 
+      infrared_ray_target_trace_scheme, text_sen_analysis_scheme, 
+      text_entity_recognition_scheme, asr_recognition_scheme, 
+      asr_asr_recognition_dataset, create_time, 
+      update_time)
+    values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
+      #{api,jdbcType=VARCHAR}, #{category,jdbcType=VARCHAR}, #{istask,jdbcType=VARCHAR}, 
+      #{img_classfication,jdbcType=VARCHAR}, #{target_detection,jdbcType=VARCHAR}, #{target_trace,jdbcType=VARCHAR}, 
+      #{text_sen_analysis,jdbcType=VARCHAR}, #{text_entity_recognition,jdbcType=VARCHAR}, 
+      #{asr_asr_recognition,jdbcType=VARCHAR}, #{img_classfication_dataset,jdbcType=VARCHAR}, 
+      #{target_detection_dataset,jdbcType=VARCHAR}, #{target_trace_dataset,jdbcType=VARCHAR}, 
+      #{text_sen_analysis_dataset,jdbcType=VARCHAR}, #{text_entity_recognition_dataset,jdbcType=VARCHAR}, 
+      #{asr_asr_recognition_increase,jdbcType=VARCHAR}, #{visible_light_img_increase,jdbcType=VARCHAR}, 
+      #{visible_light_detection_increase,jdbcType=VARCHAR}, #{visible_light_tracking_increase,jdbcType=VARCHAR}, 
+      #{infrared_ray_img_classfication_increase,jdbcType=VARCHAR}, #{infrared_ray_target_detection_increase,jdbcType=VARCHAR}, 
+      #{infrared_ray_target_trace_increase,jdbcType=VARCHAR}, #{text_analysis_increase,jdbcType=VARCHAR}, 
+      #{text_named_entity_increase,jdbcType=VARCHAR}, #{visible_img_img_classfication_scheme,jdbcType=VARCHAR}, 
+      #{visible_img_target_detection_scheme,jdbcType=VARCHAR}, #{visible_img_target_trace_scheme,jdbcType=VARCHAR}, 
+      #{infrared_ray_img_classfication_scheme,jdbcType=VARCHAR}, #{infrared_ray_target_detection_scheme,jdbcType=VARCHAR}, 
+      #{infrared_ray_target_trace_scheme,jdbcType=VARCHAR}, #{text_sen_analysis_scheme,jdbcType=VARCHAR}, 
+      #{text_entity_recognition_scheme,jdbcType=VARCHAR}, #{asr_recognition_scheme,jdbcType=VARCHAR}, 
+      #{asr_asr_recognition_dataset,jdbcType=VARCHAR}, #{create_time,jdbcType=TIMESTAMP}, 
+      #{update_time,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.huanzi.qch.baseadmin.entity.One_click">
+    insert into one_click
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="password != null">
+        `password`,
+      </if>
+      <if test="api != null">
+        api,
+      </if>
+      <if test="category != null">
+        category,
+      </if>
+      <if test="istask != null">
+        istask,
+      </if>
+      <if test="img_classfication != null">
+        img_classfication,
+      </if>
+      <if test="target_detection != null">
+        target_detection,
+      </if>
+      <if test="target_trace != null">
+        target_trace,
+      </if>
+      <if test="text_sen_analysis != null">
+        text_sen_analysis,
+      </if>
+      <if test="text_entity_recognition != null">
+        text_entity_recognition,
+      </if>
+      <if test="asr_asr_recognition != null">
+        asr_asr_recognition,
+      </if>
+      <if test="img_classfication_dataset != null">
+        img_classfication_dataset,
+      </if>
+      <if test="target_detection_dataset != null">
+        target_detection_dataset,
+      </if>
+      <if test="target_trace_dataset != null">
+        target_trace_dataset,
+      </if>
+      <if test="text_sen_analysis_dataset != null">
+        text_sen_analysis_dataset,
+      </if>
+      <if test="text_entity_recognition_dataset != null">
+        text_entity_recognition_dataset,
+      </if>
+      <if test="asr_asr_recognition_increase != null">
+        asr_asr_recognition_increase,
+      </if>
+      <if test="visible_light_img_increase != null">
+        visible_light_img_increase,
+      </if>
+      <if test="visible_light_detection_increase != null">
+        visible_light_detection_increase,
+      </if>
+      <if test="visible_light_tracking_increase != null">
+        visible_light_tracking_increase,
+      </if>
+      <if test="infrared_ray_img_classfication_increase != null">
+        infrared_ray_img_classfication_increase,
+      </if>
+      <if test="infrared_ray_target_detection_increase != null">
+        infrared_ray_target_detection_increase,
+      </if>
+      <if test="infrared_ray_target_trace_increase != null">
+        infrared_ray_target_trace_increase,
+      </if>
+      <if test="text_analysis_increase != null">
+        text_analysis_increase,
+      </if>
+      <if test="text_named_entity_increase != null">
+        text_named_entity_increase,
+      </if>
+      <if test="visible_img_img_classfication_scheme != null">
+        visible_img_img_classfication_scheme,
+      </if>
+      <if test="visible_img_target_detection_scheme != null">
+        visible_img_target_detection_scheme,
+      </if>
+      <if test="visible_img_target_trace_scheme != null">
+        visible_img_target_trace_scheme,
+      </if>
+      <if test="infrared_ray_img_classfication_scheme != null">
+        infrared_ray_img_classfication_scheme,
+      </if>
+      <if test="infrared_ray_target_detection_scheme != null">
+        infrared_ray_target_detection_scheme,
+      </if>
+      <if test="infrared_ray_target_trace_scheme != null">
+        infrared_ray_target_trace_scheme,
+      </if>
+      <if test="text_sen_analysis_scheme != null">
+        text_sen_analysis_scheme,
+      </if>
+      <if test="text_entity_recognition_scheme != null">
+        text_entity_recognition_scheme,
+      </if>
+      <if test="asr_recognition_scheme != null">
+        asr_recognition_scheme,
+      </if>
+      <if test="asr_asr_recognition_dataset != null">
+        asr_asr_recognition_dataset,
+      </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="update_time != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="api != null">
+        #{api,jdbcType=VARCHAR},
+      </if>
+      <if test="category != null">
+        #{category,jdbcType=VARCHAR},
+      </if>
+      <if test="istask != null">
+        #{istask,jdbcType=VARCHAR},
+      </if>
+      <if test="img_classfication != null">
+        #{img_classfication,jdbcType=VARCHAR},
+      </if>
+      <if test="target_detection != null">
+        #{target_detection,jdbcType=VARCHAR},
+      </if>
+      <if test="target_trace != null">
+        #{target_trace,jdbcType=VARCHAR},
+      </if>
+      <if test="text_sen_analysis != null">
+        #{text_sen_analysis,jdbcType=VARCHAR},
+      </if>
+      <if test="text_entity_recognition != null">
+        #{text_entity_recognition,jdbcType=VARCHAR},
+      </if>
+      <if test="asr_asr_recognition != null">
+        #{asr_asr_recognition,jdbcType=VARCHAR},
+      </if>
+      <if test="img_classfication_dataset != null">
+        #{img_classfication_dataset,jdbcType=VARCHAR},
+      </if>
+      <if test="target_detection_dataset != null">
+        #{target_detection_dataset,jdbcType=VARCHAR},
+      </if>
+      <if test="target_trace_dataset != null">
+        #{target_trace_dataset,jdbcType=VARCHAR},
+      </if>
+      <if test="text_sen_analysis_dataset != null">
+        #{text_sen_analysis_dataset,jdbcType=VARCHAR},
+      </if>
+      <if test="text_entity_recognition_dataset != null">
+        #{text_entity_recognition_dataset,jdbcType=VARCHAR},
+      </if>
+      <if test="asr_asr_recognition_increase != null">
+        #{asr_asr_recognition_increase,jdbcType=VARCHAR},
+      </if>
+      <if test="visible_light_img_increase != null">
+        #{visible_light_img_increase,jdbcType=VARCHAR},
+      </if>
+      <if test="visible_light_detection_increase != null">
+        #{visible_light_detection_increase,jdbcType=VARCHAR},
+      </if>
+      <if test="visible_light_tracking_increase != null">
+        #{visible_light_tracking_increase,jdbcType=VARCHAR},
+      </if>
+      <if test="infrared_ray_img_classfication_increase != null">
+        #{infrared_ray_img_classfication_increase,jdbcType=VARCHAR},
+      </if>
+      <if test="infrared_ray_target_detection_increase != null">
+        #{infrared_ray_target_detection_increase,jdbcType=VARCHAR},
+      </if>
+      <if test="infrared_ray_target_trace_increase != null">
+        #{infrared_ray_target_trace_increase,jdbcType=VARCHAR},
+      </if>
+      <if test="text_analysis_increase != null">
+        #{text_analysis_increase,jdbcType=VARCHAR},
+      </if>
+      <if test="text_named_entity_increase != null">
+        #{text_named_entity_increase,jdbcType=VARCHAR},
+      </if>
+      <if test="visible_img_img_classfication_scheme != null">
+        #{visible_img_img_classfication_scheme,jdbcType=VARCHAR},
+      </if>
+      <if test="visible_img_target_detection_scheme != null">
+        #{visible_img_target_detection_scheme,jdbcType=VARCHAR},
+      </if>
+      <if test="visible_img_target_trace_scheme != null">
+        #{visible_img_target_trace_scheme,jdbcType=VARCHAR},
+      </if>
+      <if test="infrared_ray_img_classfication_scheme != null">
+        #{infrared_ray_img_classfication_scheme,jdbcType=VARCHAR},
+      </if>
+      <if test="infrared_ray_target_detection_scheme != null">
+        #{infrared_ray_target_detection_scheme,jdbcType=VARCHAR},
+      </if>
+      <if test="infrared_ray_target_trace_scheme != null">
+        #{infrared_ray_target_trace_scheme,jdbcType=VARCHAR},
+      </if>
+      <if test="text_sen_analysis_scheme != null">
+        #{text_sen_analysis_scheme,jdbcType=VARCHAR},
+      </if>
+      <if test="text_entity_recognition_scheme != null">
+        #{text_entity_recognition_scheme,jdbcType=VARCHAR},
+      </if>
+      <if test="asr_recognition_scheme != null">
+        #{asr_recognition_scheme,jdbcType=VARCHAR},
+      </if>
+      <if test="asr_asr_recognition_dataset != null">
+        #{asr_asr_recognition_dataset,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null">
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        #{update_time,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.huanzi.qch.baseadmin.entity.One_click">
+    update one_click
+    <set>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        `password` = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="api != null">
+        api = #{api,jdbcType=VARCHAR},
+      </if>
+      <if test="category != null">
+        category = #{category,jdbcType=VARCHAR},
+      </if>
+      <if test="istask != null">
+        istask = #{istask,jdbcType=VARCHAR},
+      </if>
+      <if test="img_classfication != null">
+        img_classfication = #{img_classfication,jdbcType=VARCHAR},
+      </if>
+      <if test="target_detection != null">
+        target_detection = #{target_detection,jdbcType=VARCHAR},
+      </if>
+      <if test="target_trace != null">
+        target_trace = #{target_trace,jdbcType=VARCHAR},
+      </if>
+      <if test="text_sen_analysis != null">
+        text_sen_analysis = #{text_sen_analysis,jdbcType=VARCHAR},
+      </if>
+      <if test="text_entity_recognition != null">
+        text_entity_recognition = #{text_entity_recognition,jdbcType=VARCHAR},
+      </if>
+      <if test="asr_asr_recognition != null">
+        asr_asr_recognition = #{asr_asr_recognition,jdbcType=VARCHAR},
+      </if>
+      <if test="img_classfication_dataset != null">
+        img_classfication_dataset = #{img_classfication_dataset,jdbcType=VARCHAR},
+      </if>
+      <if test="target_detection_dataset != null">
+        target_detection_dataset = #{target_detection_dataset,jdbcType=VARCHAR},
+      </if>
+      <if test="target_trace_dataset != null">
+        target_trace_dataset = #{target_trace_dataset,jdbcType=VARCHAR},
+      </if>
+      <if test="text_sen_analysis_dataset != null">
+        text_sen_analysis_dataset = #{text_sen_analysis_dataset,jdbcType=VARCHAR},
+      </if>
+      <if test="text_entity_recognition_dataset != null">
+        text_entity_recognition_dataset = #{text_entity_recognition_dataset,jdbcType=VARCHAR},
+      </if>
+      <if test="asr_asr_recognition_increase != null">
+        asr_asr_recognition_increase = #{asr_asr_recognition_increase,jdbcType=VARCHAR},
+      </if>
+      <if test="visible_light_img_increase != null">
+        visible_light_img_increase = #{visible_light_img_increase,jdbcType=VARCHAR},
+      </if>
+      <if test="visible_light_detection_increase != null">
+        visible_light_detection_increase = #{visible_light_detection_increase,jdbcType=VARCHAR},
+      </if>
+      <if test="visible_light_tracking_increase != null">
+        visible_light_tracking_increase = #{visible_light_tracking_increase,jdbcType=VARCHAR},
+      </if>
+      <if test="infrared_ray_img_classfication_increase != null">
+        infrared_ray_img_classfication_increase = #{infrared_ray_img_classfication_increase,jdbcType=VARCHAR},
+      </if>
+      <if test="infrared_ray_target_detection_increase != null">
+        infrared_ray_target_detection_increase = #{infrared_ray_target_detection_increase,jdbcType=VARCHAR},
+      </if>
+      <if test="infrared_ray_target_trace_increase != null">
+        infrared_ray_target_trace_increase = #{infrared_ray_target_trace_increase,jdbcType=VARCHAR},
+      </if>
+      <if test="text_analysis_increase != null">
+        text_analysis_increase = #{text_analysis_increase,jdbcType=VARCHAR},
+      </if>
+      <if test="text_named_entity_increase != null">
+        text_named_entity_increase = #{text_named_entity_increase,jdbcType=VARCHAR},
+      </if>
+      <if test="visible_img_img_classfication_scheme != null">
+        visible_img_img_classfication_scheme = #{visible_img_img_classfication_scheme,jdbcType=VARCHAR},
+      </if>
+      <if test="visible_img_target_detection_scheme != null">
+        visible_img_target_detection_scheme = #{visible_img_target_detection_scheme,jdbcType=VARCHAR},
+      </if>
+      <if test="visible_img_target_trace_scheme != null">
+        visible_img_target_trace_scheme = #{visible_img_target_trace_scheme,jdbcType=VARCHAR},
+      </if>
+      <if test="infrared_ray_img_classfication_scheme != null">
+        infrared_ray_img_classfication_scheme = #{infrared_ray_img_classfication_scheme,jdbcType=VARCHAR},
+      </if>
+      <if test="infrared_ray_target_detection_scheme != null">
+        infrared_ray_target_detection_scheme = #{infrared_ray_target_detection_scheme,jdbcType=VARCHAR},
+      </if>
+      <if test="infrared_ray_target_trace_scheme != null">
+        infrared_ray_target_trace_scheme = #{infrared_ray_target_trace_scheme,jdbcType=VARCHAR},
+      </if>
+      <if test="text_sen_analysis_scheme != null">
+        text_sen_analysis_scheme = #{text_sen_analysis_scheme,jdbcType=VARCHAR},
+      </if>
+      <if test="text_entity_recognition_scheme != null">
+        text_entity_recognition_scheme = #{text_entity_recognition_scheme,jdbcType=VARCHAR},
+      </if>
+      <if test="asr_recognition_scheme != null">
+        asr_recognition_scheme = #{asr_recognition_scheme,jdbcType=VARCHAR},
+      </if>
+      <if test="asr_asr_recognition_dataset != null">
+        asr_asr_recognition_dataset = #{asr_asr_recognition_dataset,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null">
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        update_time = #{update_time,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.huanzi.qch.baseadmin.entity.One_click">
+    update one_click
+    set username = #{username,jdbcType=VARCHAR},
+      `password` = #{password,jdbcType=VARCHAR},
+      api = #{api,jdbcType=VARCHAR},
+      category = #{category,jdbcType=VARCHAR},
+      istask = #{istask,jdbcType=VARCHAR},
+      img_classfication = #{img_classfication,jdbcType=VARCHAR},
+      target_detection = #{target_detection,jdbcType=VARCHAR},
+      target_trace = #{target_trace,jdbcType=VARCHAR},
+      text_sen_analysis = #{text_sen_analysis,jdbcType=VARCHAR},
+      text_entity_recognition = #{text_entity_recognition,jdbcType=VARCHAR},
+      asr_asr_recognition = #{asr_asr_recognition,jdbcType=VARCHAR},
+      img_classfication_dataset = #{img_classfication_dataset,jdbcType=VARCHAR},
+      target_detection_dataset = #{target_detection_dataset,jdbcType=VARCHAR},
+      target_trace_dataset = #{target_trace_dataset,jdbcType=VARCHAR},
+      text_sen_analysis_dataset = #{text_sen_analysis_dataset,jdbcType=VARCHAR},
+      text_entity_recognition_dataset = #{text_entity_recognition_dataset,jdbcType=VARCHAR},
+      asr_asr_recognition_increase = #{asr_asr_recognition_increase,jdbcType=VARCHAR},
+      visible_light_img_increase = #{visible_light_img_increase,jdbcType=VARCHAR},
+      visible_light_detection_increase = #{visible_light_detection_increase,jdbcType=VARCHAR},
+      visible_light_tracking_increase = #{visible_light_tracking_increase,jdbcType=VARCHAR},
+      infrared_ray_img_classfication_increase = #{infrared_ray_img_classfication_increase,jdbcType=VARCHAR},
+      infrared_ray_target_detection_increase = #{infrared_ray_target_detection_increase,jdbcType=VARCHAR},
+      infrared_ray_target_trace_increase = #{infrared_ray_target_trace_increase,jdbcType=VARCHAR},
+      text_analysis_increase = #{text_analysis_increase,jdbcType=VARCHAR},
+      text_named_entity_increase = #{text_named_entity_increase,jdbcType=VARCHAR},
+      visible_img_img_classfication_scheme = #{visible_img_img_classfication_scheme,jdbcType=VARCHAR},
+      visible_img_target_detection_scheme = #{visible_img_target_detection_scheme,jdbcType=VARCHAR},
+      visible_img_target_trace_scheme = #{visible_img_target_trace_scheme,jdbcType=VARCHAR},
+      infrared_ray_img_classfication_scheme = #{infrared_ray_img_classfication_scheme,jdbcType=VARCHAR},
+      infrared_ray_target_detection_scheme = #{infrared_ray_target_detection_scheme,jdbcType=VARCHAR},
+      infrared_ray_target_trace_scheme = #{infrared_ray_target_trace_scheme,jdbcType=VARCHAR},
+      text_sen_analysis_scheme = #{text_sen_analysis_scheme,jdbcType=VARCHAR},
+      text_entity_recognition_scheme = #{text_entity_recognition_scheme,jdbcType=VARCHAR},
+      asr_recognition_scheme = #{asr_recognition_scheme,jdbcType=VARCHAR},
+      asr_asr_recognition_dataset = #{asr_asr_recognition_dataset,jdbcType=VARCHAR},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      update_time = #{update_time,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+
+
+  <!--
+  <update id="updateByFilePath">
+    <foreach collection="list" index="index" item="item" separator=";" open="" close="">
+      UPDATE one_click
+      <set>
+        <if test="item.img_classfication != null"> img_classfication  = #{img_classfication},</if>
+        <if test="item.target_detection != null"> target_detection  = #{item.target_detection}</if>
+        <if test="item.target_trace != null"> target_trace  = #{item.target_trace}</if>
+        <if test="item.text_sen_analysis != null"> text_sen_analysis  = #{item.text_sen_analysis}</if>
+        <if test="item.text_entity_recognition != null"> text_entity_recognition  = #{item.text_entity_recognition}</if>
+        <if test="item.asr_asr_recognition != null"> asr_asr_recognition  = #{item.asr_asr_recognition}</if>
+
+        <if test="item.img_classfication_dataset != null"> img_classfication_dataset  = #{item.img_classfication_dataset}</if>
+        <if test="item.target_detection_dataset != null"> target_detection_dataset  = #{item.target_detection_dataset}</if>
+        <if test="item.target_trace_dataset != null"> target_trace_dataset  = #{item.target_trace_dataset}</if>
+        <if test="item.text_sen_analysis_dataset != null"> text_sen_analysis_dataset  = #{item.text_sen_analysis_dataset}</if>
+        <if test="item.text_entity_recognition_dataset != null"> text_entity_recognition_dataset  = #{item.text_entity_recognition_dataset}</if>
+        <if test="item.asr_asr_recognition_dataset != null"> asr_asr_recognition_dataset  = #{item.asr_asr_recognition_dataset}</if>
+      </set>
+
+    </foreach>
+  </update>
+  -->
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- 批量更新第一种方法，通过接收传进来的参数list进行循环着组装sql -->
+  <update id="batchUpdate" parameterType="java.util.Map">
+    <!-- 接收list参数，循环着组装sql语句，注意for循环的写法
+         separator=";" 代表着每次循环完，在sql后面放一个分号
+         item="cus" 循环List的每条的结果集
+         collection="list" list 即为 map传过来的参数key -->
+    UPDATE one_click set
+    <!-- 接收list参数，循环着组装sql语句，注意for循环的写法
+               separator=";" 代表着每次循环完，在sql后面放一个分号
+               item="cus" 循环List的每条的结果集
+               collection="list" list 即为 map传过来的参数key -->
+    <foreach collection="paramsMap" separator=";" item="oneclick">
+      <if test="oneclick.img_classfication != null">img_classfication = #{oneclick.img_classfication}</if>
+      <if test="oneclick.target_detection != null">target_detection = #{oneclick.target_detection}</if>
+      <if test="oneclick.target_trace != null">target_trace = #{oneclick.target_trace}</if>
+      <if test="oneclick.text_sen_analysis != null">text_sen_analysis = #{oneclick.text_sen_analysis}</if>
+      <if test="oneclick.text_entity_recognition != null">text_entity_recognition = #{oneclick.text_entity_recognition}</if>
+      <if test="oneclick.asr_asr_recognition != null">asr_asr_recognition = #{oneclick.asr_asr_recognition}</if>
+      <if test="oneclick.img_classfication_dataset != null">img_classfication_dataset = #{oneclick.img_classfication_dataset}</if>
+      <if test="oneclick.target_detection_dataset != null">target_detection_dataset = #{oneclick.target_detection_dataset}</if>
+      <if test="oneclick.target_trace_dataset != null">target_trace_dataset = #{oneclick.target_trace_dataset}</if>
+      <if test="oneclick.text_sen_analysis_dataset != null">text_sen_analysis_dataset = #{oneclick.text_sen_analysis_dataset}</if>
+      <if test="oneclick.text_entity_recognition_dataset != null">text_entity_recognition_dataset = #{oneclick.text_entity_recognition_dataset}</if>
+      <if test="oneclick.asr_asr_recognition_dataset != null">asr_asr_recognition_dataset = #{oneclick.asr_asr_recognition_dataset}</if>
+    </foreach>
+
+
+    where id = 1
+
+  </update>
+
+
+
+
+
+
+</mapper>

@@ -1,0 +1,69 @@
+{
+  "name": "白盒-视频-目标检测-0618231811",
+  "category": "666beeee280f56000a273893",
+  "tested_type": "algorithm",
+  "tested_modality": "video",
+  "tested_task": "target_detection",
+  "test_items": [
+    {
+      "id": "f9ca-45bd-d231-9d10-fd1c",
+      "name": "基础性能测试",
+      "tool_name": "基础性能测试",
+      "test_type": "video_detection_base",
+      "tool": "video_detection_base",
+      "params": {
+        "base": {
+          "map_confidence": 0.1
+        }
+      }
+    },
+    {
+      "id": "add8-c7d8-98bf-c747-31b2",
+      "name": "安全性测试",
+      "tool_name": "安全性测试",
+      "test_type": "video_detection",
+      "tool": "video_detection",
+      "params": {
+        "FGSM": {
+          "eps": 16,
+          "norm": "np.inf",
+          "map_confidence": 0.1
+        }
+      }
+    },
+    {
+      "id": "a68f-aedd-1868-dcd8-65a0",
+      "name": "鲁棒性测试",
+      "tool_name": "鲁棒性测试",
+      "test_type": "video_robustness_detection",
+      "tool": "video_robustness_detection",
+      "params": {
+        "random": {
+          "width": 10,
+          "map_confidence": 0.1
+        }
+      }
+    },
+    {
+      "id": "4c37-09c1-9004-c805-a0ce",
+      "name": "覆盖率测试",
+      "tool_name": "覆盖率测试",
+      "test_type": "video_coverage_detection",
+      "tool": "video_coverage_detection",
+      "params": {
+        "coverage": {
+          "NC-threshold": 0,
+          "KMNC-k": 3,
+          "TKNC-k": 3,
+          "TKNP-k": 3
+        }
+      }
+    }
+  ],
+  "algorithm_model": "white",
+  "algorithm": "6671a53ad82a2a000ab7829f",
+  "datasets": [
+    "66727d3fd82a2a000bfc696b"
+  ],
+  "description": "白盒-视频-目标检测-0618231811"
+}

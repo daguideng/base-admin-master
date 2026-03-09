@@ -1,0 +1,1152 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Demo</title>
+    <!-- 请勿在项目正式环境中引用该 layui.css 地址 -->
+    <!--
+    <link href="//unpkg.com/layui@2.8.17/dist/css/layui.css" rel="stylesheet">
+    -->
+    <!-- 引入layui css 文件 -->
+    <!--
+    <link href="https://cdn.staticfile.org/layui/2.8.1/css/layui.css" rel="stylesheet">
+    -->
+    <link th:href="@{/lib/layui-v2.8.1/css/layui.css}" rel="stylesheet" type="text/css" />
+    <script src="../lib/layui-v2.8.1/layui.js" type="text/javascript" charset="UTF-8"></script>
+<body>
+
+
+<form class="layui-form" lay-filter="form-submit" id="scheme_id">
+
+    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
+        <legend>登录信息</legend>
+    </fieldset>
+
+    <!--
+    <form class="layui-form" style="margin: 0 auto;max-width: 460px;padding-top: 40px;">
+    -->
+    <div class="layui-form-item">
+        <label class="layui-form-label"><span class="red">*</span>账号:</label>
+        <div class="layui-input-block">
+            <input type="text" placeholder="请填写账号" class="layui-input" required="" name="username"
+                   id="username" lay-verify="required">
+
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label"><span class=".red{color:red }">*</span>密码:</label>
+        <div class="layui-input-block">
+            <input type="text" placeholder="请填写密码" class="layui-input" required="" name="password"
+                   id="password" lay-verify="required">
+        </div>
+    </div>
+
+
+    <div class="layui-form-item">
+        <label class="layui-form-label"><span class="red">*</span>后端api:</label>
+        <div class="layui-input-block">
+            <input type="text" placeholder="请填写API" class="layui-input" required="" name="api"
+                   id="api" lay-verify="required">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">category:</label>
+        <div class="layui-input-block">
+            <input type="text" placeholder="请填写category,默认为：生成测试方案的自定义文件夹" class="layui-input" required=""
+                   name="category" id="category">
+        </div>
+    </div>
+
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">任务开关:</label>
+        <div class="layui-input-block">
+            <input type="checkbox" name="istask" title="开启|关闭" lay-skin="switch" id="istask">
+        </div>
+    </div>
+
+    <!--
+</form>
+-->
+
+
+    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
+        <legend>模型上传</legend>
+    </fieldset>
+    <!--
+    <form class="layui-form layui-form-pane" action="">
+    -->
+    <!--
+    <form class="layui-form" lay-filter="type-radio">
+        -->
+
+
+        <label class="layui-form-label">可见光图像</label>
+        <div class="layui-form-item">
+            <label class="layui-form-label">图像分类:</label>
+            <div class="layui-input-block">
+                <button type="button" class="layui-btn layui-btn-normal" id="choose-img_classfication">选择文件</button>
+                <button type="button" class="layui-btn" id="upload-img_classfication">开始上传</button>
+                <input type="text" placeholder="请填写上传文件的绝对路径" class="layui-input" required="" name="img_classfication"
+                       id="img_classfication">
+                <input type="hidden" id="img_classfication_hidden" name="type" value="img_classfication" class="layui-input" />
+            </div>
+        </div>
+
+
+            <label class="layui-form-label">目标检测:</label>
+            <div class="layui-input-block">
+                <button type="button" class="layui-btn layui-btn-normal" id="choose-target_detection">选择文件</button>
+                <button type="button" class="layui-btn" id="upload-target_detection">开始上传</button>
+                <input type="text" placeholder="请填写上传文件的绝对路径" class="layui-input" required="" name="target_detection"
+                       id="target_detection">
+                <input type="hidden" id="target_detection_hidden" name="type" value="target_detection" class="layui-input" />
+            </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">目标跟踪:</label>
+            <div class="layui-input-block">
+                <button type="button" class="layui-btn layui-btn-normal" id="choose-target_trace">选择文件</button>
+                <button type="button" class="layui-btn" id="upload-target_trace">开始上传</button>
+                <input type="text" placeholder="请填写上传文件的绝对路径" class="layui-input" required="" name="target_trace"
+                       id="target_trace">
+                <input type="hidden" id="target_trace_hidden" name="type" value="target_trace" class="layui-input" />
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">行人重识别:</label>
+            <div class="layui-input-block">
+                <button type="button" class="layui-btn layui-btn-normal" id="choose-visible_img_img_reid">选择文件</button>
+                <button type="button" class="layui-btn" id="upload-visible_img_img_reid">开始上传</button>
+                <input type="text" placeholder="请填写上传文件的绝对路径" class="layui-input" required="" name="visible_img_img_reid"
+                       id="visible_img_img_reid">
+                <input type="hidden" id="visible_img_img_reid_hidden" name="type" value="visible_img_img_reid" class="layui-input" />
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">语义分割:</label>
+            <div class="layui-input-block">
+                <button type="button" class="layui-btn layui-btn-normal" id="choose-visible_img_img_segmentation">选择文件</button>
+                <button type="button" class="layui-btn" id="upload-visible_img_img_segmentation">开始上传</button>
+                <input type="text" placeholder="请填写上传文件的绝对路径" class="layui-input" required="" name="visible_img_img_reid"
+                       id="visible_img_img_segmentation">
+                <input type="hidden" id="visible_img_img_segmentation_hidden" name="type" value="visible_img_img_segmentation" class="layui-input" />
+            </div>
+        </div>
+
+
+
+
+            <label class="layui-form-label">红外图像</label>
+            <div class="layui-form-item">
+                <label class="layui-form-label">图像分类:</label>
+                <div class="layui-input-block">
+                    <button type="button" class="layui-btn layui-btn-normal" id="choose-infrared_ray_img_classfication">选择文件</button>
+                    <button type="button" class="layui-btn" id="upload-infrared_ray_img_classfication">开始上传</button>
+                    <input type="text" placeholder="请填写上传文件的绝对路径" class="layui-input" required="" name="infrared_ray_img_classfication"
+                           id="infrared_ray_img_classfication">
+                    <input type="hidden" id="infrared_ray_img_classfication_hidden" name="type" value="infrared_ray_img_classfication" class="layui-input" />
+                </div>
+            </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">目标检测:</label>
+            <div class="layui-input-block">
+                <button type="button" class="layui-btn layui-btn-normal" id="choose-infrared_ray_target_detection">选择文件</button>
+                <button type="button" class="layui-btn" id="upload-infrared_ray_target_detection">开始上传</button>
+                <input type="text" placeholder="请填写上传文件的绝对路径" class="layui-input" required="" name="infrared_ray_target_detection"
+                       id="infrared_ray_target_detection">
+                <input type="hidden" id="infrared_ray_target_detection_hidden" name="type" value="infrared_ray_target_detection" class="layui-input" />
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">目标跟踪:</label>
+            <div class="layui-input-block">
+                <button type="button" class="layui-btn layui-btn-normal" id="choose-infrared_ray_target_trace">选择文件</button>
+                <button type="button" class="layui-btn" id="upload-infrared_ray_target_trace">开始上传</button>
+                <input type="text" placeholder="请填写上传文件的绝对路径" class="layui-input" required="" name="infrared_ray_target_trace"
+                       id="infrared_ray_target_trace">
+                <input type="hidden" id="infrared_ray_target_trace_hidden" name="type" value="infrared_ray_target_trace" class="layui-input" />
+            </div>
+        </div>
+
+
+
+        <label class="layui-form-label">视频</label>
+        <div class="layui-form-item">
+            <label class="layui-form-label">目标检测:</label>
+            <div class="layui-input-block">
+                <button type="button" class="layui-btn layui-btn-normal" id="choose-video_target_detection">选择文件</button>
+                <button type="button" class="layui-btn" id="upload-video_target_detection">开始上传</button>
+                <input type="text" placeholder="请填写上传文件的绝对路径" class="layui-input" required="" name="video_target_detection"
+                       id="video_target_detection">
+                <input type="hidden" id="video_target_detection_hidden" name="type" value="video_target_detection" class="layui-input" />
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">目标跟踪:</label>
+            <div class="layui-input-block">
+                <button type="button" class="layui-btn layui-btn-normal" id="choose-video_target_trace">选择文件</button>
+                <button type="button" class="layui-btn" id="upload-video_target_trace">开始上传</button>
+                <input type="text" placeholder="请填写上传文件的绝对路径" class="layui-input" required="" name="video_target_detection"
+                       id="video_target_trace">
+                <input type="hidden" id="video_target_trace_hidden" name="type" value="video_target_trace" class="layui-input" />
+            </div>
+        </div>
+
+
+            <label class="layui-form-label">文本</label>
+            <div class="layui-form-item">
+                <label class="layui-form-label">情感分析:</label>
+                <div class="layui-input-block">
+                    <button type="button" class="layui-btn layui-btn-normal" id="choose-text_sen_analysis">选择文件</button>
+                    <button type="button" class="layui-btn" id="upload-text_sen_analysis">开始上传</button>
+                    <input type="text" placeholder="请填写上传文件的绝对路径" class="layui-input" required=""
+                           name="text_sen_analysis" id="text_sen_analysis">
+                    <input type="hidden" id="text_sen_analysis_hidden" name="type" value="text_sen_analysis" class="layui-input" />
+                </div>
+            </div>
+
+
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">实体识别:</label>
+                <div class="layui-input-block">
+                    <button type="button" class="layui-btn layui-btn-normal" id="choose-text_entity_recognition">选择文件</button>
+                    <button type="button" class="layui-btn" id="upload-text_entity_recognition">开始上传</button>
+                    <input type="text" placeholder="请填写上传文件的绝对路径" class="layui-input" required=""
+                           name="text_entity_recognition" id="text_entity_recognition">
+                    <input type="hidden" id="text_entity_recognition_hidden" name="type" value="text_entity_recognition" class="layui-input" />
+                </div>
+            </div>
+
+
+            <label class="layui-form-label">语音</label>
+            <div class="layui-form-item">
+                <label class="layui-form-label">语音识别:</label>
+                <div class="layui-input-block">
+                    <button type="button" class="layui-btn layui-btn-normal" id="choose-asr_asr_recognition">选择文件</button>
+                    <button type="button" class="layui-btn" id="upload-asr_asr_recognition">开始上传</button>
+                    <input type="text" placeholder="请填写上传文件的绝对路径" class="layui-input" required=""
+                           name="asr_asr_recognition" id="asr_asr_recognition">
+                    <input type="hidden" id="asr_asr_recognition_hidden" name="type" value="asr_asr_recognition" class="layui-input" />
+                </div>
+            </div>
+
+
+
+    <label class="layui-form-label">结构化数据</label>
+    <div class="layui-form-item">
+        <label class="layui-form-label">分类:</label>
+        <div class="layui-input-block">
+            <button type="button" class="layui-btn layui-btn-normal" id="choose-structured_data_classification">选择文件</button>
+            <button type="button" class="layui-btn" id="upload-structured_data_classification">开始上传</button>
+            <input type="text" placeholder="请填写上传文件的绝对路径" class="layui-input" required="" name="structured_data_classification"
+                   id="structured_data_classification">
+            <input type="hidden" id="structured_data_classification_hidden" name="type" value="structured_data_classification" class="layui-input" />
+        </div>
+    </div>
+
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">回归:</label>
+        <div class="layui-input-block">
+            <button type="button" class="layui-btn layui-btn-normal" id="choose-structured_data_regression">选择文件</button>
+            <button type="button" class="layui-btn" id="upload-structured_data_regression">开始上传</button>
+            <input type="text" placeholder="请填写上传文件的绝对路径" class="layui-input" required="" name="structured_data_regression"
+                   id="structured_data_regression">
+            <input type="hidden" id="structured_data_regression_hidden" name="type" value="structured_data_regression" class="layui-input" />
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">聚类:</label>
+        <div class="layui-input-block">
+            <button type="button" class="layui-btn layui-btn-normal" id="choose-structured_data_cluster">选择文件</button>
+            <button type="button" class="layui-btn" id="upload-structured_data_cluster">开始上传</button>
+            <input type="text" placeholder="请填写上传文件的绝对路径" class="layui-input" required="" name="structured_data_cluster"
+                   id="structured_data_cluster">
+            <input type="hidden" id="structured_data_cluster_hidden" name="type" value="structured_data_cluster" class="layui-input" />
+        </div>
+    </div>
+
+    <!--
+<form class="layui-form"  lay-filter="modal-radio">
+    -->
+
+    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
+        <legend>数据集上传</legend>
+    </fieldset>
+    <div class="layui-form-item" pane="">
+        <label class="layui-form-label">可见光图像</label>
+        <div class="layui-form-item">
+            <label class="layui-form-label">图像分类:</label>
+            <div class="layui-input-block">
+                <button type="button" class="layui-btn layui-btn-normal" id="choose-img_classfication_dataset">选择文件</button>
+                <button type="button" class="layui-btn" id="upload-img_classfication_dataset">开始上传</button>
+                <input type="text" placeholder="请填写上传文件的绝对路径" class="layui-input" required=""
+                       name="img_classfication_dataset" id="img_classfication_dataset">
+                <input type="hidden" id="img_classfication_dataset_hidden" name="type" value="img_classfication_dataset" class="layui-input" />
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">目标检测:</label>
+            <div class="layui-input-block">
+                <button type="button" class="layui-btn layui-btn-normal" id="choose-target_detection_dataset">选择文件</button>
+                <button type="button" class="layui-btn" id="upload-target_detection_dataset">开始上传</button>
+                <input type="text" placeholder="请填写上传文件的绝对路径" class="layui-input" required=""
+                       name="target_detection_dataset" id="target_detection_dataset">
+                <input type="hidden" id="target_detection_dataset_hidden" name="type" value="target_detection_dataset" class="layui-input" />
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">目标跟踪:</label>
+            <div class="layui-input-block">
+                <button type="button" class="layui-btn layui-btn-normal" id="choose-target_trace_dataset">选择文件</button>
+                <button type="button" class="layui-btn" id="upload-target_trace_dataset">开始上传</button>
+                <input type="text" placeholder="请填写上传文件的绝对路径" class="layui-input" required=""
+                       name="target_trace_dataset" id="target_trace_dataset">
+                <input type="hidden" id="target_trace_dataset_hidden" name="type" value="target_trace_dataset" class="layui-input" />
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">行人重识别:</label>
+            <div class="layui-input-block">
+                <button type="button" class="layui-btn layui-btn-normal" id="choose-visible_img_img_reid_dataset">选择文件</button>
+                <button type="button" class="layui-btn" id="upload-visible_img_img_reid_dataset">开始上传</button>
+                <input type="text" placeholder="请填写上传文件的绝对路径" class="layui-input" required=""
+                       name="visible_img_img_reid_dataset" id="visible_img_img_reid_dataset">
+                <input type="hidden" id="visible_img_img_reid_dataset_hidden" name="type" value="visible_img_img_reid_dataset" class="layui-input" />
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">语义分割:</label>
+            <div class="layui-input-block">
+                <button type="button" class="layui-btn layui-btn-normal" id="choose-visible_img_img_segmentation_dataset">选择文件</button>
+                <button type="button" class="layui-btn" id="upload-visible_img_img_segmentation_dataset">开始上传</button>
+                <input type="text" placeholder="请填写上传文件的绝对路径" class="layui-input" required=""
+                       name="visible_img_img_reid_dataset" id="visible_img_img_segmentation_dataset">
+                <input type="hidden" id="visible_img_img_segmentation_dataset_hidden" name="type" value="visible_img_img_segmentation_dataset" class="layui-input" />
+            </div>
+        </div>
+
+
+        <label class="layui-form-label">红外图像</label>
+        <div class="layui-form-item">
+            <label class="layui-form-label">图像分类:</label>
+            <div class="layui-input-block">
+                <button type="button" class="layui-btn layui-btn-normal" id="choose-infrared_ray_img_classfication_dataset">选择文件</button>
+                <button type="button" class="layui-btn" id="upload-infrared_ray_img_classfication_dataset">开始上传</button>
+                <input type="text" placeholder="请填写上传文件的绝对路径" class="layui-input" required=""
+                       name="infrared_ray_img_classfication_dataset" id="infrared_ray_img_classfication_dataset">
+                <input type="hidden" id="infrared_ray_img_classfication_dataset_hidden" name="type" value="infrared_ray_img_classfication_dataset" class="layui-input" />
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">目标检测:</label>
+            <div class="layui-input-block">
+                <button type="button" class="layui-btn layui-btn-normal" id="choose-infrared_ray_target_detection_dataset">选择文件</button>
+                <button type="button" class="layui-btn" id="upload-infrared_ray_target_detection_dataset">开始上传</button>
+                <input type="text" placeholder="请填写上传文件的绝对路径" class="layui-input" required=""
+                       name="infrared_ray_target_detection_dataset" id="infrared_ray_target_detection_dataset">
+                <input type="hidden" id="infrared_ray_target_detection_dataset_hidden" name="type" value="infrared_ray_target_detection_dataset" class="layui-input" />
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">目标跟踪:</label>
+            <div class="layui-input-block">
+                <button type="button" class="layui-btn layui-btn-normal" id="choose-infrared_ray_target_trace_dataset">选择文件</button>
+                <button type="button" class="layui-btn" id="upload-infrared_ray_target_trace_dataset">开始上传</button>
+                <input type="text" placeholder="请填写上传文件的绝对路径" class="layui-input" required=""
+                       name="infrared_ray_target_trace_dataset" id="infrared_ray_target_trace_dataset">
+                <input type="hidden" id="infrared_ray_target_trace_dataset_hidden" name="type" value="infrared_ray_target_trace_dataset" class="layui-input" />
+            </div>
+        </div>
+
+        <label class="layui-form-label">视频</label>
+        <div class="layui-form-item">
+            <label class="layui-form-label">目标检测:</label>
+            <div class="layui-input-block">
+                <button type="button" class="layui-btn layui-btn-normal" id="choose-video_target_detection_dataset">选择文件</button>
+                <button type="button" class="layui-btn" id="upload-video_target_detection_dataset">开始上传</button>
+                <input type="text" placeholder="请填写上传文件的绝对路径" class="layui-input" required=""
+                       name="video_target_detection_dataset" id="video_target_detection_dataset">
+                <input type="hidden" id="video_target_detection_dataset_hidden" name="type" value="video_target_detection_dataset" class="layui-input" />
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">目标跟踪:</label>
+            <div class="layui-input-block">
+                <button type="button" class="layui-btn layui-btn-normal" id="choose-video_target_trace_dataset">选择文件</button>
+                <button type="button" class="layui-btn" id="upload-video_target_trace_dataset">开始上传</button>
+                <input type="text" placeholder="请填写上传文件的绝对路径" class="layui-input" required=""
+                       name="video_target_trace_dataset" id="video_target_trace_dataset">
+                <input type="hidden" id="video_target_trace_dataset_hidden" name="type" value="video_target_trace_dataset" class="layui-input" />
+            </div>
+        </div>
+
+
+
+
+
+            <label class="layui-form-label">文本</label>
+            <div class="layui-form-item">
+                <label class="layui-form-label">情感分析:</label>
+                <div class="layui-input-block">
+                    <button type="button" class="layui-btn layui-btn-normal" id="choose-text_sen_analysis_dataset">选择文件</button>
+                    <button type="button" class="layui-btn" id="upload-text_sen_analysis_dataset">开始上传</button>
+                    <input type="text" placeholder="请填写上传文件的绝对路径" class="layui-input" required=""
+                           name="text_sen_analysis_dataset" id="text_sen_analysis_dataset">
+                    <input type="hidden" id="text_sen_analysis_dataset_hidden" name="type" value="text_sen_analysis_dataset" class="layui-input" />
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">实体识别:</label>
+                <div class="layui-input-block">
+                    <button type="button" class="layui-btn layui-btn-normal" id="choose-text_entity_recognition_dataset">选择文件</button>
+                    <button type="button" class="layui-btn" id="upload-text_entity_recognition_dataset">开始上传</button>
+                    <input type="text" placeholder="请填写上传文件的绝对路径" class="layui-input" required=""
+                           name="text_entity_recognition_dataset" id="text_entity_recognition_dataset">
+                    <input type="hidden" id="text_entity_recognition_dataset_hidden" name="type" value="text_entity_recognition_dataset" class="layui-input" />
+                </div>
+            </div>
+
+
+
+            <label class="layui-form-label">语音</label>
+            <div class="layui-form-item">
+                <label class="layui-form-label">语音识别:</label>
+                <div class="layui-input-block">
+                    <button type="button" class="layui-btn layui-btn-normal" id="choose-asr_asr_recognition_dataset">选择文件</button>
+                    <button type="button" class="layui-btn" id="upload-asr_asr_recognition_dataset">开始上传</button>
+                    <input type="text" placeholder="请填写上传文件的绝对路径" class="layui-input" required=""
+                           name="asr_asr_recognition_dataset" id="asr_asr_recognition_dataset">
+                    <input type="hidden" id="asr_asr_recognition_dataset_hidden" name="type" value="asr_asr_recognition_dataset" class="layui-input" />
+                </div>
+            </div>
+
+        <label class="layui-form-label">结构化数据</label>
+        <div class="layui-form-item">
+            <label class="layui-form-label">分类:</label>
+            <div class="layui-input-block">
+                <button type="button" class="layui-btn layui-btn-normal" id="choose-structured_data_classification_dataset">选择文件</button>
+                <button type="button" class="layui-btn" id="upload-structured_data_classification_dataset">开始上传</button>
+                <input type="text" placeholder="请填写上传文件的绝对路径" class="layui-input" required=""
+                       name="structured_data_classification_dataset" id="structured_data_classification_dataset">
+                <input type="hidden" id="structured_data_classification_dataset_hidden" name="type" value="structured_data_classification_dataset" class="layui-input" />
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">回归:</label>
+            <div class="layui-input-block">
+                <button type="button" class="layui-btn layui-btn-normal" id="choose-structured_data_regression_dataset">选择文件</button>
+                <button type="button" class="layui-btn" id="upload-structured_data_regression_dataset">开始上传</button>
+                <input type="text" placeholder="请填写上传文件的绝对路径" class="layui-input" required=""
+                       name="structured_data_regression_dataset" id="structured_data_regression_dataset">
+                <input type="hidden" id="structured_data_regression_dataset_hidden" name="type" value="structured_data_regression_dataset" class="layui-input" />
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">聚类:</label>
+            <div class="layui-input-block">
+                <button type="button" class="layui-btn layui-btn-normal" id="choose-structured_data_cluster_dataset">选择文件</button>
+                <button type="button" class="layui-btn" id="upload-structured_data_cluster_dataset">开始上传</button>
+                <input type="text" placeholder="请填写上传文件的绝对路径" class="layui-input" required=""
+                       name="structured_data_cluster_dataset" id="structured_data_cluster_dataset">
+                <input type="hidden" id="structured_data_cluster_dataset_hidden" name="type" value="structured_data_cluster_dataset" class="layui-input" />
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
+        <legend>数据集增广</legend>
+    </fieldset>
+    <div class="layui-form-item" pane="">
+        <label class="layui-form-label">可见光</label>
+        <div class="layui-input-block">
+            <input type="checkbox" name="visible_light_img_increase" value="visible_light_img_increase" title="图像分类"
+                   lay-skin="tag" checked lay-filter="visible_light_img_increase">
+            <input type="checkbox" name="visible_light_detection_increase" value="visible_light_detection_increase"
+                   title="目标检测" lay-skin="tag" checked lay-filter="visible_light_detection_increase">
+            <input type="checkbox" name="visible_light_tracking_increase" value="visible_light_tracking_increase" title="目标跟踪"
+                   lay-skin="tag" checked lay-filter="visible_light_tracking_increase">
+            <input type="checkbox" name="visible_img_img_reid_increase" value="visible_img_img_reid_increase" title="行人重识别"
+                   lay-skin="tag" checked lay-filter="visible_img_img_reid_increase">
+            <input type="checkbox" name="visible_img_img_segmentation_increase" value="visible_img_img_segmentation_increase" title="语义分割"
+                   lay-skin="tag" checked lay-filter="visible_img_img_segmentation_increase">
+        </div>
+    </div>
+
+
+
+    <div class="layui-form-item" pane="">
+        <label class="layui-form-label">红外线</label>
+        <div class="layui-input-block">
+            <input type="checkbox" name="infrared_ray_img_classfication_increase" value="infrared_ray_img_classfication_increase"
+                   title="图像分类" lay-skin="tag" checked lay-filter="infrared_ray_img_classfication_increase">
+            <input type="checkbox" name="infrared_ray_target_detection_increase" value="infrared_ray_target_detection_increase"
+                   title="目标检测" lay-skin="tag" checked lay-filter="infrared_ray_target_detection_increase">
+            <input type="checkbox" name="infrared_ray_target_trace_increase" value="infrared_ray_target_trace_increase"
+                   title="目标跟踪" lay-skin="tag" checked lay-filter="infrared_ray_target_trace_increase">
+
+        </div>
+    </div>
+
+
+    <div class="layui-form-item" pane="">
+        <label class="layui-form-label">视频</label>
+        <div class="layui-input-block">
+            <input type="checkbox" name="video_target_detection_increase" value="video_target_detection_increase" title="目标检测" lay-skin="tag"
+                   checked lay-filter="video_target_detection_increase">
+            <input type="checkbox" name="video_target_trace_increase" value="video_target_trace_increase" title="目标跟踪"
+                   lay-skin="tag" checked lay-filter="video_target_trace_increase">
+        </div>
+    </div>
+
+
+    <div class="layui-form-item" pane="">
+        <label class="layui-form-label">文本</label>
+        <div class="layui-input-block">
+            <input type="checkbox" name="text_analysis_increase" value="text_analysis_increase" title="情感分析" lay-skin="tag"
+                   checked lay-filter="text_analysis_increase">
+            <input type="checkbox" name="text_named_entity_increase" value="text_named_entity_increase" title="实体识别"
+                   lay-skin="tag" checked lay-filter="text-named-text_named_entity_increase">
+        </div>
+    </div>
+
+
+    <div class="layui-form-item" pane="">
+        <label class="layui-form-label">语音</label>
+        <div class="layui-input-block">
+            <input type="checkbox" name="asr_asr_recognition_increase" value="asr_asr_recognition_increase" title="语音识别"
+                   lay-skin="tag" checked lay-filter="asr_asr_recognition_increase">
+        </div>
+    </div>
+
+
+    <div class="layui-form-item" pane="">
+        <label class="layui-form-label">结构化数据</label>
+        <div class="layui-input-block">
+            <input type="checkbox" name="structured_data_classification_increase" value="structured_data_classification_increase" title="分类"
+                   lay-skin="tag" checked lay-filter="structured_data_classification_increase">
+            <input type="checkbox" name="structured_data_regression_increase" value="structured_data_regression_increase" title="回归"
+                   lay-skin="tag" checked lay-filter="structured_data_regression_increase">
+            <input type="checkbox" name="structured_data_cluster_increase" value="structured_data_cluster_increase" title="聚类"
+                   lay-skin="tag" checked lay-filter="structured_data_cluster_increase">
+        </div>
+    </div>
+
+
+    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
+        <legend>测试方案</legend>
+    </fieldset>
+    <div class="layui-form-item" pane="">
+        <label class="layui-form-label">可见光</label>
+        <div class="layui-input-block">
+            <input type="checkbox" name="visible_img_img_classfication_scheme"
+                   value="visible_img_img_classfication_scheme"
+                   title="图像分类" lay-skin="tag" checked lay-filter="visible_img_img_classfication_scheme">
+            <input type="checkbox" name="visible_img_target_detection_scheme"
+                   value="visible_img_target_detection_scheme" title="目标检测"
+                   lay-skin="tag" checked lay-filter="visible_img_target_detection_scheme">
+            <input type="checkbox" name="visible_img_target_trace_scheme" value="visible_img_target_trace_scheme"
+                   title="目标跟踪"
+                   lay-skin="tag" checked lay-filter="visible_img_target_trace_scheme">
+            <input type="checkbox" name="visible_img_img_reid_scheme" value="visible_img_img_reid_scheme"
+                   title="行人重识别"
+                   lay-skin="tag" checked lay-filter="visible_img_img_reid_scheme">
+            <input type="checkbox" name="visible_img_img_segmentation_scheme" value="visible_img_img_segmentation_scheme"
+                   title="语义分割"
+                   lay-skin="tag" checked lay-filter="visible_img_img_segmentation_scheme">
+        </div>
+    </div>
+
+    <div class="layui-form-item" pane="">
+        <label class="layui-form-label">红外线</label>
+        <div class="layui-input-block">
+            <input type="checkbox" name="infrared_ray_img_classfication_scheme"
+                   value="infrared_ray_img_classfication_scheme"
+                   title="图像分类" lay-skin="tag" checked lay-filter="infrared_ray_img_classfication_scheme">
+            <input type="checkbox" name="infrared_ray_target_detection_scheme"
+                   value="infrared_ray_target_detection_scheme"
+                   title="目标检测" lay-skin="tag" checked lay-filter="infrared_ray_target_detection_scheme">
+            <input type="checkbox" name="infrared_ray_target_trace_scheme" value="infrared_ray_target_trace_scheme"
+                   title="目标跟踪"
+                   lay-skin="tag" checked lay-filter="infrared_ray_target_trace_scheme">
+
+        </div>
+    </div>
+
+
+    <div class="layui-form-item" pane="">
+        <label class="layui-form-label">视频</label>
+        <div class="layui-input-block">
+            <input type="checkbox" name="video_target_detection_scheme"
+                   value="video_target_detection_scheme"
+                   title="目标检测" lay-skin="tag" checked lay-filter="video_target_detection_scheme">
+            <input type="checkbox" name="video_target_detection_scheme"
+                   value="video_target_trace_scheme"
+                   title="目标跟踪" lay-skin="tag" checked lay-filter="video_target_detection_scheme">
+        </div>
+    </div>
+
+
+
+
+    <div class="layui-form-item" pane="">
+        <label class="layui-form-label">文本</label>
+        <div class="layui-input-block">
+            <input type="checkbox" name="text_sen_analysis_scheme" value="text_sen_analysis_scheme" title="情感分析"
+                   lay-skin="tag"
+                   checked lay-filter="text_sen_analysis_scheme">
+            <input type="checkbox" name="text_entity_recognition_scheme" value="text_entity_recognition_scheme"
+                   title="命名实体识别"
+                   lay-skin="tag" checked lay-filter="text_entity_recognition_scheme">
+        </div>
+    </div>
+
+
+    <div class="layui-form-item" pane="">
+        <label class="layui-form-label">语音</label>
+        <div class="layui-input-block">
+            <input type="checkbox" name="asr_recognition_scheme" value="asr_recognition_scheme" title="语音识别"
+                   lay-skin="tag"
+                   checked lay-filter="asr_recognition_scheme">
+        </div>
+    </div>
+
+
+    <div class="layui-form-item" pane="">
+        <label class="layui-form-label">结构化数据</label>
+        <div class="layui-input-block">
+            <input type="checkbox" name="structured_data_classification_scheme" value="structured_data_classification_scheme" title="分类"
+                   lay-skin="tag"
+                   checked lay-filter="structured_data_classification_scheme">
+            <input type="checkbox" name="structured_data_regression_scheme" value="structured_data_regression_scheme" title="回归"
+                   lay-skin="tag"
+                   checked lay-filter="structured_data_regression_scheme">
+            <input type="checkbox" name="structured_data_cluster_scheme" value="structured_data_cluster_scheme" title="聚类"
+                   lay-skin="tag"
+                   checked lay-filter="structured_data_cluster_scheme">
+        </div>
+    </div>
+
+
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit lay-filter="formSubmit">立即提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </div>
+
+
+</form>
+
+
+</body>
+
+<!--
+<script src="https://cdn.staticfile.org/layui/2.8.1/layui.js"></script>
+-->
+
+<script>
+
+
+        layui.use(['form', 'jquery', 'layer'], function () {
+            var form = layui.form;
+            var $ = layui.jquery;
+
+            //alert(JSON.stringify(form.val("formTest")));
+            $.ajax({
+                url: "/baseadmin/oneclick/showdata",
+                data: {},
+                type: "post",
+                dataType: "json",
+                headers: {'Content-Type': 'application/json;charset=utf-8'},
+                success: function (rs) {
+                    console.log("rs-->", rs)
+                    form.val("form-submit", {
+                        "username": rs.data.result.username,
+                        "password": rs.data.result.password,
+                        "api": rs.data.result.api,
+                        "category": rs.data.result.category,
+                        "istask": rs.data.result.istask,
+                        "img_classfication": rs.data.result.img_classfication,
+                        "target_detection": rs.data.result.target_detection,
+                        "target_trace": rs.data.result.target_trace,
+                        "text_sen_analysis": rs.data.result.text_sen_analysis,
+                        "text_entity_recognition": rs.data.result.text_entity_recognition,
+                        "asr_asr_recognition": rs.data.result.asr_asr_recognition,
+                        "img_classfication_dataset": rs.data.result.img_classfication_dataset,
+                        "target_detection_dataset": rs.data.result.target_detection_dataset,
+                        "target_trace_dataset": rs.data.result.target_trace_dataset,
+                        "text_sen_analysis_dataset": rs.data.result.text_sen_analysis_dataset,
+                        "text_entity_recognition_dataset": rs.data.result.text_entity_recognition_dataset,
+                        "asr_asr_recognition_dataset": rs.data.result.asr_asr_recognition_dataset,
+                        "asr_asr_recognition_increase": rs.data.result.asr_asr_recognition_increase,
+                        "visible_light_img_increase": rs.data.result.visible_light_img_increase,
+                        "visible_light_detection_increase": rs.data.result.visible_light_detection_increase,
+                        "infrared_ray_img_classfication_increase": rs.data.result.infrared_ray_img_classfication_increase,
+                        "infrared_ray_target_detection_increase": rs.data.result.infrared_ray_target_detection_increase,
+                        "infrared_ray_target_trace_increase": rs.data.result.infrared_ray_target_trace_increase,
+                        "text_analysis_increase": rs.data.result.text_analysis_increase,
+                        "text_named_entity_increase": rs.data.result.text_named_entity_increase,
+                        "visible_img_img_classfication": rs.data.result.visible_img_img_classfication,
+                        "visible_img_target_detection": rs.data.result.visible_img_target_detection,
+                        "visible_img_target_trace": rs.data.result.visible_img_target_trace,
+                        "infrared_ray_img_classfication": rs.data.result.infrared_ray_img_classfication,
+                        "infrared_ray_target_detection": rs.data.result.infrared_ray_target_detection,
+                        "infrared_ray_target_trace": rs.data.result.infrared_ray_target_trace,
+                        "text_sen_analysis_scheme": rs.data.result.text_sen_analysis_scheme,
+                        "text_entity_recognition_scheme": rs.data.result.text_entity_recognition_scheme,
+                        "asr_recognition_scheme": rs.data.result.asr_recognition_scheme
+                    });
+                },
+            });
+
+        });
+
+
+</script>
+
+
+<!--
+<script th:src="@{/common/jquery/jquery.js}">
+
+    console.log("1111111")
+    $(document).ready(function(){
+        $('#formSubmit').submit(function(){
+            $.ajax({
+                url:'/baseadmin/test/fromtest',
+                data:$('#form-submit').serialize(),
+                dataType:'json',
+                error:function(data){
+                    alert(data);
+                },
+                success:function(data){
+                    alert(data);
+                }
+
+            });
+        });
+    })
+</script>
+   -->
+
+
+<script>
+    layui.use(['form', 'jquery'], function () {
+        var form = layui.form
+            , layer = layui.layer;
+        var $ = layui.jquery;
+
+        //自定义验证规则
+        /**
+         form.verify({
+        title: function(value){
+        if(value.length < 5){
+        return '标题至少得5个字符啊';
+       }
+         ***/
+
+        var levelM_value = ''
+        var levelM2_value = ''
+
+        var myElement = ''
+
+
+        //表单赋值
+        /*
+        form.on('radio(levelM)', function (data) {
+            console.log(data.elem); //得到radio原始DOM对象
+            console.log(data.value); //被点击的radio的value值
+            levelM_value = data.value
+
+        });
+         */
+
+
+        /**
+         form.on('radio(levelM2)', function (data) {
+            console.log(data.elem); //得到radio原始DOM对象
+            console.log(data.value); //被点击的radio的value值
+            levelM2_value= data.value
+        });
+         */
+
+
+        //formSubmit
+        //监听提交
+
+        form.on('submit(formSubmit)', function (data) {
+
+            /*
+            if('' === username){
+                layer.msg("账号不能为空!")
+            }
+            if('' === password){
+                layer.msg("密码不能为空!")
+            }
+
+            if('' === api){
+                layer.msg("api不能为空!")
+            }
+
+             */
+
+            var field = data.field; // 获取表单字段值
+            // 显示填写结果，仅作演示用
+            console.log("field-->", field)
+
+            console.log("data--->" + JSON.stringify(data.field))
+
+
+            layui.$.ajax({
+                url: "/baseadmin/oneclick/run",
+                //  data:JSON.stringify({'levelM_value':levelM_value,'levelM2_value':levelM2_value}),
+                // data:$('#scheme_id').serialize(),
+                data: JSON.stringify(data.field),
+                type: "post",
+                cache: true,
+                dataType: "json",
+                contentType: 'application/json',
+                success: function (res) {
+                    //  console.log("提交表单数据--->",$('#scheme_id').serialize())
+                    console.log("data--->" + JSON.stringify(data.field))
+
+                    layer.msg("提交请求成功!");
+
+                    console.log("提交表单数据--->", JSON.stringify(data.field))
+
+                    if (res.code == "0") {
+                        layer.msg(res.msg);
+                    } else {
+                        layer.msg(res.msg);
+                    }
+
+                }
+
+            })
+
+            return false;
+
+        });
+
+
+    });
+
+</script>
+
+
+<script>
+
+    layui.use(['form', 'jquery', 'upload'], function () {
+        var element = layui.element
+            , layer = layui.layer
+            , form = layer.form;
+        var $ = layui.jquery;
+        var upload = layui.upload;
+        //img_classfication
+        upload.render({
+            elem: '#choose-img_classfication',
+            url: '/baseadmin/oneclick/uploadfile', // 此处配置你自己的上传接口即可
+            auto: false,
+            accept: 'file',
+            multiple: true,
+            exts: 'zip',
+            data: {
+                img_classfication: function () {
+                    return $('#img_classfication_hidden').val();
+                }
+            },
+            bindAction: '#upload-img_classfication',
+            done: function (res) {
+
+                console.log("res--->",res)
+                if(res.code ===0){
+                    $("#img_classfication").val(res.file);
+                }
+
+            }
+        });
+
+
+        //target_detection
+        upload.render({
+            elem: '#choose-target_detection',
+            url: '/baseadmin/oneclick/uploadfile', // 此处配置你自己的上传接口即可
+            auto: false,
+            accept: 'file',
+            multiple: true,
+            exts: 'zip',
+            data: {
+                target_detection: function () {
+                    return $('#target_detection_hidden').val();
+                }
+            },
+            bindAction: '#upload-target_detection',
+            done: function (res) {
+                console.log("res--->",res)
+                if(res.code ===0){
+                    $("#target_detection").val(res.file);
+                }
+            }
+        });
+
+
+
+        //target_trace
+        upload.render({
+            elem: '#choose-target_trace',
+            url: '/baseadmin/oneclick/uploadfile', // 此处配置你自己的上传接口即可
+            auto: false,
+            accept: 'file',
+            multiple: true,
+            exts: 'zip',
+            data: {
+                target_trace: function () {
+                    return $('#target_trace_hidden').val();
+                }
+            },
+            bindAction: '#upload-target_trace',
+            done: function (res) {
+                console.log("res--->",res)
+                if(res.code ===0){
+                    $("#target_trace").val(res.file);
+                }
+            }
+        });
+
+
+        //text_sen_analysis
+        upload.render({
+            elem: '#choose-text_sen_analysis',
+            url: '/baseadmin/oneclick/uploadfile', // 此处配置你自己的上传接口即可
+            auto: false,
+            accept: 'file',
+            multiple: true,
+            exts: 'zip',
+            data: {
+                text_sen_analysis: function () {
+                    return $('#text_sen_analysis_hidden').val();
+                }
+            },
+            bindAction: '#upload-text_sen_analysis',
+            done: function (res) {
+                console.log("res--->",res)
+                if(res.code ===0){
+                    $("#text_sen_analysis").val(res.file);
+                }
+            }
+        });
+
+
+
+
+        //text_entity_recognition
+        upload.render({
+            elem: '#choose-text_entity_recognition',
+            url: '/baseadmin/oneclick/uploadfile', // 此处配置你自己的上传接口即可
+            auto: false,
+            accept: 'file',
+            multiple: true,
+            exts: 'zip',
+            data: {
+                text_entity_recognition: function () {
+                    return $('#text_entity_recognition_hidden').val();
+                }
+            },
+            bindAction: '#upload-text_entity_recognition',
+            done: function (res) {
+                console.log("res--->",res)
+                if(res.code ===0){
+                    $("#text_entity_recognition").val(res.file);
+                }
+            }
+        });
+
+
+        //asr_asr_recognition
+        upload.render({
+            elem: '#choose-asr_asr_recognition',
+            url: '/baseadmin/oneclick/uploadfile', // 此处配置你自己的上传接口即可
+            auto: false,
+            accept: 'file',
+            multiple: true,
+            exts: 'zip',
+            data: {
+                asr_asr_recognition: function () {
+                    return $('#asr_asr_recognition_hidden').val();
+                }
+            },
+            bindAction: '#upload-asr_asr_recognition',
+            done: function (res) {
+                console.log("res--->",res)
+                if(res.code ===0){
+                    $("#asr_asr_recognition").val(res.file);
+                }
+            }
+        });
+
+
+
+        //img_classfication_dataset
+        upload.render({
+            elem: '#choose-img_classfication_dataset',
+            url: '/baseadmin/oneclick/uploadfile', // 此处配置你自己的上传接口即可
+            auto: false,
+            accept: 'file',
+            multiple: true,
+            exts: 'zip',
+            data: {
+                img_classfication_dataset: function () {
+                    return $('#img_classfication_dataset_hidden').val();
+                }
+            },
+            bindAction: '#upload-img_classfication_dataset',
+            done: function (res) {
+                console.log("res--->",res)
+                if(res.code ===0){
+                    $("#img_classfication_dataset").val(res.file);
+                }
+            }
+        });
+
+
+
+        //target_detection_dataset
+        upload.render({
+            elem: '#choose-target_detection_dataset',
+            url: '/baseadmin/oneclick/uploadfile', // 此处配置你自己的上传接口即可
+            auto: false,
+            accept: 'file',
+            multiple: true,
+            exts: 'zip',
+            data: {
+                target_detection_dataset: function () {
+                    return $('#target_detection_dataset_hidden').val();
+                }
+            },
+            bindAction: '#upload-target_detection_dataset',
+            done: function (res) {
+                console.log("res--->",res)
+                if(res.code ===0){
+                    $("#target_detection_dataset").val(res.file);
+                }
+            }
+        });
+
+
+        //target_trace_dataset
+        upload.render({
+            elem: '#choose-target_trace_dataset',
+            url: '/baseadmin/oneclick/uploadfile', // 此处配置你自己的上传接口即可
+            auto: false,
+            accept: 'file',
+            multiple: true,
+            exts: 'zip',
+            data: {
+                target_trace_dataset: function () {
+                    return $('#target_trace_dataset_hidden').val();
+                }
+            },
+            bindAction: '#upload-target_trace_dataset',
+            done: function (res) {
+                console.log("res--->",res)
+                if(res.code ===0){
+                    $("#target_trace_dataset").val(res.file);
+                }
+            }
+        });
+
+
+
+
+        //text_sen_analysis_dataset
+        upload.render({
+            elem: '#choose-text_sen_analysis_dataset',
+            url: '/baseadmin/oneclick/uploadfile', // 此处配置你自己的上传接口即可
+            auto: false,
+            accept: 'file',
+            multiple: true,
+            exts: 'zip',
+            data: {
+                text_sen_analysis_dataset: function () {
+                    return $('#text_sen_analysis_dataset_hidden').val();
+                }
+            },
+            bindAction: '#upload-text_sen_analysis_dataset',
+            done: function (res) {
+                console.log("res--->",res)
+                if(res.code ===0){
+                    $("#text_sen_analysis_dataset").val(res.file);
+                }
+            }
+        });
+
+
+        //text_entity_recognition_dataset
+        upload.render({
+            elem: '#choose-text_entity_recognition_dataset',
+            url: '/baseadmin/oneclick/uploadfile', // 此处配置你自己的上传接口即可
+            auto: false,
+            accept: 'file',
+            multiple: true,
+            exts: 'zip',
+            data: {
+                text_entity_recognition_dataset: function () {
+                    return $('#text_entity_recognition_dataset_hidden').val();
+                }
+            },
+            bindAction: '#upload-text_entity_recognition_dataset',
+            done: function (res) {
+                console.log("res--->",res)
+                if(res.code ===0){
+                    $("#text_entity_recognition_dataset").val(res.file);
+                }
+            }
+        });
+
+
+
+        //asr_asr_recognition_dataset
+        upload.render({
+            elem: '#choose-asr_asr_recognition_dataset',
+            url: '/baseadmin/oneclick/uploadfile', // 此处配置你自己的上传接口即可
+            auto: false,
+            accept: 'file',
+            multiple: true,
+            exts: 'zip',
+            data: {
+                asr_asr_recognition_dataset: function () {
+                    return $('#asr_asr_recognition_dataset_hidden').val();
+                }
+            },
+            bindAction: '#upload-asr_asr_recognition_dataset',
+            done: function (res) {
+                console.log("res--->",res)
+                if(res.code ===0){
+                    $("#asr_asr_recognition_dataset").val(res.file);
+                }
+            }
+        });
+
+
+
+    });
+
+</script>
+
+</html>

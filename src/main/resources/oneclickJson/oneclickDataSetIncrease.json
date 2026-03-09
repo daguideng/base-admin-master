@@ -1,0 +1,11 @@
+{
+  "visible_light_img_increase":["white","black","extension_no_attack"],
+  "visible_light_detection_increase":["white","black","extension_no_attack"],
+  "visible_light_tracking_increase":["white","black","extension_no_attack"],
+  "infrared_ray_img_classfication_increase":["white","black","extension_no_attack"],
+  "infrared_ray_target_detection_increase":["white","black","extension_no_attack"],
+  "infrared_ray_target_trace_increase":["white","black","extension_no_attack"],
+  "text_analysis_increase":["black"],
+  "text_named_entity_increase":["black"],
+  "asr_asr_recognition_increase":["white"]
+}

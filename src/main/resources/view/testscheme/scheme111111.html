@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Demo</title>
+    <!-- 请勿在项目正式环境中引用该 layui.css 地址 -->
+    <link href="//unpkg.com/layui@2.8.17/dist/css/layui.css" rel="stylesheet">
+</head>
+<body>
+
+<p>开启偶数行背景色:</p>
+<div class="layui-form"  style="height: 40px"><input type="checkbox" name="BBB" title="选中" lay-skin="tag" checked>全选</div>
+<table class="layui-table" lay-even>
+    <colgroup>
+        <col width="160">
+        <col width="160">
+        <col>
+    </colgroup>
+    <thead>
+    <tr>
+        <th>选项</th>
+        <th>被测对象模型</th>
+        <th>被测对象模态</th>
+        <th>category</th>
+        <th>是否生成运行任务</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td><div  style="height: 40px"><input style="display: block" type="checkbox" name="AAA"  checked></div></td>
+        <td>黑盒</td>
+        <td> 可见光:
+            <div  style="height: 40px"><input style="display: block" type="checkbox" name="AAA"   checked>图像分类</div>
+            <div  style="height: 35px"  ><input style="display: block" type="checkbox" name="AAA"   checked>目标检测</div>
+
+            <div  style="height: 20px;  margin-top:20px">红外图像:</div>
+            <div  style="height: 40px"><input style="display: block" type="checkbox" name="AAA"   checked>图像分类</div>
+            <div  style="height: 35px"><input style="display: block" type="checkbox" name="AAA"   checked>目标检测</div>
+
+            <div  style="height: 20px;  margin-top:20px">文本:</div>
+            <div  style="height: 40px"><input style="display: block" type="checkbox" name="AAA"   checked>情感分析</div>
+            <div  style="height: 35px"><input style="display: block" type="checkbox" name="AAA"   checked>命名实体识别</div>
+        </td>
+        <td>有朋至远方来，不亦乐乎</td>
+        <td>有朋至远方来，不亦乐乎</td>
+    </tr>
+    <tr>
+        <td><div class="layui-form" style="height: 40px"><input style="display: block" type="checkbox" name="BBB"  checked></div></td>
+        <td>白盒</td>
+        <td>华夏</td>
+        <td>穷则独善其身，达则兼济天下</td>
+        <td>穷则独善其身，达则兼济天下</td>
+    </tr>
+    <tr>
+        <td><div class="layui-form" style="height: 40px"><input style="display: block" type="checkbox" name="CCC"  checked></div></td>
+        <td>数据集</td>
+        <td>华夏</td>
+        <td>朴素而天下莫能与之争美</td>
+        <td>朴素而天下莫能与之争美</td>
+    </tr>
+    </tbody>
+</table>
+
+</form>
+</body>
+</html>

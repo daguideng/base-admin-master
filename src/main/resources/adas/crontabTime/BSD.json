@@ -1,0 +1,20 @@
+{
+  "source":"C-NCAP 2021 BSD",
+  "preset_id":"64db3f1a53529ca687eae97f",
+  "user_id":"31f3-5092-a4b5-53a9-a9e2",
+  "scene_ids":[
+    "BSD001",
+    "BSD002",
+    "BSD003",
+    "BSD004",
+    "BSD005",
+    "BSD006",
+    "BSD007",
+    "BSD008",
+    "BSD009",
+    "BSD010",
+    "BSD011",
+    "BSD012"
+  ]
+
+}

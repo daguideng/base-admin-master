@@ -1,0 +1,21 @@
+{
+  "name": "非对抗-雷达-信号分类",
+  "descript": "非对抗-雷达-信号分类",
+  "extension_method": "extension_no_attack",
+  "test_items": [
+    {
+      "params": {
+        "random": {
+          "width": 10
+        },
+        "gauss": {
+          "mean": 0,
+          "var": 0
+        },
+        "poisson": {
+
+        }
+      }
+    }
+  ]
+}

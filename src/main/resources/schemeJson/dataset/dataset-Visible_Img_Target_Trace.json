@@ -1,0 +1,45 @@
+{
+  "name": "可见光-目标跟踪-0701114413",
+  "category": "665da4a56475ed000a4be99c",
+  "tested_type": "dataset",
+  "tested_modality": "visible_img",
+  "tested_task": "target_trace",
+  "test_items": [
+    {
+      "id": "1776-aac5-a65a-9bf8-0282",
+      "name": "数据集质量评估",
+      "tool_name": "数据集质量评估",
+      "test_type": "data_quality_eval",
+      "tool": "data_quality_eval",
+      "params": {
+        "quality_eval": {
+          "expected_data_num": 50,
+          "expected_data_categories_num": 5
+        }
+      }
+    },
+    {
+      "id": "5bbf-1512-c6e2-b73c-0568",
+      "name": "数据集充分性测试",
+      "tool_name": "数据集充分性测试",
+      "test_type": "img_coverage_trace",
+      "tool": "img_coverage_trace",
+      "params": {
+        "sufficiency": {
+          "NC-threshold": 0,
+          "KMNC-k": 3,
+          "TKNC-k": 3,
+          "TKNP-k": 3
+        }
+      },
+      "algorithm": "6680c6e7d62149000bea333b",
+      "algorithm_name": "白盒-可见光-目标跟踪-multiple-0630104545"
+    }
+  ],
+  "algorithm_model": "",
+  "algorithm": "",
+  "datasets": [
+    "668226a8d62149041a4125c2"
+  ],
+  "description": "可见光-目标跟踪-0701114413"
+}

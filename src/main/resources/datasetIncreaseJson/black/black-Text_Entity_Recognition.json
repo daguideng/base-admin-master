@@ -1,0 +1,13 @@
+{
+  "name":"命名实体-黑盒对抗增广",
+  "extension_method":"extension_black_attack",
+  "alg_id":"6512ef05e5941e00019ea67f",
+  "test_items":[
+    {
+      "params":{
+
+      }
+    }
+  ],
+  "descript":"命名实体-黑盒对抗增广"
+}

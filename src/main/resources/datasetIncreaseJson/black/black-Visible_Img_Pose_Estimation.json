@@ -1,0 +1,22 @@
+{
+  "name": "黑盒对抗-可见光-姿态估计",
+  "descript": "黑盒对抗-可见光-姿态估计",
+  "extension_method": "extension_black_attack",
+  "alg_id": "66a1fc829d331b000b85f466",
+  "test_items": [
+    {
+      "params": {
+        "BoundaryAttack": {
+          "delta": 0.1,
+          "epsilon": 0.01,
+          "step_adapt": 0.667,
+          "max_iter": 10,
+          "num_trial": 10,
+          "sample_size": 10,
+          "init_size": 20,
+          "confidence": 0.1
+        }
+      }
+    }
+  ]
+}

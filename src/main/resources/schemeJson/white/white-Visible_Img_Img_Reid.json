@@ -1,0 +1,25 @@
+{
+  "name": "白盒-test-行人重识别-0618231630",
+  "category": "6672b59cd82a2a000bfc697f",
+  "tested_type": "algorithm",
+  "tested_modality": "visible_img",
+  "tested_task": "img_reid",
+  "test_items": [
+    {
+      "id": "ea5e-bf25-2b74-788a-2c1a",
+      "name": "基础性能测试",
+      "tool_name": "基础性能测试",
+      "test_type": "img_reid_base",
+      "tool": "img_reid_base",
+      "params": {
+
+      }
+    }
+  ],
+  "algorithm_model": "white",
+  "algorithm": "6671a4d6d82a2a000bfc6952",
+  "datasets": [
+    "66713018d82a2a000ab781b2"
+  ],
+  "description": "白盒-test-行人重识别-0618231630"
+}

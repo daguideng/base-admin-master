@@ -1,0 +1,142 @@
+{
+  "name": "黑盒-可见光-姿态估计",
+  "category": "665da4a56475ed000a4be99c",
+  "tested_type": "algorithm",
+  "tested_modality": "visible_img",
+  "tested_task": "pose_estimation",
+  "test_items": [
+    {
+      "id": "1777-e275-137a-7f12-1bf2",
+      "name": "基础性能测试",
+      "tool_name": "基础性能测试",
+      "test_type": "img_pose_estimation_base",
+      "tool": "img_pose_estimation_base",
+      "params": {
+
+      }
+    },
+    {
+      "id": "3a17-8a25-f37c-055b-5fa9",
+      "name": "安全性测试",
+      "tool_name": "安全性测试",
+      "test_type": "img_pose_estimation",
+      "tool": "img_pose_estimation",
+      "params": {
+        "BoundaryAttack": {
+          "delta": 0.1,
+          "epsilon": 0.01,
+          "step_adapt": 0.667,
+          "max_iter": 10,
+          "num_trial": 10,
+          "sample_size": 10,
+          "init_size": 20,
+          "confidence": 0.1
+        }
+      }
+    },
+    {
+      "id": "7d7f-ed6b-6669-f1b5-2d18",
+      "name": "干扰鲁棒性测试",
+      "tool_name": "干扰鲁棒性测试",
+      "test_type": "img_robustness_pose_estimation",
+      "tool": "img_robustness_pose_estimation",
+      "params": {
+        "random": {
+          "width": 10
+        },
+        "tone": {
+          "width": 2,
+          "gap": 25
+        },
+        "elect": {
+          "width": 2,
+          "gap": 30
+        },
+        "ground": {
+          "width": 2,
+          "gap": 30
+        },
+        "power": {
+          "width": 2,
+          "gap": 25,
+          "hotpiexl": 40
+        },
+        "gauss": {
+          "mean": 0,
+          "var": 0
+        },
+        "poisson": {
+
+        },
+        "hue": {
+          "intensity": 10
+        },
+        "luminance": {
+          "intensity": 10
+        },
+        "saturation": {
+          "intensity": 10
+        },
+        "sp": {
+          "amount": 0.01,
+          "prob": 0.01
+        }
+      }
+    },
+    {
+      "id": "9ae5-345a-46ab-0abf-b1e9",
+      "name": "数据分布鲁棒性测试",
+      "tool_name": "数据分布鲁棒性测试",
+      "test_type": "img_dist_robustness_pose_estimation",
+      "tool": "img_dist_robustness_pose_estimation",
+      "params": {
+        "dist_robustness": {
+          "distribution_groups": 3
+        }
+      }
+    },
+    {
+      "id": "894b-43eb-7e0d-ebe8-daa4",
+      "name": "离群数据鲁棒性测试",
+      "tool_name": "离群数据鲁棒性测试",
+      "test_type": "img_outlier_robustness_pose_estimation",
+      "tool": "img_outlier_robustness_pose_estimation",
+      "params": {
+        "outlier_robustness": {
+          "outlier_ratio": 0.1
+        }
+      }
+    },
+    {
+      "id": "8271-2ba3-d31b-3a0e-2cb7",
+      "name": "可解释性测试",
+      "tool_name": "可解释性测试",
+      "test_type": "interpret_pose_estimation",
+      "tool": "interpret_pose_estimation",
+      "params": {
+        "LIME": {
+          "num_features": 100,
+          "num_samples": 150
+        }
+      }
+    },
+    {
+      "id": "52f2-84d6-1272-f405-d39b",
+      "name": "算法效率测试",
+      "tool_name": "算法效率测试",
+      "test_type": "img_pose_estimation_efficiency",
+      "tool": "img_pose_estimation_efficiency",
+      "params": {
+        "efficiency": {
+
+        }
+      }
+    }
+  ],
+  "algorithm_model": "black",
+  "algorithm": "66a1fc829d331b000b85f466",
+  "datasets": [
+    "66a2023a9d331b000ac27b07"
+  ],
+  "description": "黑盒-可见光-姿态估计"
+}

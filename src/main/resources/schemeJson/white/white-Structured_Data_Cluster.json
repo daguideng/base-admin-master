@@ -1,0 +1,24 @@
+{
+  "name": "下载-白盒-结构化数据-聚类",
+  "category": "665da4a56475ed000a4be99c",
+  "tested_type": "algorithm",
+  "tested_modality": "structured_data",
+  "tested_task": "cluster",
+  "test_items": [
+    {
+      "id": "e485-7311-c88a-1b3c-04a8",
+      "name": "基础性能测试",
+      "tool_name": "基础性能测试",
+      "test_type": "cluster_base",
+      "tool": "cluster_base",
+      "params": {
+
+      }
+    }
+  ],
+  "algorithm_model": "white",
+  "algorithm": "6678e50ea7984b048277d9ed",
+  "datasets": [
+    "6678e91da7984b048277da87"
+  ]
+}

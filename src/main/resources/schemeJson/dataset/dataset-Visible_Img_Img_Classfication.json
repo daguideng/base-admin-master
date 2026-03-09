@@ -1,0 +1,45 @@
+{
+  "name": "可见光-图像分类-multiple-0630105519",
+  "category": "665da4a56475ed000a4be99c",
+  "tested_type": "dataset",
+  "tested_modality": "visible_img",
+  "tested_task": "img_classfication",
+  "test_items": [
+    {
+      "id": "6159-e568-3c74-ea73-6e2f",
+      "name": "数据集质量评估",
+      "tool_name": "数据集质量评估",
+      "test_type": "data_quality_eval",
+      "tool": "data_quality_eval",
+      "params": {
+        "quality_eval": {
+          "expected_data_num": 50,
+          "expected_data_categories_num": 5
+        }
+      }
+    },
+    {
+      "id": "6582-1662-714b-b1a0-1bf9",
+      "name": "数据集充分性测试",
+      "tool_name": "数据集充分性测试",
+      "test_type": "img_coverage_classification",
+      "tool": "img_coverage_classification",
+      "params": {
+        "sufficiency": {
+          "NC-threshold": 0,
+          "KMNC-k": 3,
+          "TKNC-k": 3,
+          "TKNP-k": 3
+        }
+      },
+      "algorithm": "6680bf23d62149000a5c8964",
+      "algorithm_name": "白盒-可见光-图像分类-multiple-0630101242"
+    }
+  ],
+  "algorithm_model": "",
+  "algorithm": "",
+  "datasets": [
+    "6680c91fd62149000a5c8aa8"
+  ],
+  "description": "可见光-图像分类-multiple-0630105519"
+}

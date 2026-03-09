@@ -1,0 +1,97 @@
+{
+  "name": "白盒-可见光-图像分类-multiple-061822494",
+  "category": "666beeee280f56000a273893",
+  "tested_type": "algorithm",
+  "tested_modality": "visible_img",
+  "tested_task": "img_classfication",
+  "test_items": [
+    {
+      "id": "2609-0100-0ff1-906e-91eb",
+      "name": "基础性能测试",
+      "tool_name": "基础性能测试",
+      "test_type": "img_classification_base",
+      "tool": "img_classification_base",
+      "params": {
+
+      }
+    },
+    {
+      "id": "9819-ccce-8fc2-3d83-c480",
+      "name": "安全性测试",
+      "tool_name": "安全性测试",
+      "test_type": "img_classification",
+      "tool": "img_classification",
+      "params": {
+        "FGSM": {
+          "eps": 16,
+          "norm": "np.inf",
+          "targeted": "False",
+          "y": 0
+        }
+      }
+    },
+    {
+      "id": "f606-6b7d-1e9b-103f-b523",
+      "name": "鲁棒性测试",
+      "tool_name": "鲁棒性测试",
+      "test_type": "img_robustness_classification",
+      "tool": "img_robustness_classification",
+      "params": {
+        "random": {
+          "width": 10,
+          "map_confidence": 0.1
+        }
+      }
+    },
+    {
+      "id": "faeb-cc08-8259-3566-8b37",
+      "name": "覆盖率测试",
+      "tool_name": "覆盖率测试",
+      "test_type": "img_coverage_classification",
+      "tool": "img_coverage_classification",
+      "params": {
+        "coverage": {
+          "NC-threshold": 0,
+          "KMNC-k": 3,
+          "TKNC-k": 3,
+          "TKNP-k": 3
+        }
+      }
+    },
+    {
+      "id": "2157-a198-3d18-69d6-bd4f",
+      "name": "可解释性测试",
+      "tool_name": "可解释性测试",
+      "test_type": "interpret_classification",
+      "tool": "interpret_classification",
+      "params": {
+        "GradCAM": {
+          "cam_threshold": 80,
+          "gaussian_noise_variance": 0.02,
+          "rotation_angle_range": [
+            -45,
+            45
+          ],
+          "translation_x_range": [
+            -10,
+            10
+          ],
+          "translation_y_range": [
+            -10,
+            10
+          ],
+          "scale_range": [
+            0.8,
+            1.2
+          ]
+        }
+      }
+    }
+  ],
+  "algorithm_model": "white",
+  "algorithm": "66719e8ed82a2a000bfc6915",
+  "datasets": [
+    "6672783dd82a2a000bfc6963"
+  ],
+  "description": "白盒-可见光-图像分类-multiple-0618224940"
+}

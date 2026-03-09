@@ -1,0 +1,57 @@
+{
+  "name": "白盒-可见光-目标跟踪",
+  "category": "665da4a56475ed000a4be99c",
+  "tested_type": "algorithm",
+  "tested_modality": "visible_img",
+  "tested_task": "target_trace",
+  "test_items": [
+    {
+      "id": "19a0-2369-087d-c762-b8a7",
+      "name": "基础性能测试",
+      "tool_name": "基础性能测试",
+      "test_type": "img_trace_base",
+      "tool": "img_trace_base",
+      "params": {
+
+      }
+    },
+    {
+      "id": "2c3d-d78d-fc55-36ca-545c",
+      "name": "鲁棒性测试",
+      "tool_name": "鲁棒性测试",
+      "test_type": "img_robustness_trace",
+      "tool": "img_robustness_trace",
+      "params": {
+        "random": {
+          "width": 10,
+          "map_confidence": 0.1
+        },
+        "gauss": {
+          "mean": 0,
+          "var": 0,
+          "map_confidence": 0.1
+        }
+      }
+    },
+    {
+      "id": "717c-523f-60d2-8d55-e0fa",
+      "name": "覆盖率测试",
+      "tool_name": "覆盖率测试",
+      "test_type": "img_coverage_trace",
+      "tool": "img_coverage_trace",
+      "params": {
+        "coverage": {
+          "NC-threshold": 0,
+          "KMNC-k": 3,
+          "TKNC-k": 3,
+          "TKNP-k": 3
+        }
+      }
+    }
+  ],
+  "algorithm_model": "white",
+  "algorithm": "668226c5d62149041a4125ca",
+  "datasets": [
+    "6680c955d62149000a5c8b23"
+  ]
+}

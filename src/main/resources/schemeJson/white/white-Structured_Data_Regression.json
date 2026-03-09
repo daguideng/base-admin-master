@@ -1,0 +1,25 @@
+{
+  "name": "白盒-结构化数据-回归-0618225327",
+  "category": "666beeee280f56000a273893",
+  "tested_type": "algorithm",
+  "tested_modality": "structured_data",
+  "tested_task": "regression",
+  "test_items": [
+    {
+      "id": "9061-65d6-c922-c360-4e4a",
+      "name": "基础性能测试",
+      "tool_name": "基础性能测试",
+      "test_type": "general_ml",
+      "tool": "general_ml",
+      "params": {
+
+      }
+    }
+  ],
+  "algorithm_model": "white",
+  "algorithm": "66719f6dd82a2a000ab78268",
+  "datasets": [
+    "6671345fd82a2a000bfc6907"
+  ],
+  "description": "白盒-结构化数据-回归-0618225327"
+}

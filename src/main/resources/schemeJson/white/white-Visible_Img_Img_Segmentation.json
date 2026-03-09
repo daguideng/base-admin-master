@@ -1,0 +1,25 @@
+{
+  "name": "白盒-可见光-语义分割-0618231620",
+  "category": "666beeee280f56000a273893",
+  "tested_type": "algorithm",
+  "tested_modality": "visible_img",
+  "tested_task": "img_segmentation",
+  "test_items": [
+    {
+      "id": "a49b-a807-ab89-f481-afb0",
+      "name": "基础性能测试",
+      "tool_name": "基础性能测试",
+      "test_type": "img_segmentation_base",
+      "tool": "img_segmentation_base",
+      "params": {
+
+      }
+    }
+  ],
+  "algorithm_model": "white",
+  "algorithm": "6671a4cad82a2a000ab7829c",
+  "datasets": [
+    "66713211d82a2a000ab781c0"
+  ],
+  "description": "白盒-可见光-语义分割-0618231620"
+}

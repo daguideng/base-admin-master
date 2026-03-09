@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.huanzi.qch.baseadmin.dao.Adas_move_casesMapper">
+  <resultMap id="BaseResultMap" type="cn.huanzi.qch.baseadmin.entity.Adas_move_cases">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="case_id" jdbcType="VARCHAR" property="case_id" />
+    <result column="scenario_editor_name" jdbcType="VARCHAR" property="scenario_editor_name" />
+    <result column="scenario_editor_id" jdbcType="VARCHAR" property="scenario_editor_id" />
+    <result column="choice_laws" jdbcType="VARCHAR" property="choice_laws" />
+    <result column="select_case" jdbcType="VARCHAR" property="select_case" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="remark1" jdbcType="VARCHAR" property="remark1" />
+    <result column="remark2" jdbcType="VARCHAR" property="remark2" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="create_time" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="update_time" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, case_id, scenario_editor_name, scenario_editor_id, choice_laws, select_case, 
+    remark, remark1, remark2, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from adas_move_cases
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectBySelectCase" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from adas_move_cases
+    where select_case = #{select_case,jdbcType=VARCHAR}
+  </select>
+
+
+
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from adas_move_cases
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.huanzi.qch.baseadmin.entity.Adas_move_cases">
+    insert into adas_move_cases (case_id, scenario_editor_name,
+      scenario_editor_id, choice_laws, select_case, 
+      remark, remark1, remark2, 
+      create_time, update_time)
+    values (#{case_id,jdbcType=VARCHAR}, #{scenario_editor_name,jdbcType=VARCHAR},
+      #{scenario_editor_id,jdbcType=VARCHAR}, #{choice_laws,jdbcType=VARCHAR}, #{select_case,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{remark1,jdbcType=VARCHAR}, #{remark2,jdbcType=VARCHAR}, 
+      #{create_time,jdbcType=TIMESTAMP}, #{update_time,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.huanzi.qch.baseadmin.entity.Adas_move_cases">
+    insert into adas_move_cases
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="case_id != null">
+        case_id,
+      </if>
+      <if test="scenario_editor_name != null">
+        scenario_editor_name,
+      </if>
+      <if test="scenario_editor_id != null">
+        scenario_editor_id,
+      </if>
+      <if test="choice_laws != null">
+        choice_laws,
+      </if>
+      <if test="select_case != null">
+        select_case,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="remark1 != null">
+        remark1,
+      </if>
+      <if test="remark2 != null">
+        remark2,
+      </if>
+      <if test="create_time != null">
+        create_time,
+      </if>
+      <if test="update_time != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="case_id != null">
+        #{case_id,jdbcType=VARCHAR},
+      </if>
+      <if test="scenario_editor_name != null">
+        #{scenario_editor_name,jdbcType=VARCHAR},
+      </if>
+      <if test="scenario_editor_id != null">
+        #{scenario_editor_id,jdbcType=VARCHAR},
+      </if>
+      <if test="choice_laws != null">
+        #{choice_laws,jdbcType=VARCHAR},
+      </if>
+      <if test="select_case != null">
+        #{select_case,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="remark1 != null">
+        #{remark1,jdbcType=VARCHAR},
+      </if>
+      <if test="remark2 != null">
+        #{remark2,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null">
+        #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        #{update_time,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.huanzi.qch.baseadmin.entity.Adas_move_cases">
+    update adas_move_cases
+    <set>
+      <if test="case_id != null">
+        case_id = #{case_id,jdbcType=VARCHAR},
+      </if>
+      <if test="scenario_editor_name != null">
+        scenario_editor_name = #{scenario_editor_name,jdbcType=VARCHAR},
+      </if>
+      <if test="scenario_editor_id != null">
+        scenario_editor_id = #{scenario_editor_id,jdbcType=VARCHAR},
+      </if>
+      <if test="choice_laws != null">
+        choice_laws = #{choice_laws,jdbcType=VARCHAR},
+      </if>
+      <if test="select_case != null">
+        select_case = #{select_case,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="remark1 != null">
+        remark1 = #{remark1,jdbcType=VARCHAR},
+      </if>
+      <if test="remark2 != null">
+        remark2 = #{remark2,jdbcType=VARCHAR},
+      </if>
+      <if test="create_time != null">
+        create_time = #{create_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update_time != null">
+        update_time = #{update_time,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.huanzi.qch.baseadmin.entity.Adas_move_cases">
+    update adas_move_cases
+    set case_id = #{case_id,jdbcType=VARCHAR},
+      scenario_editor_name = #{scenario_editor_name,jdbcType=VARCHAR},
+      scenario_editor_id = #{scenario_editor_id,jdbcType=VARCHAR},
+      choice_laws = #{choice_laws,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      remark1 = #{remark1,jdbcType=VARCHAR},
+      remark2 = #{remark2,jdbcType=VARCHAR},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      update_time = #{update_time,jdbcType=TIMESTAMP}
+    where select_case = #{select_case,jdbcType=VARCHAR}
+  </update>
+</mapper>

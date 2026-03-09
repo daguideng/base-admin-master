@@ -1,0 +1,25 @@
+{
+  "name": "黑盒-结构化数据-回归-0618225324",
+  "category": "666beeee280f56000a273893",
+  "tested_type": "algorithm",
+  "tested_modality": "structured_data",
+  "tested_task": "regression",
+  "test_items": [
+    {
+      "id": "3aa7-04db-d192-7a73-9068",
+      "name": "基础性能测试",
+      "tool_name": "基础性能测试",
+      "test_type": "general_ml",
+      "tool": "general_ml",
+      "params": {
+
+      }
+    }
+  ],
+  "algorithm_model": "black",
+  "algorithm": "66719f69d82a2a000ab78267",
+  "datasets": [
+    "6671345fd82a2a000bfc6907"
+  ],
+  "description": "黑盒-结构化数据-回归-0618225324"
+}

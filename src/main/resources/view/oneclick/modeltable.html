@@ -1,0 +1,519 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Demo</title>
+    <!-- 请勿在项目正式环境中引用该 layui.css 地址 -->
+    <!--
+    <link href="//unpkg.com/layui@2.8.17/dist/css/layui.css" rel="stylesheet">
+    -->
+    <!-- 引入layui css 文件 -->
+    <!--
+    <link href="https://cdn.staticfile.org/layui/2.8.1/css/layui.css" rel="stylesheet">
+    -->
+    <link th:href="@{/lib/layui-v2.8.1/css/layui.css}" rel="stylesheet" type="text/css"/>
+
+    <script src="../lib/layui-v2.8.1/layui.js" type="text/javascript" charset="UTF-8"></script>
+</head>
+
+<body>
+
+
+<form class="layui-form" lay-filter="form-submit" id="scheme_id">
+
+
+    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
+        <legend>登录信息</legend>
+    </fieldset>
+
+    <!--
+    <form class="layui-form" style="margin: 0 auto;max-width: 460px;padding-top: 40px;">
+    -->
+    <div class="layui-form-item">
+        <label class="layui-form-label"><span class="red">*</span>账号:</label>
+        <div class="layui-input-block">
+            <input type="text" placeholder="请填写账号" class="layui-input" required="" name="username"
+                   id="username" lay-verify="required">
+
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label"><span class=".red{color:red }">*</span>密码:</label>
+        <div class="layui-input-block">
+            <input type="text" placeholder="请填写密码" class="layui-input" required="" name="password"
+                   id="password" lay-verify="required">
+        </div>
+    </div>
+
+
+    <div class="layui-form-item">
+        <label class="layui-form-label"><span class="red">*</span>后端api:</label>
+        <div class="layui-input-block">
+            <input type="text" placeholder="请填写API" class="layui-input" required="" name="api"
+                   id="api" lay-verify="required">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">category:</label>
+        <div class="layui-input-block">
+            <input type="text" placeholder="请填写category,默认为：生成测试方案的自定义文件夹" class="layui-input" required=""
+                   name="category" id="category">
+        </div>
+    </div>
+
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">任务开关:</label>
+        <div class="layui-input-block">
+            <input type="checkbox" name="istask" title="开启|关闭" lay-skin="switch" id="istask">
+        </div>
+    </div>
+
+
+
+
+    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
+        <legend>模型上传</legend>
+    </fieldset>
+    <!--
+    <form class="layui-form layui-form-pane" action="">
+    -->
+    <!--
+    <form class="layui-form" lay-filter="type-radio">
+    -->
+
+
+
+<div class="layui-form" >
+    <div class="layui-form-item">
+        <!-- 版本输入框部分 -->
+        <div class="layui-input-inline">
+            <label class="layui-form-label">版本</label>
+            <div class="layui-input-block">
+                <input type="text" id="searchversion" name="searchversion" class="layui-input" placeholder="请输入版本查询条件"  maxlength="120">
+            </div>
+        </div>
+        <!-- 选择框部分 -->
+        <div class="layui-input-inline">
+            <div class="layui-input-block">
+                <select id="mySlectType" name="mySlectType" style="width:650px;">
+                <option value="">请选择</option>
+                    <option value="model">算法</option>
+                    <option value="dataset">数据集</option>
+                </select>
+            </div>
+        </div>
+        <!-- 按钮部分 -->
+        <button class="layui-btn layui-btn-sm" id='queryversion'>搜索</button>
+        <button class="layui-btn layui-btn-sm" id='batupdate'>批量上传</button>
+    </div>
+</div>
+
+
+
+
+
+<table id="model_table" class="layui-hide" lay-filter="model_table"></table>
+
+</form>
+
+<!-- 头部工具 -->
+<script type="text/html" id="toolbarDemo">
+    <div class="layui-btn-container">
+        <div class="layui-form">
+            <div class="layui-form-item">
+                <button class="layui-btn layui-btn-sm" lay-event="addmodel">新增</button>
+            </div>
+        </div>
+
+        <!--
+        <button class="layui-btn layui-btn-sm" lay-event="getCheckData">获取选中行数据</button>
+        <button class="layui-btn layui-btn-sm" lay-event="getCheckLength">获取选中数目</button>
+        <button class="layui-btn layui-btn-sm" lay-event="isAll">验证是否全选</button>
+        -->
+
+    </div>
+</script>
+<!-- 表格中的按键 -->
+<script type="text/html" id="barDemo">
+    <!--
+    <a class="layui-btn layui-btn-xs" lay-event="add">增加</a>
+    -->
+    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+
+
+<link th:href="@{/lib/layui-v2.8.1/css/layui.css}" rel="stylesheet" type="text/css"/>
+<script src="../lib/layui-v2.8.1/layui.js" type="text/javascript" charset="UTF-8"></script>
+
+<script th:inline="none">
+    layui.use('table', function(){
+        var table = layui.table;
+        var layer = layui.layer;
+     //   var element = layui.element;
+     //   var layer = layui.layer;
+     //   var form = layer.form;
+     //   var $ = layui.jquery;
+
+        table.render({
+            elem: '#model_table',
+            url: '/baseadmin/oneclick/showmodel', // 数据接口
+            toolbar: '#toolbarDemo', // 表格头部工具栏
+            defaultToolbar: ['filter', 'exports', 'print', { // 自定义头部工具栏右侧图标
+                title: '提示',
+                layEvent: 'LAYTABLE_TIPS',
+                icon: 'layui-icon-tips'
+            }],
+            page: true, // 开启分页
+            even: true, // 开启偶数行背景
+            skin: 'line', // 表格风格
+            totalRow: true, // 开启合计行
+            cols: [[ // 表头
+                {type: 'checkbox', fixed: 'left'}, // 多选框
+                {field:'id', title:'编号', width:'6%', fixed: 'left', totalRowText: '合计'}, // 编号列
+                {field: 'version', title: '版本', edit: 'text'}, // 版本列（可编辑）
+                {field: 'sort', title: '分类', totalRow: true}, // 分类列
+                {field: 'model_name', title: '算法名称', totalRow: true}, // 算法名称列
+                {fixed: 'right', title:'操作', toolbar: '#barDemo'} // 操作列
+            ]],
+            done: function(res, curr, count){
+                console.log(res, curr, count);
+            }
+
+        });
+
+
+        // 监听头部工具栏事件
+        table.on('toolbar(model_table)', function(obj){
+            var checkStatus = table.checkStatus(obj.config.id);
+            switch(obj.event){
+                case 'getCheckData':
+                    var data = checkStatus.data;
+                    layer.alert(JSON.stringify(data));
+                    break;
+                case 'getCheckLength':
+                    var data = checkStatus.data;
+                    layer.msg('选中了：'+ data.length + ' 个');
+                    break;
+                case 'isAll':
+                    layer.msg(checkStatus.isAll ? '全选': '未全选');
+                    break;
+
+               // case 'LAYTABLE_TIPS':
+               //     layer.alert('这是工具栏右侧自定义的一个图标按钮');
+                //    break;
+            }
+        });
+
+        // 监听表格内操作按钮事件
+        table.on('tool(model_table)', function(obj){
+            var data = obj.data;
+            if(obj.event === 'del'){
+                layer.confirm('真的删除行么', function(index){
+                    obj.del();
+                    layer.close(index);
+                });
+            } else if(obj.event === 'edit'){
+                layer.prompt({
+                    formType: 2,
+                    value: data.model_name
+                }, function(value, index){
+                    obj.update({
+                        model_name: value // 注意这里应该是 model_name 而不是 name
+                    });
+                    layer.close(index);
+                });
+            } else if(obj.event === 'add'){
+                // 添加操作的代码，可以根据需求进行具体实现
+              //  console.log("Add operation clicked");
+            }
+
+     });
+
+
+
+
+    });
+</script>
+
+
+<script>
+    layui.use(['layer', 'form', 'table','upload'], function(){
+     var layer = layui.layer;
+     var form = layui.form;
+     var $ = layui.jquery;
+     var table = layui.table;
+     var upload = layui.upload;
+     var formHtmladd = `
+        <form class="layui-form" id="addForm" style="padding: 25px;margin-top:0">
+            <div class="layui-form-item">
+                <label class="layui-form-label">版本：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="version" id="version" required lay-verify="required" placeholder="请输入版本号" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">ai类型：</label>
+                <div class="layui-input-block">
+                <div class="layui-form">
+                <select id="myType" name="type">
+                <option value="">请选择</option>
+                <option value="model">算法</option>
+                <option value="dataset">数据集</option>
+            </select>
+             </div>
+            </div>
+            </div>
+
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">类型：</label>
+                <div class="layui-input-block">
+                <div class="layui-form">
+                <select id="myMethodtype" name="methodtype">
+                <option value="">请选择</option>
+             <optgroup label="可见光图像">
+                <option value="visible_img.img_classfication|可见光图像-图像分类">可见光图像-图像分类</option>
+                <option value="visible_img.target_detection|可见光图像-目标检测">可见光图像-目标检测</option>
+                <option value="visible_img.target_trace|可见光图像-目标跟踪">可见光图像-目标跟踪</option>
+                <option value="visible_img.pose_estimation|见光图像-姿态估计">可见光图像-姿态估计</option>
+                <option value="visible_img.img_reid|可见光图像-行人重识别">可见光图像-行人重识别</option>
+                <option value="visible_img.img_segmentation|可见光图像-语义分割">可见光图像-语义分割</option>
+              </optgroup>
+            <optgroup label="红外图像">
+                <option value="infrared_ray.img_classfication|红外图像-图像分类">红外图像-图像分类</option>
+                <option value="infrared_ray.target_detectio|红外图像-目标检测">红外图像-目标检测</option>
+                <option value="infrared_ray.target_trace|红外图像-目标跟踪">红外图像-目标跟踪</option>
+            </optgroup>
+            <optgroup label="视频">
+                <option value="video.target_detection|视频-目标检测">视频-目标检测</option>
+                <option value="video.target_trace|视频-目标跟踪">视频-目标跟踪</option>
+            </optgroup>
+            <optgroup label="雷达">
+                <option value="radar.signal_classification|雷达-目标检测">雷达-目标检测</option>
+            </optgroup>
+            <optgroup label="文本">
+                <option value="text.sen_analysis|文本-情感分析">文本-情感分析</option>
+                <option value="text.entity_recognition|文本-命名实体识别">文本-命名实体识别</option>
+            </optgroup>
+            <optgroup label="语音">
+                <option value="asr.asr_recognition|语音-语音识别">语音-语音识别</option>
+            </optgroup>
+            <optgroup label="结构化数据">
+                <option value="structured_data.classification|结构化数据-分类">结构化数据-分类</option>
+                <option value="structured_data.regression|结构化数据-回归">结构化数据-回归</option>
+                <option value="structured_data.cluster|结构化数据-聚类">结构化数据-聚类</option>
+            </optgroup>
+             </select>
+             </div>
+            </div>
+            </div>
+                  <div class="layui-form-item">
+                            <label class="layui-form-label">算法上传:</label>
+                            <div class="layui-input-block">
+                                <div class="layui-btn-container">
+                                    <button type="button" class="layui-btn layui-btn-normal"
+                                            id="uploadmodelFile">选择文件
+                                    </button>
+                                    <button type="button" class="layui-btn" id="uploadModel">开始上传</button>
+                                    <input type="text" placeholder="请填写上传文件的绝对路径" class="layui-input" required="" name="path"
+                       id="path">
+                                </div>
+                            </div>
+                            <div class="layui-input-block">
+            </div>
+                   </div>
+
+              <!--
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit lay-filter="submitForm">提交</button>
+                    <button type="button" class="layui-btn layui-btn-primary" onclick="layer.closeAll();">取消</button>
+                </div>
+            </div>
+              -->
+        </form>
+    `;
+
+
+     var submitting = false; // Flag to prevent multiple submissions
+     // Listen for add model button click event
+     $('button[lay-event="addmodel"]').on('click', function(){
+         if (submitting) return; // Prevent multiple submissions
+         // Open layer dialog
+         layer.open({
+             type: 1,
+             title: '添加模型',
+             content: formHtmladd,
+             btn: false, // Do not display default buttons
+             shadeClose: true, // Clicking the shade closes the dialog
+             closeBtn: 1, // Do not display the close button
+             offset: ['5px', '460px'],
+             maxmin: true, // Allow maximization and minimization
+             zIndex: layer.zIndex, // Set z-index to ensure it's on top
+             success: function(layero, index) {
+                 // After the dialog opens successfully, render the form and register submit event listeners
+
+                 // Listen for form submission event
+                    var upload = layui.upload;
+                    var form = layui.form;
+                 var upload = layui.upload;
+        //img_classfication
+        upload.render({
+            elem: '#uploadmodelFile',
+            url: '/baseadmin/oneclick/v2uploadfile', // 此处配置你自己的上传接口即可
+            auto: false,
+            accept: 'file',
+            multiple: true,
+            exts: 'zip',
+            data: {
+                img_classfication: function () {
+                    return $('#path').val();
+                },
+                type: function () {
+                    return $('#myType').val();
+                },
+                methodtype: function () {
+                    return $('#myMethodtype').val();
+                },
+                version: function () {
+                    return $('#version').val();
+                }
+            },
+            bindAction: '#uploadModel',
+            done: function (res) {
+
+                console.log("res--->",res)
+                if(res.code ===0){
+                    $("#path").val(res.file);
+                }
+
+            }
+        });
+
+
+                 form.render(); // Render form elements
+
+
+
+             }
+         });
+     });
+
+
+
+
+
+
+
+ });
+
+</script>
+
+
+
+<script>
+
+
+    layui.use(['layer', 'form', 'table','upload'], function(){
+    var layer = layui.layer;
+    var form = layui.form;
+    var $ = layui.jquery;
+    var table = layui.table;
+    var upload = layui.upload;
+
+   $('#queryversion').on('click', function(){
+   // console.log("submitting",submitting)
+
+   // 获取表单数据
+   var searchversion = $('#searchversion').val();
+   var mySlectType = $('#mySlectType').val();
+
+   console.log("searchversion",searchversion)
+
+   // 请求数据
+   table.reload('model_table', {
+       url: '/baseadmin/oneclick/versinquery',
+       method: 'get',
+       where: { searchversion: searchversion,mySlectType:mySlectType },
+       page: { curr: 1 } // 刷新时重置到第一页
+   });
+
+
+
+  });
+
+
+
+  });
+
+
+</script>
+
+
+<script>
+
+    layui.use(['layer', 'form', 'table', 'upload'], function() {
+    var layer = layui.layer;
+    var form = layui.form;
+    var $ = layui.jquery;
+    var table = layui.table;
+    var upload = layui.upload;
+
+
+    $('#batupdate').on('click', function() {
+        var data = table.checkStatus('model_table').data.map(item => item.id);
+        console.log("data", data);
+        if (data.length === 0) {
+            layer.msg('请先选择要上传的数据');
+            return;
+        }
+
+        $.ajax({
+            url: '/baseadmin/oneclick/batchuploadmodel', // 替换为实际的接口地址
+            type: 'POST',
+            data: JSON.stringify({ ids: data }),
+            contentType: 'application/json',
+            success: function(res) {
+                if (res.code === 0) {
+                    layer.msg('上传成功');
+                    // table.reload('model_table');
+                } else {
+                    layer.msg('上传失败');
+                }
+                console.log('请求成功:', res);
+            },
+            error: function(xhr, status, error) {
+                console.error('请求失败:', status, error);
+            }
+        });
+    });
+});
+
+
+
+</script>
+
+
+
+<script>
+    layui.use('form', function(){
+        var form = layui.form;
+
+        // 监听表单的选择事件
+        form.on('select(mySelect)', function(data){
+            console.log(data.value); // 获取选择的值
+        });
+    });
+</script>
+
+
+
+
+
+</body>
+
+</html>

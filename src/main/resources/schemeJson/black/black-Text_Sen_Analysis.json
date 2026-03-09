@@ -1,0 +1,35 @@
+{
+  "name": "黑盒-test-文本-情感分析-0618225119",
+  "category": "666beed5280f56000a273892",
+  "tested_type": "algorithm",
+  "tested_modality": "text",
+  "tested_task": "sen_analysis",
+  "test_items": [
+    {
+      "id": "a4cc-84cb-fcd7-3863-0b25",
+      "name": "基础性能测试",
+      "tool_name": "基础性能测试",
+      "test_type": "chinese_attack_accuracy",
+      "tool": "chinese_attack_accuracy",
+      "params": {
+
+      }
+    },
+    {
+      "id": "698b-7f9b-9604-f9bc-78e6",
+      "name": "安全性测试",
+      "tool_name": "安全性测试",
+      "test_type": "chinese_attack_adv_test",
+      "tool": "chinese_attack_adv_test",
+      "params": {
+
+      }
+    }
+  ],
+  "algorithm_model": "black",
+  "algorithm": "66719f2ad82a2a000ab7825e",
+  "datasets": [
+    "667133bed82a2a000bfc68f5"
+  ],
+  "description": "黑盒-test-文本-情感分析-0618225119"
+}

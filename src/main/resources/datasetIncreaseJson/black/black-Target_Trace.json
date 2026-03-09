@@ -1,0 +1,24 @@
+{
+  "name": "黑盒对抗-视频-目标跟踪",
+  "extension_method": "extension_black_attack",
+  "alg_id": "66700918cfe90b000aa1cfe8",
+  "test_items": [
+    {
+      "params": {
+        "BoundaryAttack": {
+          "delta": 0.1,
+          "epsilon": 0.01,
+          "step_adapt": 0.667,
+          "max_iter": 10,
+          "num_trial": 10,
+          "sample_size": 10,
+          "init_size": 20,
+          "confidence": 0.1,
+          "map_confidence": 0.1
+        }
+      }
+    }
+  ],
+  "descript":"黑盒对抗-视频-目标跟踪"
+
+}

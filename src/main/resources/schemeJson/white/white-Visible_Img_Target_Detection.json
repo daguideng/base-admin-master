@@ -1,0 +1,120 @@
+{
+  "name": "白盒-可见光图像-目标检测",
+  "category": "666beeee280f56000a273893",
+  "tested_type": "algorithm",
+  "tested_modality": "visible_img",
+  "tested_task": "target_detection",
+  "test_items": [
+    {
+      "id": "5510-e842-d75a-0103-73ec",
+      "name": "基础性能测试",
+      "tool_name": "基础性能测试",
+      "test_type": "img_detection_base",
+      "tool": "img_detection_base",
+      "params": {
+        "base": {
+          "map_confidence": 0.1
+        }
+      }
+    },
+    {
+      "id": "5d19-f7c0-bcee-3bb5-cc0f",
+      "name": "安全性测试",
+      "tool_name": "安全性测试",
+      "test_type": "img_detection",
+      "tool": "img_detection",
+      "params": {
+        "FGSM": {
+          "eps": 16,
+          "norm": "np.inf",
+          "map_confidence": 0.1
+        }
+      }
+    },
+    {
+      "id": "a854-b8d9-b3cb-24fd-9a91",
+      "name": "干扰鲁棒性测试",
+      "tool_name": "干扰鲁棒性测试",
+      "test_type": "img_robustness_detection",
+      "tool": "img_robustness_detection",
+      "params": {
+        "random": {
+          "width": 10,
+          "map_confidence": 0.1
+        }
+      }
+    },
+    {
+      "id": "d08c-3cca-8c45-1aa6-16a8",
+      "name": "数据分布鲁棒性测试",
+      "tool_name": "数据分布鲁棒性测试",
+      "test_type": "img_dist_robustness_detection",
+      "tool": "img_dist_robustness_detection",
+      "params": {
+        "dist_robustness": {
+          "map_confidence": 0.1,
+          "distribution_groups": 3
+        }
+      }
+    },
+    {
+      "id": "aa97-fe1d-0d62-6047-eff1",
+      "name": "离群数据鲁棒性测试",
+      "tool_name": "离群数据鲁棒性测试",
+      "test_type": "img_outlier_robustness_detection",
+      "tool": "img_outlier_robustness_detection",
+      "params": {
+        "outlier_robustness": {
+          "map_confidence": 0.1,
+          "outlier_ratio": 0.1
+        }
+      }
+    },
+    {
+      "id": "c4e8-a442-928a-6a4d-a69a",
+      "name": "覆盖率测试",
+      "tool_name": "覆盖率测试",
+      "test_type": "img_coverage_detection",
+      "tool": "img_coverage_detection",
+      "params": {
+        "coverage": {
+          "NC-threshold": 0,
+          "KMNC-k": 3,
+          "TKNC-k": 3,
+          "TKNP-k": 3
+        }
+      }
+    },
+    {
+      "id": "bd82-108a-6fde-1762-7d33",
+      "name": "可解释性测试",
+      "tool_name": "可解释性测试",
+      "test_type": "interpret_detection",
+      "tool": "interpret_detection",
+      "params": {
+        "LIME": {
+          "num_features": 100,
+          "num_samples": 150
+        }
+      }
+    },
+    {
+      "id": "929d-5800-6207-090e-88e8",
+      "name": "算法效率测试",
+      "tool_name": "算法效率测试",
+      "test_type": "img_detection_efficiency",
+      "tool": "img_detection_efficiency",
+      "params": {
+        "efficiency": {
+
+        }
+      }
+    }
+  ],
+  "algorithm_model": "white",
+  "algorithm": "666fd129cfe90b000aa1c92c",
+  "datasets": [
+    "66727638d82a2a000bfc695b"
+  ],
+  "description": "白盒-可见光图像-目标检测"
+}

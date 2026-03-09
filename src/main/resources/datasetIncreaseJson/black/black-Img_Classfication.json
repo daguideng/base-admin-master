@@ -1,0 +1,30 @@
+{
+  "name": "黑盒对抗-可见光图像-图像分类",
+  "extension_method": "extension_black_attack",
+  "alg_id": "666fa91ccfe90b000b1d1b09",
+  "test_items": [
+    {
+      "params": {
+        "BoundaryAttack": {
+          "delta": 0.1,
+          "epsilon": 0.01,
+          "step_adapt": 0.667,
+          "max_iter": 10,
+          "num_trial": 10,
+          "sample_size": 10,
+          "init_size": 20,
+          "confidence": 0.1,
+          "map_confidence": 0.1
+        },
+        "SquareAttack": {
+          "eps": 16,
+          "max_iter": 10,
+          "nb_restarts": 1,
+          "p_init": 0.8,
+          "norm": "np.inf"
+        }
+      }
+    }
+  ],
+  "descript": "黑盒对抗-可见光图像-图像分类"
+}

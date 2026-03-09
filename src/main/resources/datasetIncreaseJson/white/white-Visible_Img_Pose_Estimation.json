@@ -1,0 +1,36 @@
+{
+  "name": "白盒对抗-可见光-姿态估计",
+  "descript": "白盒对抗-可见光-姿态估计",
+  "extension_method": "extension_white_attack",
+  "alg_id": "66a1fc639d331b000ac27af7",
+  "test_items": [
+    {
+      "params": {
+        "FGSM": {
+          "eps": 16,
+          "norm": "np.inf"
+        },
+        "BIM": {
+          "eps": 16,
+          "eps_step": 2,
+          "max_iter": 10,
+          "norm": "np.inf"
+        },
+        "PGD": {
+          "eps": 16,
+          "eps_step": 2,
+          "max_iter": 10,
+          "norm": "np.inf",
+          "nb_random_init": 5
+        },
+        "MI-FGSM": {
+          "eps": 16,
+          "eps_step": 2,
+          "max_iter": 10,
+          "norm": "np.inf",
+          "decay": 0.5
+        }
+      }
+    }
+  ]
+}

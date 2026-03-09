@@ -1,0 +1,25 @@
+{
+  "name": "白盒-结构化数据-分类-binary-0618225321",
+  "category": "666beeee280f56000a273893",
+  "tested_type": "algorithm",
+  "tested_modality": "structured_data",
+  "tested_task": "classification",
+  "test_items": [
+    {
+      "id": "0ebe-ef83-91bd-9d19-80a0",
+      "name": "基础性能测试",
+      "tool_name": "基础性能测试",
+      "test_type": "general_ml",
+      "tool": "general_ml",
+      "params": {
+
+      }
+    }
+  ],
+  "algorithm_model": "white",
+  "algorithm": "66719f66d82a2a000bfc6920",
+  "datasets": [
+    "66713434d82a2a000bfc6902"
+  ],
+  "description": "白盒-结构化数据-分类-binary-0618225321"
+}

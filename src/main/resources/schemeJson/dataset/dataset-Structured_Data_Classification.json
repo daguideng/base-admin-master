@@ -1,0 +1,27 @@
+{
+  "name": "数据集-结构化数据-分类-binary-0630110551",
+  "category": "665da4a56475ed000a4be99c",
+  "tested_type": "dataset",
+  "tested_modality": "structured_data",
+  "tested_task": "classification",
+  "test_items": [
+    {
+      "id": "cb00-ccbe-4b49-32fd-3086",
+      "name": "数据集质量评估",
+      "tool_name": "数据集质量评估",
+      "test_type": "data_quality_eval",
+      "tool": "data_quality_eval",
+      "params": {
+        "quality_eval": {
+          "expected_data_num": 50
+        }
+      }
+    }
+  ],
+  "algorithm_model": "",
+  "algorithm": "",
+  "datasets": [
+    "6680cb93d62149000a5ce586"
+  ],
+  "description": "数据集-结构化数据-分类-binary-0630110551"
+}

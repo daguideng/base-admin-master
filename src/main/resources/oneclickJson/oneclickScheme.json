@@ -1,0 +1,11 @@
+{
+  "visible_img_img_classfication_scheme":["white","black","dataset"],
+  "visible_img_target_detection_scheme":["white","black","dataset"],
+  "visible_img_target_trace_scheme":["white","black","dataset"],
+  "infrared_ray_img_classfication_scheme":["white","black","dataset"],
+  "infrared_ray_target_detection_scheme":["white","black","dataset"],
+  "infrared_ray_target_trace_scheme":["white","black","dataset"],
+  "text_sen_analysis_scheme":["black"],
+  "text_entity_recognition_scheme":["black"],
+  "asr_recognition_scheme":["white"]
+}

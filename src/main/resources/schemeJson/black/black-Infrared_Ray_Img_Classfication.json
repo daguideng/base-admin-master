@@ -1,0 +1,65 @@
+{
+  "name": "黑盒-红外线-图像分类-multiple-061822490",
+  "category": "666beeee280f56000a273893",
+  "tested_type": "algorithm",
+  "tested_modality": "infrared_ray",
+  "tested_task": "img_classfication",
+  "test_items": [
+    {
+      "id": "1091-fdc3-7cca-9fdc-1ad4",
+      "name": "基础性能测试",
+      "tool_name": "基础性能测试",
+      "test_type": "img_classification_base",
+      "tool": "img_classification_base",
+      "params": {
+
+      }
+    },
+    {
+      "id": "5230-d092-4650-657a-9989",
+      "name": "安全性测试",
+      "tool_name": "安全性测试",
+      "test_type": "img_classification",
+      "tool": "img_classification",
+      "params": {
+        "BoundaryAttack": {
+          "delta": 0.1,
+          "epsilon": 0.01,
+          "step_adapt": 0.667,
+          "max_iter": 10,
+          "num_trial": 10,
+          "sample_size": 10,
+          "init_size": 20,
+          "confidence": 0.1,
+          "map_confidence": 0.1
+        },
+        "SquareAttack": {
+          "eps": 16,
+          "max_iter": 10,
+          "nb_restarts": 1,
+          "p_init": 0.8,
+          "norm": "np.inf"
+        }
+      }
+    },
+    {
+      "id": "0cc5-42e2-ca23-448f-97e9",
+      "name": "鲁棒性测试",
+      "tool_name": "鲁棒性测试",
+      "test_type": "img_robustness_classification",
+      "tool": "img_robustness_classification",
+      "params": {
+        "random": {
+          "width": 10,
+          "map_confidence": 0.1
+        }
+      }
+    }
+  ],
+  "algorithm_model": "black",
+  "algorithm": "66719e87d82a2a000bfc6913",
+  "datasets": [
+    "66727714d82a2a000ab782ac"
+  ],
+  "description": "黑盒-红外线-图像分类-multiple-0618224906"
+}

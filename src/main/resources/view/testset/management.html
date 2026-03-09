@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Demo</title>
+    <!-- 请勿在项目正式环境中引用该 layui.css 地址 -->
+    <!--
+    <link href="//unpkg.com/layui@2.8.17/dist/css/layui.css" rel="stylesheet">
+    -->
+    <!-- 引入layui css 文件 -->
+    <!--
+    <link href="https://cdn.staticfile.org/layui/2.8.1/css/layui.css" rel="stylesheet">
+    -->
+    <link th:href="@{/lib/layui-v2.8.1/css/layui.css}" rel="stylesheet" type="text/css" />
+    <script src="../lib/layui-v2.8.1/layui.js" type="text/javascript" charset="UTF-8"></script>
+</head>
+<body>
+<!-- 给容器追加 class="layui-form-pane"，即可显示为方框风格 -->
+<form class="layui-form layui-form-pane" action="">
+    <div class="layui-form-item">
+        <label class="layui-form-label">后台接口</label>
+        <div class="layui-input-inline">
+            <select name="api" lay-filter="aihao">
+                <option value=""></option>
+                <option value="http://10.10.12.6:18000/record/execute">http://10.10.12.6:18000/record/execute</option>
+                <option value="http://10.10.12.6:18000/record/execute" selected>http://10.10.12.6:18000/record/execute</option>
+            </select>
+        </div>
+    </div>
+
+
+
+
+        <div class="layui-form-item">
+        <div class="layui-inline">
+        <label class="layui-form-label">scene_ids</label>
+            <div class="layui-input-inline">
+            <input type="text" name="scene_ids" lay-verify="required" placeholder="AEB056"   lay-affix="clear" autocomplete="off" class="layui-input"  id="scene_ids" >
+        </div>
+        </div>
+        </div>
+
+
+
+    <div class="layui-form-item">
+    <div class="layui-inline">
+        <label class="layui-form-label">preset_id</label>
+        <div class="layui-input-inline">
+            <select name="preset_id" lay-verify="required" lay-search>
+                <option value="">直接选择或搜索选择</option>
+                <option value="64db3f1a53529ca687eae97f">64db3f1a53529ca687eae97f</option>
+                <option value="64e2c06b95e7fa3eeae8a6be">64e2c06b95e7fa3eeae8a6be</option>
+            </select>
+        </div>
+    </div>
+    </div>
+
+
+    <div class="layui-form-item">
+    <div class="layui-inline">
+        <label class="layui-form-label">source</label>
+        <div class="layui-input-inline">
+            <select name="source" lay-verify="required" lay-search>
+                <option value="">直接选择或搜索选择</option>
+                <option value="C-NCAP 2021 AEB">C-NCAP 2021 AEB</option>
+                <option value="C-NCAP 2021 AEB">C-NCAP 2021 AEB</option>
+            </select>
+        </div>
+    </div>
+    </div>
+
+
+
+
+    <div class="layui-form-item">
+    <div class="layui-input-block">
+        <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+    </div>
+    </div>
+
+</form>
+
+<!--
+<script src="https://cdn.staticfile.org/layui/2.8.1/layui.js"></script>
+-->
+<script>
+
+    //Demo
+    layui.use(['form','jquery'], function(){
+        var form = layui.form;
+        var$=layui.jquery;
+
+        //监听提交
+        form.on('submit(formDemo)', function(data){
+           // layer.msg(JSON.stringify(data.field));
+
+            layui.$.ajax({
+                url:"/baseadmin/scene/comment",
+                data:JSON.stringify(data.field),
+                method:"post",
+                dataType:"JSON",
+                contentType: 'application/json',
+                success:function(res){
+                    if(res.code=="0"){
+                        layer.msg(res.msg);
+                    }else{
+                        layer.msg(res.msg);
+                    }
+
+                }
+
+            })
+
+
+            return false;
+        });
+    });
+</script>
+
+</body>
+</html>

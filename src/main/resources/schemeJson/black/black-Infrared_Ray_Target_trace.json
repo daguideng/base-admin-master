@@ -1,0 +1,58 @@
+{
+  "name": "黑盒-红外线-目标跟踪-multiple-070312345",
+  "category": "665da4a56475ed000a4be99c",
+  "tested_type": "algorithm",
+  "tested_modality": "infrared_ray",
+  "tested_task": "target_trace",
+  "test_items": [
+    {
+      "id": "878d-e8ab-19aa-c644-bf2a",
+      "name": "基础性能测试",
+      "tool_name": "基础性能测试",
+      "test_type": "img_trace_base",
+      "tool": "img_trace_base",
+      "params": {
+
+      }
+    },
+    {
+      "id": "19ee-ddfd-48e4-91a5-0cb9",
+      "name": "安全性测试",
+      "tool_name": "安全性测试",
+      "test_type": "img_trace",
+      "tool": "img_trace",
+      "params": {
+        "BoundaryAttack": {
+          "delta": 0.1,
+          "epsilon": 0.01,
+          "step_adapt": 0.667,
+          "max_iter": 10,
+          "num_trial": 10,
+          "sample_size": 10,
+          "init_size": 20,
+          "confidence": 0.1,
+          "map_confidence": 0.1
+        }
+      }
+    },
+    {
+      "id": "2a71-48f2-6fe6-2e97-70a4",
+      "name": "鲁棒性测试",
+      "tool_name": "鲁棒性测试",
+      "test_type": "img_robustness_trace",
+      "tool": "img_robustness_trace",
+      "params": {
+        "random": {
+          "width": 10,
+          "map_confidence": 0.1
+        }
+      }
+    }
+  ],
+  "algorithm_model": "black",
+  "algorithm": "6684d5014a389c000b358f11",
+  "datasets": [
+    "6683be964a389c00daf5c81c"
+  ],
+  "description": "黑盒-红外线-目标跟踪-multiple-0703123457"
+}

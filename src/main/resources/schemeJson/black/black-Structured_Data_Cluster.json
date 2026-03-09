@@ -1,0 +1,24 @@
+{
+  "name": "下载-黑盒-结构化数据-聚类",
+  "category": "665da4a56475ed000a4be99c",
+  "tested_type": "algorithm",
+  "tested_modality": "structured_data",
+  "tested_task": "cluster",
+  "test_items": [
+    {
+      "id": "2140-628e-d404-2f3f-ade6",
+      "name": "基础性能测试",
+      "tool_name": "基础性能测试",
+      "test_type": "cluster_base",
+      "tool": "cluster_base",
+      "params": {
+
+      }
+    }
+  ],
+  "algorithm_model": "black",
+  "algorithm": "6678e4e6a7984b048277d9eb",
+  "datasets": [
+    "6678e91da7984b048277da87"
+  ]
+}

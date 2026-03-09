@@ -1,0 +1,35 @@
+{
+  "name": "黑盒-test-文本-命名实体识别-0618225129",
+  "category": "666beed5280f56000a273892",
+  "tested_type": "algorithm",
+  "tested_modality": "text",
+  "tested_task": "entity_recognition",
+  "test_items": [
+    {
+      "id": "57b3-86e0-8e00-6dd3-3b62",
+      "name": "基础性能测试",
+      "tool_name": "基础性能测试",
+      "test_type": "seq_attack_accuracy",
+      "tool": "seq_attack_accuracy",
+      "params": {
+
+      }
+    },
+    {
+      "id": "e871-86b5-e10e-8e4a-ebb3",
+      "name": "安全性测试",
+      "tool_name": "安全性测试",
+      "test_type": "seq_attack_adv_test",
+      "tool": "seq_attack_adv_test",
+      "params": {
+
+      }
+    }
+  ],
+  "algorithm_model": "black",
+  "algorithm": "66719f34d82a2a000ab78261",
+  "datasets": [
+    "667133dcd82a2a000ab7821f"
+  ],
+  "description": "黑盒-test-文本-命名实体识别-0618225129"
+}
